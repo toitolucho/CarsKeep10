@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">Agregar Cliente</a>
+                                    <a href="{{route('clientes.create')}}" class="btn btn-sm btn-primary">Agregar Cliente</a>
                                 </div>
                             </div>
                             <div class="table-responsive">
@@ -43,7 +43,8 @@
                                         <th class="text-right">
                                             Acciones
                                         </th>
-                                    </tr></thead>
+                                    </tr>
+                                    </thead>
                                     <tbody>
                                         @foreach($clientes as $cliente)
                                             <tr role="row">
@@ -94,6 +95,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-7">
+                                    {{ $clientes->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>
