@@ -1,0 +1,5 @@
+Model Generator -> generador de modelos a partir de la base de datos
+https://github.com/reliese/laravel
+
+conveciones laravel para buenas practicas y nombres de archivos
+https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-conventions

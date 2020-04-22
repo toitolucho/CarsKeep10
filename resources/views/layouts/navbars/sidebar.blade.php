@@ -47,6 +47,15 @@
             <p>{{ __('Table List') }}</p>
         </a>
       </li>
+
+        <li class="nav-item{{ $activePage == 'Clientes' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('clientes.index') }}">
+                <i class="material-icons">content_paste</i>
+                <p>{{ __('Clientes') }}</p>
+            </a>
+        </li>
+
+
       <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('typography') }}">
           <i class="material-icons">library_books</i>

@@ -14,6 +14,13 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+        /*
+         * Ccomado para generar modelos a partri de la base de datos, esta cocnfigurado para que funcicone a nivel del proyecto
+         * */
+//        if ($this->app->environment() == 'local') {
+//            $this->app->register(\Reliese\Coders\CodersServiceProvider::class);
+//        }
     }
 
     /**

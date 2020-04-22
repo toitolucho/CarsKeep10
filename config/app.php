@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*Models Generator, agregar en futuros proyectos para generar los mdoelos a partir de la DB*/
+        Reliese\Coders\CodersServiceProvider::class,
+
     ],
 
     /*

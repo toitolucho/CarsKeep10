@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Extra details for Live View on GitHub Pages -->
     <!-- Canonical SEO -->
-    <link rel="canonical" href="https://www.creative-tim.com/product/material-dashboard-laravel" />
+{{--    <link rel="canonical" href="https://www.creative-tim.com/product/material-dashboard-laravel" />--}}
 
 
     <!--  Social tags      -->
@@ -72,7 +72,7 @@
             <div class="sidebar" data-color="orange" data-background-color="white" data-image="{{ asset('material') }}/img/sidebar-1.jpg">
               <!--
                   Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-            
+
                   Tip 2: you can also add an image using data-image tag
               -->
               <div class="logo">
@@ -165,7 +165,7 @@
     <a class="navbar-brand" href="#">User Management</a>
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-    
+
   <span class="sr-only">Toggle navigation</span>
   <span class="navbar-toggler-icon icon-bar"></span>
   <span class="navbar-toggler-icon icon-bar"></span>
@@ -279,10 +279,10 @@
               </div>
             </div>
           </div>
-          <div class="alert alert-danger">
-            <span style="font-size:18px;">
-              <b> </b> This is a PRO feature!</span>
-          </div>
+{{--          <div class="alert alert-danger">--}}
+{{--            <span style="font-size:18px;">--}}
+{{--              <b> </b> This is a PRO feature!</span>--}}
+{{--          </div>--}}
       </div>
     </div>
   </div>
@@ -315,16 +315,16 @@
   </nav>
   <div class="copyright float-right">
     ©
-    <script>
-      document.write(new Date().getFullYear())
-    </script>, made with <i class="material-icons">favorite</i> by
-    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> and <a href="https://www.updivision.com" target="_blank">UPDIVISION</a> for a better web.
+{{--    <script>--}}
+{{--      document.write(new Date().getFullYear())--}}
+{{--    </script>, made with <i class="material-icons">favorite</i> by--}}
+{{--    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> and <a href="https://www.updivision.com" target="_blank">UPDIVISION</a> for a better web.--}}
   </div>
 </div>
 </footer>
 </div>
 </div>
-                      
+
       <div class="fixed-plugin">
         <div class="dropdown show-dropdown">
           <a href="#" data-toggle="dropdown">
