@@ -109,7 +109,7 @@ class ClienteController extends Controller
 
         if($cliente->save())
         {
-            return redirect('clientes')->withStatus(__('Profile successfully updated.'));
+            return redirect('clientes')->withStatus(__('Los datos del clientes fueron actualizados correctamente.'));
 //            return redirect('clientes')->with("editado","La Cliente ha sido actualizada correctamente");
         }
         return redirect('clientes')->withInput()->with("editado_error","La Categoría seleccioinada no pudo editarse, intentenlo nuevamente porfavor");
@@ -124,6 +124,15 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
+        $cliente = Cliente::find( $cliente->IdCliente);
+
+
+        if($cliente->delete())
+        {
+            //->withStatus(__('Profile successfully updated.'));
+            return redirect('clientes')->withStatus("El elemento " . $cliente->Nombres . " " .$cliente->Apellidos. ", ha sido eleminado correctamente");
+        }
+        return redirect('clientes')->withInput()->with("eliminar_error","El cliente seleccioinado no pudo eliminarse, probablemente tiene registros que dependen de la misma");
         //
     }
 }

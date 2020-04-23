@@ -98,6 +98,7 @@
           </div>
         </div>
         <!--   Core JS Files   -->
+{{--        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="crossorigin="anonymous"></script>--}}
         <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('material') }}/js/core/bootstrap-material-design.min.js"></script>
@@ -139,8 +140,17 @@
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="{{ asset('material') }}/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-        <script src="{{ asset('material') }}/demo/demo.js"></script>
-        <script src="{{ asset('material') }}/js/settings.js"></script>
+{{--        <script src="{{ asset('material') }}/demo/demo.js"></script>--}}
+{{--        <script src="{{ asset('material') }}/js/settings.js"></script>--}}
+
+        <script type="text/javascript">
+            $(function () {
+                $('.alert-success').fadeIn().delay(1500).fadeOut(1000);
+            });
+        </script>
+
         @stack('js')
+
+        @include('utilidades.delete_modal');
     </body>
 </html>

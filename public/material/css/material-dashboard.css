@@ -4841,13 +4841,13 @@ tbody.collapse.show {
   padding: 0.5rem 0.75rem;
   margin-left: 0;
   line-height: 1.25;
-  color: #2196f3;
+  color: #999;
   background-color: transparent;
   border: 0 solid #dee2e6;
 }
 
 .page-link:hover {
-  color: #0a6ebd;
+  color: #d4aa00;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -4876,9 +4876,34 @@ tbody.collapse.show {
 
 .page-item.active .page-link {
   z-index: 1;
-  color: #ffffff;
-  background-color: #2196f3;
-  border-color: #2196f3;
+  /*color: #ffffff;*/
+  /*background-color: #2196f3;*/
+  /*border-color: #2196f3;*/
+
+  background-color: #d4aa00;
+  border-color: #8a5c06;
+  color: #fff;
+  box-shadow: 0 4px 5px 0 rgba(165, 129, 55, 0.14),0 1px 10px 0 rgba(243, 192, 80, 0.12),0 2px 4px -1px rgba(138, 92, 6, 0.2);
+
+
+}
+
+
+.pagination>.page-item>span {
+  border:0;
+  border-radius:30px!important;
+  transition:all .3s;
+  padding:0 11px;
+  margin:0 3px;
+  min-width:30px;
+  height:30px;
+  line-height:30px;
+  color:#999;
+  font-weight:400;
+  font-size:12px;
+  text-transform:uppercase;
+  background:transparent;
+  text-align:center;
 }
 
 .page-item.disabled .page-link {
@@ -18858,4 +18883,34 @@ Copyright (c) 2015 Daniel Eden
 }
 
 
+
+  .pagination > .page-item.active > a, .pagination > .page-item.active > a:focus, .pagination > .page-item.active > a:hover, .pagination > .page-item.active > span, .pagination > .page-item.active > span:focus, .pagination > .page-item.active > span:hover {
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+    color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(156,39,176,.14),0 1px 10px 0 rgba(156,39,176,.12),0 2px 4px -1px rgba(156,39,176,.2);
+  }
+
+
+  .pagination > .page-item > .page-link, .pagination > .page-item > span {
+    border: 0;
+    border-top-color: currentcolor;
+    border-right-color: currentcolor;
+    border-bottom-color: currentcolor;
+    border-left-color: currentcolor;
+    border-radius: 30px !important;
+    transition: all .3s;
+    padding: 0 11px;
+    margin: 0 3px;
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #999;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    background: transparent;
+    background-color: transparent;
+    text-align: center;
+  }
 /*# sourceMappingURL=dashboard-free.css.map */
