@@ -1,5 +1,5 @@
 
-@extends('layouts.app', ['activePage' => 'Clientes', 'titlePage' => __('Clientes')])
+@extends('layouts.app', ['activePage' => 'Categorias', 'titlePage' => __('Categorias')])
 <style>
     .listado {
         list-style-type: none !important;
@@ -22,11 +22,11 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Clientes</h4>
-                            <p class="card-category"> Aqui podra administrar a los clientes</p>
+                            <h4 class="card-title ">Categorias</h4>
+                            <p class="card-category"> Aqui podra administrar las categorais que le permitirán clasificar sus articulos</p>
                         </div>
                         <div class="card-body">
-                            @if (session('status'))
+                            @if (session('status')   )
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="alert alert-success">
@@ -39,49 +39,61 @@
                                 </div>
                             @endif
 
+
+                                @if ($errors->has('update_error')  )
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="alert alert-warning">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                                <span>{{ $errors->first('update_error') }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
                             <div class="row">
                                 <div class="col-12 text-right">
-                                    <a href="{{route('clientes.create')}}" class="btn btn-sm btn-primary">Agregar Cliente</a>
+                                    <a href="{{route('categorias.create')}}" class="btn btn-sm btn-primary">Agregar Categoria</a>
                                 </div>
                             </div>
                             <div class="table-responsive">
                                 <table id="datatables" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables_info" width="100%" cellspacing="0">
                                     <thead class=" text-primary">
                                     <tr><th>
-                                            Ci
+                                            Id
                                         </th>
                                         <th>
                                             Nombre Completo
                                         </th>
-                                        <th>
-                                            Nro Celular
-                                        </th>
+
                                         <th class="text-right">
                                             Acciones
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($clientes as $cliente)
+                                        @foreach($categorias as $categoria)
                                             <tr role="row">
 
-                                                <td class="w-5"><a href="clientes/{{$cliente->IdCliente}}"> {{$cliente->ci}} </a>  </td>
-                                                <td class="w-35">{{$cliente->Nombres . " " . $cliente->Apellidos}}  </td>
-                                                <td class="w-10">{{$cliente->NroCelular}}  </td>
+                                                <td class="w-5"><a href="{{route("categorias.show", $categoria)}}"> {{$categoria->IdCategoria}} </a>  </td>
+                                                <td class="w-35">{{$categoria->NombreCategoria}}  </td>
+
 
                                                 <td class="text-right">
-                                                    <li data-form="#delete-form-{{$cliente->IdCliente}}"
-                                                        data-title="Eliminar Cliente"
-                                                        data-message="Se encuentra seguro de eliminar este cliente?"
+                                                    <li data-form="#delete-form-{{$categoria->IdCategoria}}"
+                                                        data-title="Eliminar Categoria"
+                                                        data-message="Se encuentra seguro de eliminar esta categoria?"
                                                         data-target="#formConfirm" class="listado">
 
-                                                        <a href="{{route("clientes.edit", $cliente->IdCliente )}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
+                                                        <a href="{{route("categorias.edit", $categoria->IdCategoria )}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
                                                         <a data-toggle="modal" data-target="#formConfirm" href="#" class="formConfirm btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">delete</i></a>
 
                                                     </li>
 
-                                                    <form id="delete-form-{{$cliente->IdCliente}}"
-                                                          action = "{{route("clientes.destroy", $cliente->IdCliente )}}" method="post"
+                                                    <form id="delete-form-{{$categoria->IdCategoria}}"
+                                                          action = "{{route("categorias.destroy", $categoria )}}" method="post"
                                                           style="display: none">
                                                         <input type="hidden" name="_method" value="delete">
                                                         {{csrf_field()}}
@@ -135,7 +147,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-7">
-                                    {{ $clientes->links() }}
+                                    {{ $categorias->links() }}
                                 </div>
                             </div>
 

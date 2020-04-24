@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $Cantidad
  * @property float $Costo
  * 
- * @property Ventasservicio $ventasservicio
+ * @property VentaServicio $ventasservicio
  * @property Articulo $articulo
  *
  * @package App\Models
@@ -41,7 +41,7 @@ class Ventasserviciodetallearticulo extends Model
 
 	public function ventasservicio()
 	{
-		return $this->belongsTo(Ventasservicio::class, 'IdVentaServicio');
+		return $this->belongsTo(VentaServicio::class, 'IdVentaServicio');
 	}
 
 	public function articulo()

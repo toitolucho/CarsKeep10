@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Ventasservicio
+ * Class VentaServicio
  * 
  * @property int $IdVentaServicio
  * @property int $IdUsuarioSecretaria
@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Ventasservicio extends Model
+class VentaServicio extends Model
 {
 	protected $table = 'ventasservicio';
 	protected $primaryKey = 'IdVentaServicio';

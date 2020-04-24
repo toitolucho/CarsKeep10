@@ -22,8 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property Categoria $categoria
  * @property Collection|Ingresosarticulosdetalle[] $ingresosarticulosdetalles
- * @property Collection|Tiposmantenimientosdetalle[] $tiposmantenimientosdetalles
- * @property Collection|Ventasservicio[] $ventasservicios
+ * @property Collection|TipoMantenimientoDetalle[] $tiposmantenimientosdetalles
+ * @property Collection|VentaServicio[] $ventasservicios
  *
  * @package App\Models
  */
@@ -60,13 +60,13 @@ class Articulo extends Model
 
 	public function tiposmantenimientosdetalles()
 	{
-		return $this->belongsToMany(Tiposmantenimientosdetalle::class, 'tiposmantenimientosdetallearticulos', 'IdArticulo', 'IdTipoMantenimiento')
+		return $this->belongsToMany(TipoMantenimientoDetalle::class, 'tiposmantenimientosdetallearticulos', 'IdArticulo', 'IdTipoMantenimiento')
 					->withPivot('IdActividad');
 	}
 
 	public function ventasservicios()
 	{
-		return $this->belongsToMany(Ventasservicio::class, 'ventasserviciodetallearticulos', 'IdArticulo', 'IdVentaServicio')
+		return $this->belongsToMany(VentaServicio::class, 'ventasserviciodetallearticulos', 'IdArticulo', 'IdVentaServicio')
 					->withPivot('Cantidad', 'Costo');
 	}
 }

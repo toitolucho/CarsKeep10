@@ -67,3 +67,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Rutas incorporadas manualmente
 Route::resource('/clientes','ClienteController');
+Route::resource('/categorias','CategoriaController');
+Route::resource('/articulos','ArticuloController');
+Route::resource('/ingresosarticulos','IngresoArticuloController');
+Route::resource('/actividadesmantenimientos','ActividadMantenimientoController');
+Route::resource('/tiposmantenimientos','TipoMantenimientoController');
+Route::resource('/tiposmantenimientosdetallearticulo','TipoMantenimientoDetalleArticuloController');
+Route::resource('/ventasservicios','VentaServicioController');

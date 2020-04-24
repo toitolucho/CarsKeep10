@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Tiposmantenimiento
+ * Class TipoMantenimiento
  * 
  * @property int $IdTipoMantenimiento
  * @property string $NombreMantenimiento
@@ -18,11 +18,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $LimiteInferiorKilometraje
  * @property float $LimiteSuperiorKilometraje
  * 
- * @property Collection|Tiposmantenimientosdetalle[] $tiposmantenimientosdetalles
+ * @property Collection|TipoMantenimientoDetalle[] $tiposmantenimientosdetalles
  *
  * @package App\Models
  */
-class Tiposmantenimiento extends Model
+class TipoMantenimiento extends Model
 {
 	protected $table = 'tiposmantenimientos';
 	protected $primaryKey = 'IdTipoMantenimiento';
@@ -44,6 +44,6 @@ class Tiposmantenimiento extends Model
 
 	public function tiposmantenimientosdetalles()
 	{
-		return $this->hasMany(Tiposmantenimientosdetalle::class, 'IdTipoMantenimiento');
+		return $this->hasMany(TipoMantenimientoDetalle::class, 'IdTipoMantenimiento');
 	}
 }

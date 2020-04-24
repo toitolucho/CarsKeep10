@@ -22,8 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $CodigoEstadoDisposicion
  * @property string $CodigoEstado
  * 
- * @property Collection|Ingresosarticulo[] $ingresosarticulos
- * @property Collection|Ventasservicio[] $ventasservicios
+ * @property Collection|IngresoArticulo[] $ingresosarticulos
+ * @property Collection|VentaServicio[] $ventasservicios
  *
  * @package App\Models
  */
@@ -49,11 +49,11 @@ class Usuario extends Model
 
 	public function ingresosarticulos()
 	{
-		return $this->hasMany(Ingresosarticulo::class, 'IdUsuario');
+		return $this->hasMany(IngresoArticulo::class, 'IdUsuario');
 	}
 
 	public function ventasservicios()
 	{
-		return $this->hasMany(Ventasservicio::class, 'IdUsuarioSecretaria');
+		return $this->hasMany(VentaServicio::class, 'IdUsuarioSecretaria');
 	}
 }

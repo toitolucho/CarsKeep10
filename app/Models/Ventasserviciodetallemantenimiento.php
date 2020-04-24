@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $CodigoEstadoEjecucion
  * @property string $Observacion
  * 
- * @property Ventasservicio $ventasservicio
- * @property Actividadesmantenimiento $actividadesmantenimiento
+ * @property VentaServicio $ventasservicio
+ * @property ActividadMantenimiento $actividadesmantenimiento
  *
  * @package App\Models
  */
@@ -42,11 +42,11 @@ class Ventasserviciodetallemantenimiento extends Model
 
 	public function ventasservicio()
 	{
-		return $this->belongsTo(Ventasservicio::class, 'IdVentaServicio');
+		return $this->belongsTo(VentaServicio::class, 'IdVentaServicio');
 	}
 
 	public function actividadesmantenimiento()
 	{
-		return $this->belongsTo(Actividadesmantenimiento::class, 'IdActividad');
+		return $this->belongsTo(ActividadMantenimiento::class, 'IdActividad');
 	}
 }

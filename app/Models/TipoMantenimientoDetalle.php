@@ -10,20 +10,20 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Tiposmantenimientosdetalle
+ * Class TipoMantenimientoDetalle
  * 
  * @property int $IdTipoMantenimiento
  * @property int $IdActividad
  * @property string $Obligatorio
  * @property float $CostoServicio
  * 
- * @property Tiposmantenimiento $tiposmantenimiento
- * @property Actividadesmantenimiento $actividadesmantenimiento
+ * @property TipoMantenimiento $tiposmantenimiento
+ * @property ActividadMantenimiento $actividadesmantenimiento
  * @property Collection|Articulo[] $articulos
  *
  * @package App\Models
  */
-class Tiposmantenimientosdetalle extends Model
+class TipoMantenimientoDetalle extends Model
 {
 	protected $table = 'tiposmantenimientosdetalle';
 	public $incrementing = false;
@@ -42,12 +42,12 @@ class Tiposmantenimientosdetalle extends Model
 
 	public function tiposmantenimiento()
 	{
-		return $this->belongsTo(Tiposmantenimiento::class, 'IdTipoMantenimiento');
+		return $this->belongsTo(TipoMantenimiento::class, 'IdTipoMantenimiento');
 	}
 
 	public function actividadesmantenimiento()
 	{
-		return $this->belongsTo(Actividadesmantenimiento::class, 'IdActividad');
+		return $this->belongsTo(ActividadMantenimiento::class, 'IdActividad');
 	}
 
 	public function articulos()

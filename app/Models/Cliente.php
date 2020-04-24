@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $CorreoElectronico
  * @property Carbon $FechaRegistro
  * 
- * @property Collection|Ventasservicio[] $ventasservicios
+ * @property Collection|VentaServicio[] $ventasservicios
  *
  * @package App\Models
  */
@@ -50,7 +50,7 @@ class Cliente extends Model
 
 	public function ventasservicios()
 	{
-		return $this->hasMany(Ventasservicio::class, 'IdCliente');
+		return $this->hasMany(VentaServicio::class, 'IdCliente');
 	}
 }
 

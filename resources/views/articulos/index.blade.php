@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Clientes</h4>
-                            <p class="card-category"> Aqui podra administrar a los clientes</p>
+                            <p class="card-category"> Aqui podra administrar a los articulos</p>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -41,20 +41,26 @@
 
                             <div class="row">
                                 <div class="col-12 text-right">
-                                    <a href="{{route('clientes.create')}}" class="btn btn-sm btn-primary">Agregar Cliente</a>
+                                    <a href="{{route('articulos.create')}}" class="btn btn-sm btn-primary">Agregar Articulos</a>
                                 </div>
                             </div>
                             <div class="table-responsive">
                                 <table id="datatables" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables_info" width="100%" cellspacing="0">
                                     <thead class=" text-primary">
                                     <tr><th>
-                                            Ci
+                                            Id
                                         </th>
                                         <th>
-                                            Nombre Completo
+                                            Nombre Articulo
                                         </th>
                                         <th>
-                                            Nro Celular
+                                            Categoria
+                                        </th>
+                                        <th>
+                                            Existencia
+                                        </th>
+                                        <th>
+                                            Precio
                                         </th>
                                         <th class="text-right">
                                             Acciones
@@ -62,10 +68,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($clientes as $cliente)
+                                        @foreach($articulos as $cliente)
                                             <tr role="row">
 
-                                                <td class="w-5"><a href="clientes/{{$cliente->IdCliente}}"> {{$cliente->ci}} </a>  </td>
+                                                <td class="w-5"><a href="articulos/{{$cliente->IdCliente}}"> {{$cliente->ci}} </a>  </td>
                                                 <td class="w-35">{{$cliente->Nombres . " " . $cliente->Apellidos}}  </td>
                                                 <td class="w-10">{{$cliente->NroCelular}}  </td>
 
@@ -75,13 +81,13 @@
                                                         data-message="Se encuentra seguro de eliminar este cliente?"
                                                         data-target="#formConfirm" class="listado">
 
-                                                        <a href="{{route("clientes.edit", $cliente->IdCliente )}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
+                                                        <a href="{{route("articulos.edit", $cliente->IdCliente )}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
                                                         <a data-toggle="modal" data-target="#formConfirm" href="#" class="formConfirm btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">delete</i></a>
 
                                                     </li>
 
                                                     <form id="delete-form-{{$cliente->IdCliente}}"
-                                                          action = "{{route("clientes.destroy", $cliente->IdCliente )}}" method="post"
+                                                          action = "{{route("articulos.destroy", $cliente->IdCliente )}}" method="post"
                                                           style="display: none">
                                                         <input type="hidden" name="_method" value="delete">
                                                         {{csrf_field()}}
@@ -99,7 +105,7 @@
 
 
 {{--                                                        <a class="btn btn-primary " class="formConfirm text-primary"--}}
-{{--                                                           href="{{route("clientes.edit", $cliente->IdCliente )}}"--}}
+{{--                                                           href="{{route("articulos.edit", $cliente->IdCliente )}}"--}}
 {{--                                                           data-toggle="tooltip" data-placement="top" title="Modificar datos"--}}
 {{--                                                           aria-label="Editar">--}}
 {{--                                                            <i class="fas fa-xs fa-edit" aria-hidden="true"></i>--}}
@@ -117,8 +123,8 @@
 {{--                                                    </li>--}}
 
 {{--                                                    <form id="delete-form-{{$cliente->IdCliente}}"--}}
-{{--                                                                                                            action="/clientes/{{$cliente->IdCliente}}" method="post"--}}
-{{--                                                          action = "{{route("clientes.destroy", $cliente->IdCliente )}}" method="post"--}}
+{{--                                                                                                            action="/articulos/{{$cliente->IdCliente}}" method="post"--}}
+{{--                                                          action = "{{route("articulos.destroy", $cliente->IdCliente )}}" method="post"--}}
 {{--                                                          style="display: none">--}}
 {{--                                                        <input type="hidden" name="_method" value="delete">--}}
 {{--                                                        {{csrf_field()}}--}}
@@ -135,7 +141,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-7">
-                                    {{ $clientes->links() }}
+                                    {{ $articulos->links() }}
                                 </div>
                             </div>
 
