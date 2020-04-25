@@ -47,47 +47,37 @@
                             <div class="table-responsive">
                                 <table id="datatables" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables_info" width="100%" cellspacing="0">
                                     <thead class=" text-primary">
-                                    <tr><th>
-                                            Id
-                                        </th>
-                                        <th>
-                                            Nombre Articulo
-                                        </th>
-                                        <th>
-                                            Categoria
-                                        </th>
-                                        <th>
-                                            Existencia
-                                        </th>
-                                        <th>
-                                            Precio
-                                        </th>
-                                        <th class="text-right">
-                                            Acciones
-                                        </th>
+                                    <tr><th class="text-left">Id</th>
+                                        <th class="text-center">Nombre Articulo</th>
+                                        <th class="text-center">Categoria</th>
+                                        <th class="text-center">Existencia</th>
+                                        <th class="text-center">Precio</th>
+                                        <th class="text-right">Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($articulos as $cliente)
+                                        @foreach($articulos as $articulo)
                                             <tr role="row">
 
-                                                <td class="w-5"><a href="articulos/{{$cliente->IdCliente}}"> {{$cliente->ci}} </a>  </td>
-                                                <td class="w-35">{{$cliente->Nombres . " " . $cliente->Apellidos}}  </td>
-                                                <td class="w-10">{{$cliente->NroCelular}}  </td>
+                                                <td class="w-5"><a href="articulos/{{$articulo->IdArticulo}}"> {{$articulo->IdArticulo}} </a>  </td>
+                                                <td class="w-40">{{$articulo->NombreArticulo}}  </td>
+                                                <td class="w-20">{{$articulo->categoria->NombreCategoria}}  </td>
+                                                <td class="w-15 text-right" >{{$articulo->CantidadExistencia}}  </td>
+                                                <td class="w-15 text-right">{{$articulo->PrecioVigente}}  </td>
 
                                                 <td class="text-right">
-                                                    <li data-form="#delete-form-{{$cliente->IdCliente}}"
-                                                        data-title="Eliminar Cliente"
-                                                        data-message="Se encuentra seguro de eliminar este cliente?"
+                                                    <li data-form="#delete-form-{{$articulo->IdArticulo}}"
+                                                        data-title="Eliminar Articulo"
+                                                        data-message="Se encuentra seguro de eliminar este articulo?"
                                                         data-target="#formConfirm" class="listado">
 
-                                                        <a href="{{route("articulos.edit", $cliente->IdCliente )}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
+                                                        <a href="{{route("articulos.edit", $articulo->IdArticulo )}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
                                                         <a data-toggle="modal" data-target="#formConfirm" href="#" class="formConfirm btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">delete</i></a>
 
                                                     </li>
 
-                                                    <form id="delete-form-{{$cliente->IdCliente}}"
-                                                          action = "{{route("articulos.destroy", $cliente->IdCliente )}}" method="post"
+                                                    <form id="delete-form-{{$articulo->IdArticulo}}"
+                                                          action = "{{route("articulos.destroy", $articulo->IdArticulo )}}" method="post"
                                                           style="display: none">
                                                         <input type="hidden" name="_method" value="delete">
                                                         {{csrf_field()}}
@@ -97,7 +87,7 @@
                                                 </td>
 
 {{--                                                <td class="w-10 text-right">--}}
-{{--                                                    <li data-form="#delete-form-{{$cliente->IdCliente}}"--}}
+{{--                                                    <li data-form="#delete-form-{{$articulo->IdArticulo}}"--}}
 {{--                                                        data-title="Eliminar Cliente"--}}
 {{--                                                        data-message="Se encuentra seguro de eliminar este cliente?"--}}
 {{--                                                        data-target="#formConfirm" class="listado">--}}
@@ -105,7 +95,7 @@
 
 
 {{--                                                        <a class="btn btn-primary " class="formConfirm text-primary"--}}
-{{--                                                           href="{{route("articulos.edit", $cliente->IdCliente )}}"--}}
+{{--                                                           href="{{route("articulos.edit", $articulo->IdArticulo )}}"--}}
 {{--                                                           data-toggle="tooltip" data-placement="top" title="Modificar datos"--}}
 {{--                                                           aria-label="Editar">--}}
 {{--                                                            <i class="fas fa-xs fa-edit" aria-hidden="true"></i>--}}
@@ -122,9 +112,9 @@
 
 {{--                                                    </li>--}}
 
-{{--                                                    <form id="delete-form-{{$cliente->IdCliente}}"--}}
-{{--                                                                                                            action="/articulos/{{$cliente->IdCliente}}" method="post"--}}
-{{--                                                          action = "{{route("articulos.destroy", $cliente->IdCliente )}}" method="post"--}}
+{{--                                                    <form id="delete-form-{{$articulo->IdArticulo}}"--}}
+{{--                                                                                                            action="/articulos/{{$articulo->IdArticulo}}" method="post"--}}
+{{--                                                          action = "{{route("articulos.destroy", $articulo->IdArticulo )}}" method="post"--}}
 {{--                                                          style="display: none">--}}
 {{--                                                        <input type="hidden" name="_method" value="delete">--}}
 {{--                                                        {{csrf_field()}}--}}

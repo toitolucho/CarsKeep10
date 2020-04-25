@@ -6,7 +6,7 @@ php artisan make:controller IngresoArticuloController --model=Models\IngresoArti
 php artisan make:controller ActividadMantenimientoController --model=Models\ActividadMantenimiento
 php artisan make:controller TipoMantenimientoController --model=Models\TipoMantenimiento
 php artisan make:controller TipoMantenimientoDetalleArticuloController --model=Models\TipoMantenimientoDetalleArticulo
-php artisan make:controller VentaServicioController --model=VentaServicio
+php artisan make:controller VentaServicioController --model=Models\VentaServicio
 
 
 php artisan make:controller VentaServicioController --model=VentaServicio
