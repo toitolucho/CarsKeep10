@@ -146,7 +146,17 @@
         <script type="text/javascript">
             $(function () {
                 $('.alert-success').fadeIn().delay(1500).fadeOut(1000);
+
+
+
+                {{--if($('#input-TipoInventario').length ){--}}
+                {{--    $('#input-TipoInventario').val("{!!  $articulo ?  $articulo->TipoInventario : '' !!}");--}}
+                {{--}--}}
+
+
             });
+
+
         </script>
 
         @stack('js')

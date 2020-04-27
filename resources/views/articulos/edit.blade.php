@@ -73,51 +73,27 @@
                                         </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-5 col-md-6 col-sm-3">
-                                        <div class="form-group{{ $errors->has('TipoInventario') ? ' has-danger' : '' }} dropdown bootstrap-select show-tick show">
-                                            <select class=" form-control{{ $errors->has('TipoInventario') ? ' is-invalid' : '' }} selectpicker"
-                                                                                                      data-style="select-with-transition" multiple=""
-                                                                                                      title="Choose City" data-size="7" tabindex="-98" name="TipoInventario" id="input-TipoInventario">
-                                                <option disabled=""> Multiple Options</option>
-                                                <option value="P">PEPS</option>
-                                                <option value="U">UEPS</option>
-                                                <option value="O">PONDERADO(PROMEDIADO)</option>
-                                            </select>
-                                            @if ($errors->has('TipoInventario'))
-                                                <span id="TipoInventario-error" class="error text-danger" for="input-TipoInventario">{{ $errors->first('TipoInventario') }}</span>
-                                            @endif
-                                            <button type="button" class="btn dropdown-toggle bs-placeholder select-with-transition" data-toggle="dropdown"
-                                                    role="button" title="Seleccione Tipo" aria-expanded="true">
-                                                <div class="filter-option">
-                                                    <div class="filter-option-inner">
-                                                        <div class="filter-option-inner-inner">Seleccione Tipo</div>
-                                                    </div>
-                                                </div>
-                                                <div class="ripple-container"></div>
-                                            </button>
-                                            <div class="dropdown-menu show" role="combobox"
-                                                 style="max-height: 276px; overflow: hidden; min-width: 220px; position: absolute; top: 39px; left: 1px; will-change: top, left;"
-                                                 x-placement="bottom-start">
-                                                <div class="inner show" role="listbox" aria-expanded="true" tabindex="-1"
-                                                     style="max-height: 266px; overflow-y: auto;">
-                                                    <ul class="dropdown-menu inner show">
-                                                        <li class="disabled"><a role="option" class="dropdown-item disabled" aria-disabled="true"
-                                                                                tabindex="-1" aria-selected="false"><span
-                                                                        class=" bs-ok-default check-mark"></span><span class="text"> Multiple Options</span></a>
-                                                        </li>
-                                                        <li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                                        class=" bs-ok-default check-mark"></span><span class="text">PEPS </span></a></li>
-                                                        <li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                                        class=" bs-ok-default check-mark"></span><span class="text">UEPS</span></a>
-                                                        </li>
-                                                        <li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                                        class=" bs-ok-default check-mark"></span><span class="text">PONDERADO(PROMEDIADO)</span></a></li>
 
-                                                    </ul>
-                                                </div>
+                                        <label class="col-sm-2 col-form-label">{{ __('Tipo Inventario') }}</label>
+                                        <div class="col-sm-7">
+
+                                            <div class="form-group{{ $errors->has('TipoInventario') ? ' has-danger' : '' }}">
+                                                <select class="form-control{{ $errors->has('TipoInventario') ? ' is-invalid' : '' }} "   title="Seleccione Tipo Inventario" name="TipoInventario" id="input-TipoInventario" type="text" placeholder="{{ __('TipoInventario') }}" value="{{ old('TipoInventario', $articulo->TipoInventario) }}" required >
+                                                @if ($errors->has('TipoInventario'))
+                                                    <span id="TipoInventario-error" class="error text-danger" for="input-TipoInventario">{{ $errors->first('PrecioVigente') }}</span>
+                                                @endif
+                                                    <option value="P" selected>PEPS</option>
+                                                    <option value="U">UEPS</option>
+                                                    <option value="O">PONDERADO(PROMEDIO)</option>
+                                                </select>
                                             </div>
+
                                         </div>
-                                    </div>
+{{--                                        <select id="TipoInventario" class="form-control" name="TipoInventario" >--}}
+
+
+{{--                                        </select>--}}
+
 
                                 </div>
 
@@ -135,7 +111,8 @@
                                 </div>
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
+{{--                                <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>--}}
+                                <button type="submit" class="btn btn-primary btn-round"><i class="material-icons">update</i> {{ __('Actualizar') }}<div class="ripple-container"></div></button>
                             </div>
                         </div>
                     </form>
@@ -148,4 +125,10 @@
 
 
 
-
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $('#input-TipoInventario').val("{!!  $articulo->TipoInventario  !!}");
+        });
+    </script>
+@endpush

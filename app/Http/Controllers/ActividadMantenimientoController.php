@@ -14,7 +14,8 @@ class ActividadMantenimientoController extends Controller
      */
     public function index()
     {
-        //
+        $actiivdades_mantenimiento = ActividadMantenimiento::paginate(15);
+        return    view('actividadesmantenimiento.index', ['actividadesMantenimiento' => $actiivdades_mantenimiento]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ActividadMantenimientoController extends Controller
      */
     public function create()
     {
-        //
+        return view('actividadesmantenimiento.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class ActividadMantenimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'NombreActividad' => 'required|unique:ActividadesMantenimiento|max:255'
+        ]);
+
+        $actividad = new ActividadMantenimiento();
+        $actividad->NombreActividad=$request->get('NombreActividad');
+
+
+        $actividad->save();
+
+
+        return redirect('actividadesmantenimiento');
     }
 
     /**
@@ -57,7 +69,7 @@ class ActividadMantenimientoController extends Controller
      */
     public function edit(ActividadMantenimiento $actividadMantenimiento)
     {
-        //
+        return view('actividadesmantenimiento.edit',[ 'actividadMantenimiento' => $actividadMantenimiento]);
     }
 
     /**
@@ -69,7 +81,17 @@ class ActividadMantenimientoController extends Controller
      */
     public function update(Request $request, ActividadMantenimiento $actividadMantenimiento)
     {
-        //
+        $actividadMantenimiento = Categoria::find( $actividadMantenimiento->IdCategoria);
+
+        $actividadMantenimiento->NombreActividad = $request->get('NombreActividad');
+
+
+        if($actividadMantenimiento->save())
+        {
+            return redirect('actividadesmantenimiento')->withStatus(__('Los datos de la actividad de mantenimiento fueron actualizados correctamente.'));
+
+        }
+        return redirect('actividadesmantenimiento')->withErrors(['update_error', 'La Actualizacion no fue posible, contacte son administrador']);
     }
 
     /**
@@ -80,6 +102,14 @@ class ActividadMantenimientoController extends Controller
      */
     public function destroy(ActividadMantenimiento $actividadMantenimiento)
     {
-        //
+        $actividadMantenimiento = ActividadMantenimiento::find( $actividadMantenimiento->IdCategoria);
+
+
+        if($actividadMantenimiento->delete())
+        {
+            //->withStatus(__('Profile successfully updated.'));
+            return redirect('actividadesmantenimiento')->withStatus("El elemento " . $actividadMantenimiento->NombreActividad. ", ha sido eleminado correctamente");
+        }
+        return redirect('actividadesmantenimiento')->withInput()->with("eliminar_error","la actividad de mantenimiento seleccioinado no pudo eliminarse, probablemente tiene registros que dependen de la misma");
     }
 }

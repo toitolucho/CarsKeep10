@@ -42,12 +42,13 @@ class ArticuloController extends Controller
             'NombreArticulo' => 'required|unique:articulos|max:200'
         ]);
 
-        $articulo = $request->all();
-//        $articulo->NombreArticulo=$request->get('NombreArticulo');
-//        $articulo->NombreArticulo=$request->get('NombreArticulo');
-//        $articulo->NombreArticulo=$request->get('NombreArticulo');
-//        $articulo->NombreArticulo=$request->get('NombreArticulo');
-//        $articulo->NombreArticulo=$request->get('NombreArticulo');
+        $articulo = new Articulo();
+        $articulo->NombreArticulo=$request->get('NombreArticulo');
+        $articulo->IdCategoria=$request->get('IdCategoria');
+        $articulo->CantidadExistencia=$request->get('CantidadExistencia');
+        $articulo->PrecioVigente=$request->get('PrecioVigente');
+        $articulo->TipoInventario=$request->get('TipoInventario');
+        $articulo->Descripcion=$request->get('Descripcion');
 
 
         $articulo->save();
@@ -87,6 +88,8 @@ class ArticuloController extends Controller
      */
     public function update(Request $request, Articulo $articulo)
     {
+
+        //dd($request->all());
         $articulo = Articulo::find( $articulo->IdArticulo);
 
         $articulo->NombreArticulo = $request->get('NombreArticulo');

@@ -1,5 +1,5 @@
 
-@extends('layouts.app', ['activePage' => 'Clientes', 'titlePage' => __('Clientes')])
+@extends('layouts.app', ['activePage' => 'Articulos', 'titlePage' => __('Articulos')])
 <style>
     .listado {
         list-style-type: none !important;
@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Clientes</h4>
+                            <h4 class="card-title ">Articulos</h4>
                             <p class="card-category"> Aqui podra administrar a los articulos</p>
                         </div>
                         <div class="card-body">
@@ -42,6 +42,9 @@
                             <div class="row">
                                 <div class="col-12 text-right">
                                     <a href="{{route('articulos.create')}}" class="btn btn-sm btn-primary">Agregar Articulos</a>
+
+
+
                                 </div>
                             </div>
                             <div class="table-responsive">
