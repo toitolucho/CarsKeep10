@@ -80,7 +80,7 @@ CREATE TABLE ActividadesMantenimiento
 
 CREATE TABLE TiposMantenimientos
 (
-	IdTipoMantenimiento			INT,
+	IdTipoMantenimiento			INT AUTO_INCREMENT,
 	NombreMantenimiento			VARCHAR(100),
 	Descripcion					VARCHAR(200),
 	LimiteInferiorKilometraje	DECIMAL(10,2),
