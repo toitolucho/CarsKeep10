@@ -1,0 +1,6 @@
+laravel new nombre_proyecto  --auth
+cd nombre_proyecto
+composer require laravel-frontend-presets/material-dashboard
+php artisan preset material  //  php artisan ui material
+composer dump-autoload
+php artisan migrate --seed
