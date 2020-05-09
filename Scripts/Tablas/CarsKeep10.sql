@@ -4,7 +4,7 @@ use Lubricos
 
 CREATE TABLE Clientes
 (
-	IdCliente			INT	IDENTITY(1,1),
+	IdCliente			INT	AUTO_INCREMENT,
 	ci					CHAR(10),
 	Nombres				VARCHAR(100),
 	Apellidos			varchar(100),
@@ -17,7 +17,7 @@ GO
 
 CREATE TABLE Usuarios
 (
-	IdUsuario				INT IDENTITY(1,1),
+	IdUsuario				INT AUTO_INCREMENT,
 	NombreCompleto			VARCHAR(200),
 	NombreUsuario			VARCHAR(100),
 	Contrasenia				VARCHAR(100),
@@ -30,33 +30,45 @@ CREATE TABLE Usuarios
 
 CREATE TABLE Categorias
 (
-	IdCategoria		INT IDENTITY(1,1),
+	IdCategoria		INT AUTO_INCREMENT,
 	NombreCategoria	VARCHAR(300) UNIQUE,
 	PRIMARY KEY(IdCategoria)
 )
 
 CREATE TABLE Articulos
 (
-	IdArticulo			INT IDENTITY(1,1),
+	IdArticulo			INT AUTO_INCREMENT,
 	NombreArticulo		VARCHAR(200),
 	IdCategoria			INT,
 	CantidadExistencia	INT,
 	PrecioVigente		DECIMAL(10,2),
 	TipoInventario		CHAR(1), ----'P'->PEPS, 'U'->UEPS, 'O'->PONDERADO(PROMEDIADO)
-	Descripcion			VARCHAR(MAX),
+	Descripcion			VARCHAR(600),
 	PRIMARY KEY(IdArticulo),
 	FOREIGN KEY (IdCategoria) REFERENCES Categorias(IdCategoria)
 )
 
+CREATE TABLE Proveedores
+(
+	IdProveedor			INT AUTO_INCREMENT,
+	NombreRazonSocial	VARCHAR(200) UNIQUE,
+	NombreRepresentante	VARCHAR(200),
+	Direccion			VARCHAR(150),
+	NroCelular			CHAR(10),
+	PRIMARY KEY (IdProveedor)
+)
+
 CREATE TABLE IngresosArticulos
 (
-	IdIngresoArticulo	INT IDENTITY(1,1),
+	IdIngresoArticulo	INT AUTO_INCREMENT,
 	IdUsuario			INT,
+	IdProveedor			INT,
 	FechaHoraRegistro	DATETIME,
 	CodigoEstadoIngreso	CHAR(1),-- 'I'->iniciado, 'A'->anulado, 'F'->Finalizado
-	Observaciones		VARCHAR(MAX),
+	Observaciones		VARCHAR(600),
 	PRIMARY KEY (IdIngresoArticulo),
-	FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario)
+	FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario),
+	FOREIGN KEY (IdProveedor) REFERENCES Proveedores(IdProveedor)
 )
 
 CREATE TABLE IngresosArticulosDetalle
@@ -74,7 +86,7 @@ CREATE TABLE IngresosArticulosDetalle
 
 CREATE TABLE ActividadesMantenimiento
 (
-	IdActividad			INT IDENTITY(1,1),
+	IdActividad			INT AUTO_INCREMENT,
 	NombreActividad		VARCHAR(200) UNIQUE,
 	PRIMARY KEY (IdActividad)
 )
@@ -114,7 +126,7 @@ CREATE TABLE TiposMantenimientosDetalleArticulos
 
 CREATE TABLE VentasServicio
 (
-	IdVentaServicio		INT IDENTITY(1,1),
+	IdVentaServicio		INT AUTO_INCREMENT,
 	IdUsuarioSecretaria	INT,
 	IdUsuarioTecnico	INT,
 	IdCliente			INT,
@@ -122,7 +134,7 @@ CREATE TABLE VentasServicio
 	CodigoEstadoVenta	CHAR(1),-- 'I'->iniciado, 'A'->anulado, 'F'->Finalizado
 	Kilometraje			DECIMAL(10,2),
 	MarcaMovilidad		VARCHAR(10),
-	Observaciones		VARCHAR(MAX),
+	Observaciones		VARCHAR(600),
 	PRIMARY KEY(IdVentaServicio),
 	FOREIGN KEY(IdUsuarioSecretaria)REFERENCES  Usuarios(IdUsuario),
 	FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente),
@@ -130,7 +142,7 @@ CREATE TABLE VentasServicio
 
 CREATE TABLE VentasServicioDetalleMantenimiento
 (
-	IdVentaServicio			INT IDENTITY(1,1),
+	IdVentaServicio			INT AUTO_INCREMENT,
 	IdActividad				INT,
 	Costo					DECIMAL(10,2),
 	CodigoEstadoEjecucion	CHAR(1) ,-- 'F'->FINALIZADO, 'A' ->ANULADO, 'P'->PENDIENTE,'I'->INICIADO
@@ -142,7 +154,7 @@ CREATE TABLE VentasServicioDetalleMantenimiento
 
 CREATE TABLE VentasServicioDetalleArticulos
 (
-	IdVentaServicio		INT IDENTITY(1,1),
+	IdVentaServicio		INT AUTO_INCREMENT,
 	IdArticulo			INT,
 	Cantidad			INT,
 	Costo				DECIMAL(10,2),
