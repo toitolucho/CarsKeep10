@@ -1,11 +1,11 @@
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Edición de del perfil de Categoria')])
+@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Registro de un Ingreso')])
 
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('categorias.update', $categoria) }}" autocomplete="off" class="form-horizontal">
+                    <form method="post" action="{{ route('ingresosarticulos.update', $ingreso) }}" autocomplete="off" class="form-horizontal">
                         @csrf
                         @method('put')
 

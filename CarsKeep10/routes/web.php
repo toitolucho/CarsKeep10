@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,23 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+
+
+
+Route::get('/buscarProveedoresAjax', function (Request $request) {
+
+
+    $datas = App\Models\Proveedor::select(array('IdProveedor','NombreRazonSocial', 'NombreRepresentante'))->where("NombreRazonSocial","LIKE","%{$request->get('q')}%")->orwhere("NombreRepresentante","LIKE","%{$request->get('q')}%")->get();
+    //dd(response()->json($datas));
+    return response()->json($datas);
+});
+
+
+Route::get('/buscarproductosAjax', function (Request $request) {
+
+    $datas = App\Models\Articulo::select(array('IdArticulo', 'NombreArticulo', 'PrecioVigente'))->where("NombreArticulo","LIKE","%{$request->get('q')}%")->get();
+    return response()->json($datas);
+});
 
 // Rutas incorporadas manualmente
 Route::resource('/clientes','ClienteController');

@@ -79,13 +79,13 @@
 
                                             <div class="form-group{{ $errors->has('TipoInventario') ? ' has-danger' : '' }}">
                                                 <select class="form-control{{ $errors->has('TipoInventario') ? ' is-invalid' : '' }} "   title="Seleccione Tipo Inventario" name="TipoInventario" id="input-TipoInventario" type="text" placeholder="{{ __('TipoInventario') }}" value="{{ old('TipoInventario', $articulo->TipoInventario) }}" required >
-                                                @if ($errors->has('TipoInventario'))
-                                                    <span id="TipoInventario-error" class="error text-danger" for="input-TipoInventario">{{ $errors->first('PrecioVigente') }}</span>
-                                                @endif
                                                     <option value="P" selected>PEPS</option>
                                                     <option value="U">UEPS</option>
                                                     <option value="O">PONDERADO(PROMEDIO)</option>
                                                 </select>
+                                                @if ($errors->has('TipoInventario'))
+                                                    <span id="TipoInventario-error" class="error text-danger" for="input-TipoInventario">{{ $errors->first('PrecioVigente') }}</span>
+                                                @endif
                                             </div>
 
                                         </div>

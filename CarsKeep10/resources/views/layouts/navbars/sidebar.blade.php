@@ -41,6 +41,13 @@
                                 <p>{{ __('Articulos') }}</p>
                             </a>
                         </li>
+
+                        <li class="nav-item{{ $activePage == 'Ingresos' ? ' active' : '' }}">
+                            <a class="nav-link" href="{{ route('ingresosarticulos.index') }}">
+                                <i class="material-icons">shopping_cart</i>
+                                <p>{{ __('Compra e Ingresos') }}</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

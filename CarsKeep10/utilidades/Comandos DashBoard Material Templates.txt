@@ -1,6 +1,11 @@
-laravel new nombre_proyecto  --auth
-cd nombre_proyecto
-composer require laravel-frontend-presets/material-dashboard
-php artisan preset material  //  php artisan ui material
-composer dump-autoload
-php artisan migrate --seed
+1) laravel new nombre_proyecto  --auth   //composer create-project --prefer-dist laravel/laravel nombre_proyecto
+2) cd nombre_proyecto
+3) composer require laravel-frontend-presets/material-dashboard
+4) php artisan preset material  //  php artisan ui material
+5) composer dump-autoload
+6) php artisan migrate --seed
+
+
+*** si fue creado con laravel 6.0, ejecutar antes del paso 3
+C:\Whatever\Your_project_name>composer require laravel/ui
+ C:\Whatever\Your_project_name>php artisan ui vue --auth
