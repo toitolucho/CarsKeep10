@@ -62,6 +62,10 @@
         color: #D4AA00 !important;
     }
 
+    #myAlert {
+        display: none;
+    }
+
 </style>
 
 @section('content')
@@ -91,6 +95,17 @@
                                         </div>
                                     </div>
                                 @endif
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div id="myAlert" class="alert alert-rose alert-dismissible fade show" role="alert">
+                                                <strong>Registro sin Articulos!</strong> No puede continuar mientras no haya registrado al menos un articulo.
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 <div class="card card-nav-tabs">
                                     <div class="card-header card-header-warning">
@@ -442,6 +457,23 @@
 
 
 
+            });
+
+            $('#compraarticulos').submit(function(e) {
+                respuesta = false;
+                var currentForm = this;
+                e.preventDefault();
+                var rowCountArticulos = $('#tabla_articulos tr').length;
+
+
+                if(rowCountArticulos < 2)
+                {
+                    $("#myAlert").fadeIn();
+
+                }
+                else {
+                    currentForm.submit();
+                }
             });
 
 

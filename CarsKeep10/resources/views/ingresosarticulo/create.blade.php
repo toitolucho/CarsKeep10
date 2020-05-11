@@ -62,6 +62,10 @@
         color: #D4AA00 !important;
     }
 
+    #myAlert {
+        display: none;
+    }
+
 </style>
 
 @section('content')
@@ -69,7 +73,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('ingresosarticulos.store') }}" autocomplete="off" class="form-horizontal" id="compraarticulos">
+                    <form method="post" action="{{ route('ingresosarticulos.store') }}" autocomplete="off"  id="compraarticulos"  >
+{{--                    <form action="{{ route("ventasservicios.store") }}" method="POST" id="VentaServicios"  class="needs-validation" novalidate>--}}
                         @csrf
 {{--                        @method('put')--}}
 
@@ -91,6 +96,22 @@
                                         </div>
                                     </div>
                                 @endif
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+{{--                                            <div id="myAlert" class="alert alert-rose">--}}
+{{--                                                <a href="#" class="close" data-dismiss="alert">&times;</a>--}}
+{{--                                                <strong>Registro sin Articulos</strong> No puede continuar mientras no haya registrado al menos un articulo.--}}
+{{--                                            </div>--}}
+
+                                            <div id="myAlert" class="alert alert-rose alert-dismissible fade show" role="alert">
+                                                <strong>Registro sin Articulos!</strong> No puede continuar mientras no haya registrado al menos un articulo.
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="card card-nav-tabs">
                                         <div class="card-header card-header-warning">
@@ -123,13 +144,13 @@
                                                         <label class="col-sm-2 col-form-label">{{ __('Proveedor') }}</label>
                                                         <div class="col-sm-7">
                                                             <div class="form-group{{ $errors->has('IdProveedor') ? ' has-danger' : '' }}">
-                                                                <input type="search" name="NombreRazonSocial" class="form-control typeahead" placeholder="Proveedor" autocomplete="off" id="input-IdProveedor"   />
+                                                                <input type="search" name="NombreRazonSocial" class="form-control typeahead" placeholder="Proveedor" autocomplete="off" id="input-IdProveedor"   required="true" aria-required="true" />
                                                                 <div class="invalid-feedback">
                                                                     Porfavor seleccione un proveedor.
                                                                 </div>
 
 
-                                                                <input type="hidden" name="IdProveedor"   value="{{old('IdProveedor')}}"  required />
+                                                                <input type="hidden" name="IdProveedor"   value="{{old('IdProveedor')}}"  required="true" aria-required="true"  />
                                                                 @if ($errors->has('IdProveedor'))
                                                                     <span id="IdProveedor-error" class="error text-danger" for="input-IdProveedor">{{ $errors->first('IdProveedor') }}</span>
                                                                 @endif
@@ -142,7 +163,7 @@
                                                         <label class="col-sm-2 col-form-label">{{ __('Fecha de Registro') }}</label>
                                                         <div class="col-sm-7">
                                                             <div class="form-group{{ $errors->has('FechaHoraRegistro') ? ' has-danger' : '' }}">
-                                                                <input class="form-control{{ $errors->has('FechaHoraRegistro') ? ' is-invalid' : '' }}" name="FechaHoraRegistro" id="input-FechaHoraRegistroa" type="date" placeholder="{{ __('Fecha de Registro') }}" value="{{ old('FechaHoraRegistro') }}" required="true" aria-required="true"/>
+                                                                <input class="form-control{{ $errors->has('FechaHoraRegistro') ? ' is-invalid' : '' }}" name="FechaHoraRegistro" id="input-FechaHoraRegistroa" type="date" placeholder="{{ __('Fecha de Registro') }}" value="{{ old('FechaHoraRegistro', Carbon\Carbon::today()->format('Y-m-d')) }}" required="true" aria-required="true"/>
                                                                 @if ($errors->has('FechaHoraRegistro'))
                                                                     <span id="NombreCategoria-error" class="error text-danger" for="input-FechaHoraRegistro">{{ $errors->first('FechaHoraRegistro') }}</span>
                                                                 @endif
@@ -284,12 +305,19 @@
     </div>
 @endsection
 @push('js')
-    <script>
+    <script type="text/javascript">
+
+
+
+
+
+
         $(document).ready(function() {
+            $('.alert').alert();
             var NroArticulos=0;
 
 
-            // $("#tabs").tabs();
+
 
 
             $('#tabla_articulos').on('keyup change',function(){
@@ -404,8 +432,8 @@
                     "<td class='w-5  '>" +(NroArticulos+1)+" </td>"+
                     // "<td class='w-50 '><input type='text' name='productos[]' class='form-control' value ='"+ name+"'  readonly/></td>" +
                     "<td class='w-50 '> "+ name+"</td>" +
-                    "<td class='w-10 text-right'><input type='number' name='cantidades[]' class='form-control qty' step='1' value ='1' ></td>" +
-                    "<td class='w-15 text-right'><input type='number' name='precios[]' placeholder='Int. Precio Unitario' class='form-control price' step='0.00' min='0' value='"+precio +"'> </td>" +
+                    "<td class='w-10 text-right'><input type='number' name='cantidades[]' class='form-control qty' step='any' value ='1' min='0'  oninput='check(this)' /></td>" +
+                    "<td class='w-15 text-right'><input type='number' name='precios[]' placeholder='Int. Precio Unitario' class='form-control price' step='any' min='0' value='"+precio +"' oninput='check(this)' /> </td>" +
                     "<td class='w-15 text-right'><input type='number' name='total[]' placeholder='0.00' class='form-control total'  value='"+precio +"' readonly/></td>"+
                     "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden='true'>×</span></button></td>"+
                     "<td style='display:none'> <input name='codigos[]' value='"+data.IdArticulo +"'> </td>"+
@@ -424,9 +452,33 @@
 
 
 
+
+            $('#compraarticulos').submit(function(e) {
+                respuesta = false;
+                var currentForm = this;
+                e.preventDefault();
+                var rowCountArticulos = $('#tabla_articulos tr').length;
+
+
+                if(rowCountArticulos < 2)
+                {
+                    $("#myAlert").fadeIn();
+
+                }
+                else {
+                    currentForm.submit();
+                }
+            });
         });
 
-
+        function check(input) {
+            if (input.value == 0) {
+                input.setCustomValidity('El valor númerico ingresado no debe ser cero');
+            } else {
+                // input is fine -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
 
 
         function removeRowArticulo(removeNum) {

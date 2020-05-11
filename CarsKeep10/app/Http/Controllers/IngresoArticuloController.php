@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\IngresoArticulo;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class IngresoArticuloController extends Controller
 {
@@ -41,8 +43,19 @@ class IngresoArticuloController extends Controller
     public function store(Request $request)
     {
 
+//        Validator::make($request, [
+//            'CodigoEstado' => [
+//                'required',
+//                Rule::in(['I', 'A', 'F']),
+//            ],
+//        ]);
 
-
+        $validatedData = $request->validate([
+            'NombreArticulo' => 'required',
+            'FechaHoraRegistro' => 'required',
+            'CodigoEstado' => 'required',
+        ]);
+//|Rule::in(['I', 'A', 'F'])
         $compra = IngresoArticulo::create($request->all());
 
 //        $productos = $request->input('productos', []);

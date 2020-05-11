@@ -75,7 +75,7 @@
                                             <tr role="row">
 
                                                 <td class="w-6"><a href="{{route("ingresosarticulos.show", $ingreso)}}"> {{$ingreso->IdIngresoArticulo}} </a>  </td>
-                                                <td class="w-20">{{$ingreso->proveedor->NombreRazonSocial}}  </td>
+                                                <td class="w-20">{{$ingreso->proveedor ?  $ingreso->proveedor->NombreRazonSocial : ''}}  </td>
                                                 <td class="w-12">{{   date('d-m-Y', strtotime($ingreso->FechaHoraRegistro))   }} </td>
                                                 <td class="w-12">{{$ingreso->Estado}}  </td>
                                                 <td class="w-25">{{$ingreso->Observaciones}}  </td>
