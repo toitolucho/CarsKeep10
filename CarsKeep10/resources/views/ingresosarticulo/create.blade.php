@@ -96,7 +96,7 @@
                                         <div class="card-header card-header-warning">
                                             <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                             <div class="nav-tabs-navigation">
-                                                <div class="nav-tabs-wrapper">
+                                                <div class="nav-tabs-wrapper" id="tabs">
                                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                                         <li class="nav-item">
                                                             <a class="nav-link active show" href="#configuracion" data-toggle="tab">
@@ -116,13 +116,13 @@
                                             </div>
                                         </div>
                                         <div class="card-body ">
-                                            <div class="tab-content">
+                                            <div class="tab-content" >
                                                 <div class="tab-pane active show" id="configuracion">
 
                                                     <div class="row">
                                                         <label class="col-sm-2 col-form-label">{{ __('Proveedor') }}</label>
                                                         <div class="col-sm-7">
-                                                            <div class="form-group{{ $errors->has('NombreRazonSocial') ? ' has-danger' : '' }}">
+                                                            <div class="form-group{{ $errors->has('IdProveedor') ? ' has-danger' : '' }}">
                                                                 <input type="search" name="NombreRazonSocial" class="form-control typeahead" placeholder="Proveedor" autocomplete="off" id="input-IdProveedor"   />
                                                                 <div class="invalid-feedback">
                                                                     Porfavor seleccione un proveedor.
@@ -141,10 +141,10 @@
                                                     <div class="row">
                                                         <label class="col-sm-2 col-form-label">{{ __('Fecha de Registro') }}</label>
                                                         <div class="col-sm-7">
-                                                            <div class="form-group{{ $errors->has('NombreCategoria') ? ' has-danger' : '' }}">
-                                                                <input class="form-control{{ $errors->has('NombreCategoria') ? ' is-invalid' : '' }}" name="NombreCategoria" id="input-NombreCategoria" type="date" placeholder="{{ __('Descripción de Categoria') }}" value="{{ old('NombreCategoria') }}" required="true" aria-required="true"/>
-                                                                @if ($errors->has('NombreCategoria'))
-                                                                    <span id="NombreCategoria-error" class="error text-danger" for="input-NombreCategoria">{{ $errors->first('NombreCategoria') }}</span>
+                                                            <div class="form-group{{ $errors->has('FechaHoraRegistro') ? ' has-danger' : '' }}">
+                                                                <input class="form-control{{ $errors->has('FechaHoraRegistro') ? ' is-invalid' : '' }}" name="FechaHoraRegistro" id="input-FechaHoraRegistroa" type="date" placeholder="{{ __('Fecha de Registro') }}" value="{{ old('FechaHoraRegistro') }}" required="true" aria-required="true"/>
+                                                                @if ($errors->has('FechaHoraRegistro'))
+                                                                    <span id="NombreCategoria-error" class="error text-danger" for="input-FechaHoraRegistro">{{ $errors->first('FechaHoraRegistro') }}</span>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -152,18 +152,18 @@
                                                     <div class="row">
                                                         <label class="col-sm-2 col-form-label" for="exampleFormControlSelect1">Estado</label>
                                                         <div class="col-sm-7">
-                                                            <div class="form-group{{ $errors->has('NombreCategoria') ? ' has-danger' : '' }}">
+                                                            <div class="form-group{{ $errors->has('CodigoEstadoIngreso') ? ' has-danger' : '' }}">
 
-                                                                <select class="form-control{{ $errors->has('TipoInventario') ? ' is-invalid' : '' }} "  title="Seleccione Tipo Inventario" name="TipoInventario" id="input-TipoInventario" data-toggle="tooltip" data-placement="top" title="Tooltip on top"  required >
+                                                                <select class="form-control{{ $errors->has('CodigoEstadoIngreso') ? ' is-invalid' : '' }} "  title="Seleccione Tipo Inventario" name="CodigoEstadoIngreso" id="input-CodigoEstadoIngreso" data-toggle="tooltip" data-placement="top" title="Tooltip on top"  required >
 
-                                                                    <option value="P" selected>PEPS</option>
-                                                                    <option value="U">UEPS</option>
-                                                                    <option value="O">PONDERADO(PROMEDIO)</option>
+                                                                    <option value="I" selected>INICIADO</option>
+                                                                    <option value="F">FINALIZADO</option>
+                                                                    <option value="A">ANULADO</option>
 
                                                                 </select>
 
-                                                                @if ($errors->has('NombreCategoria'))
-                                                                    <span id="NombreCategoria-error" class="error text-danger" for="input-NombreCategoria">{{ $errors->first('NombreCategoria') }}</span>
+                                                                @if ($errors->has('CodigoEstadoIngreso'))
+                                                                    <span id="CodigoEstadoIngreso-error" class="error text-danger" for="input-CodigoEstadoIngreso">{{ $errors->first('CodigoEstadoIngreso') }}</span>
                                                                 @endif
                                                             </div>
                                                             <span class="bmd-help">Seleccione Finalizar en caso de confirmar el movimiento (Recuerde que ya no podra hacer cambios)</span>
@@ -173,14 +173,14 @@
                                                     <div class="row">
                                                         <label class="col-sm-2 col-form-label">{{ __('Observaciones') }}</label>
                                                         <div class="col-sm-7">
-                                                            <div class="form-group{{ $errors->has('Descripcion') ? ' has-danger' : '' }}">
+                                                            <div class="form-group{{ $errors->has('Observaciones') ? ' has-danger' : '' }}">
                                                                 {{--                                                <input class="form-control{{ $errors->has('Descripcion') ? ' is-invalid' : '' }}" name="Descripcion" id="input-Descripcion" type="text"  value="{{ old('Descripcion') }}" required />--}}
 
 
-                                                                <textarea class="form-control {{ $errors->has('Descripcion') ? ' is-invalid' : '' }}" name="Descripcion" id="input-Descripcion" rows="3">{{old('Descripcion')}}</textarea>
-                                                                <span class="bmd-help">Introduzca una descripción adecuada para el articulo</span>
-                                                                @if ($errors->has('Descripcion'))
-                                                                    <span id="Descripcion-error" class="error text-danger" for="input-Descripcion">{{ $errors->first('Descripcion') }}</span>
+                                                                <textarea class="form-control {{ $errors->has('Observaciones') ? ' is-invalid' : '' }}" name="Observaciones" id="input-Observaciones" rows="3">{{old('Observaciones')}}</textarea>
+                                                                <span class="bmd-help">Introduzca la descripción u observacion que describa de forma general el ingreso</span>
+                                                                @if ($errors->has('Observaciones'))
+                                                                    <span id="Observaciones-error" class="error text-danger" for="input-Observaciones">{{ $errors->first('Observaciones') }}</span>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -289,6 +289,17 @@
             var NroArticulos=0;
 
 
+            // $("#tabs").tabs();
+
+
+            $('#tabla_articulos').on('keyup change',function(){
+                calc_total();
+            });
+
+            $('#tabla_articulos tbody').on('keyup change',function(){
+                calc();
+            });
+
             $(".selectpicker").selectpicker();
 
             var clientes = new Bloodhound({
@@ -391,7 +402,8 @@
                 }
                 var markup = "<tr id=articulo" +(NroArticulos+1)+">" +
                     "<td class='w-5  '>" +(NroArticulos+1)+" </td>"+
-                    "<td class='w-50 '><input type='text' name='productos[]' class='form-control' value ='"+ name+"'  readonly/></td>" +
+                    // "<td class='w-50 '><input type='text' name='productos[]' class='form-control' value ='"+ name+"'  readonly/></td>" +
+                    "<td class='w-50 '> "+ name+"</td>" +
                     "<td class='w-10 text-right'><input type='number' name='cantidades[]' class='form-control qty' step='1' value ='1' ></td>" +
                     "<td class='w-15 text-right'><input type='number' name='precios[]' placeholder='Int. Precio Unitario' class='form-control price' step='0.00' min='0' value='"+precio +"'> </td>" +
                     "<td class='w-15 text-right'><input type='number' name='total[]' placeholder='0.00' class='form-control total'  value='"+precio +"' readonly/></td>"+
@@ -425,7 +437,7 @@
 
         function calc()
         {
-
+           // console.log("llamada a funcion calc" );
             $('#tabla_articulos tbody tr').each(function(i, element) {
                 var html = $(this).html();
                 if(html!='')
@@ -441,9 +453,11 @@
 
         function calc_total()
         {
+
             total=0;
             $('.total').each(function() {
                 total += parseInt($(this).val());
+
             });
             $('#sub_total').val(total.toFixed(2));
             tax_sum=total/100*$('#tax').val();

@@ -45,7 +45,7 @@ class IngresoArticuloController extends Controller
 
         $compra = IngresoArticulo::create($request->all());
 
-        $productos = $request->input('productos', []);
+//        $productos = $request->input('productos', []);
         $cantidades = $request->input('cantidades', []);
         $precios = $request->input('precios', []);
         $codigos = $request->input('codigos', []);
@@ -54,19 +54,26 @@ class IngresoArticuloController extends Controller
         $compra->IdUsuario = 1;
         $compra->FechaHoraRegistro = \Carbon\Carbon::now();
         $compra->CodigoEstadoIngreso = "I";
-        $compra->Observaciones = $request->input('Observaciones');;
+        $compra->Observaciones = $request->input('Observaciones');
+        $compra->IdProveedor = $request->input('IdProveedor');
 
 
         $compra->save();
-        for ($product=0; $product < count($productos); $product++) {
-            if ($productos[$product] != '') {
-                $compra->articulos()->attach($codigos[$product], ['Cantidad' => $cantidades[$product], 'Precio' => $precios[$product]]);
+//        for ($product=0; $product < count($productos); $product++) {
+//            if ($productos[$product] != '') {
+//                $compra->articulos()->attach($codigos[$product], ['Cantidad' => $cantidades[$product], 'Precio' => $precios[$product]]);
+//
+//            }
+//        }
+        for ($codigo=0; $codigo < count($codigos); $codigo++) {
+            if ($codigos[$codigo] != '') {
+                $compra->articulos()->attach($codigos[$codigo], ['Cantidad' => $cantidades[$codigo], 'Precio' => $precios[$codigo]]);
 
             }
         }
 
 
-        return redirect()->route('comprasarticulos.index')->with("registrado","Compra registrada correctamente");;
+        return redirect()->route('ingresosarticulos.index')->with("status","Ingreso registrado correctamente");;
     }
 
     /**
@@ -88,16 +95,15 @@ class IngresoArticuloController extends Controller
      */
     public function edit($id)
     {
-        $compra = IngresoArticulo::with('articulos', 'proveedor')->findOrFail($id);
+        $compra = IngresoArticulo::withCount('articulos')->with('articulos', 'proveedor')->findOrFail($id);
 
         $total = 0;
         foreach ($compra->articulos as $detalle)
         {
-            $total = $total+$detalle->Cantidad * $detalle->Precio;
+            $total = $total+$detalle->pivot->Cantidad * $detalle->pivot->Precio;
         }
 
         return view('ingresosarticulo.edit',[ 'ingreso' => $compra, 'total'=>$total ]);
-        //return view ('compraarticulo.edit', compact('compra','total'));
     }
 
     /**
@@ -118,27 +124,34 @@ class IngresoArticuloController extends Controller
 
         }
 
-        $productos = $request->input('productos', []);
+//        $productos = $request->input('productos', []);
         $cantidades = $request->input('cantidades', []);
         $precios = $request->input('precios', []);
         $codigos = $request->input('codigos', []);
 
+        $compra->FechaHoraRegistro = $request->input('FechaHoraRegistro');
+        $compra->CodigoEstadoIngreso = $request->input('CodigoEstadoIngreso');
         $compra->Observaciones = $request->input('Observaciones');
+        $compra->IdProveedor = $request->input('IdProveedor');
+
+        $compra->update();
         $compra= $compra->fresh(['articulos']);
         $compra->setRelations([]);
-        $compra->update();
 
 
 
-        for ($product=0; $product < count($productos); $product++) {
 
-            if ($productos[$product] != '') {
+
+        for ($product=0; $product < count($codigos); $product++) {
+
+            if ($codigos[$product] != '') {
                 $compra->articulos()->attach($codigos[$product], ['Cantidad' => $cantidades[$product], 'Precio' => $precios[$product]]);
 
             }
         }
-
-        return redirect()->route('ingresosarticulos.index')->with("editado","Compra actualizada correctamente");;
+       // dd($request->all());
+        $compra->save();
+        return redirect()->route('ingresosarticulos.index')->with("status","Ingreso actualizado correctamente");;
 
 
     }
