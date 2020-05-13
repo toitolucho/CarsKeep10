@@ -175,7 +175,7 @@
                                                         <div class="col-sm-7">
                                                             <div class="form-group{{ $errors->has('CodigoEstadoIngreso') ? ' has-danger' : '' }}">
 
-                                                                <select class="form-control{{ $errors->has('CodigoEstadoIngreso') ? ' is-invalid' : '' }} "  title="Seleccione Tipo Inventario" name="CodigoEstadoIngreso" id="input-CodigoEstadoIngreso" data-toggle="tooltip" data-placement="top" title="Tooltip on top"  required >
+                                                                <select disabled class="form-control{{ $errors->has('CodigoEstadoIngreso') ? ' is-invalid' : '' }} "  title="Seleccione el estado de la transaccion" name="CodigoEstadoIngreso" id="input-CodigoEstadoIngreso" data-toggle="Estado de la Transacción" data-placement="top" title="Estado de la Transacción"   >
 
                                                                     <option value="I" selected>INICIADO</option>
                                                                     <option value="F">FINALIZADO</option>
@@ -212,7 +212,18 @@
                                                 <div class="tab-pane" id="detalle">
 
 
-
+                                                            @if($errors->has('codigos.*'))
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="alert alert-rose">
+                                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                                    <i class="material-icons">close</i>
+                                                                                </button>
+                                                                                <span>{{ $errors->first('codigos.*') }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                            @endif
 
 
                                                             <div class="row mt-3 ml-1 mr-1">

@@ -92,3 +92,6 @@ Route::resource('/actividadesmantenimientos','ActividadMantenimientoController')
 Route::resource('/tiposmantenimientos','TipoMantenimientoController');
 Route::resource('/tiposmantenimientosdetallearticulo','TipoMantenimientoDetalleArticuloController');
 Route::resource('/ventasservicios','VentaServicioController');
+
+
+Route::post('/ingresosarticulos/{ingresosarticulo}',"IngresoArticuloController@finalizar")->name('ingresosarticulos.finalizar');

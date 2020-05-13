@@ -26,6 +26,25 @@
         });
     });
     $(function () {
+        $(".formFinalizar").click(function (e) {
+            e.preventDefault();
+            console.log("hola finalizar");
+            var el = $(this);
+            var title = el.attr('data-title');
+            var msg = el.attr('data-message');
+            var dataForm = el.attr('data-form');
+
+
+            $('#formConfirm')
+                .find('#frm_body').html(msg)
+                .end().find('#frm_title').html(title)
+                .end().modal('show');
+
+            $('#formConfirm').find('#frm_submit').attr('data-form', dataForm);
+
+        });
+    });
+    $(function () {
         $("#frm_submit").click(function (e) {
             console.log("registro a eliminar")
             var id = $(this).attr('data-form');

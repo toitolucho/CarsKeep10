@@ -5,8 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ingresosarticulo/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ingresosarticulo/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ingresosarticulo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ingresosarticulo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/utilidades/delete_modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/utilidades/delete_modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,23 +24,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="99" column="63" selection-start-line="99" selection-start-column="63" selection-end-line="99" selection-end-column="63" />
+            <state relative-caret-position="180">
+              <caret line="102" column="68" selection-start-line="102" selection-start-column="59" selection-end-line="102" selection-end-column="68" />
               <folding>
-                <element signature="e#4225#4232#1#HTML" expanded="true" />
-                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="e#7304#7325#0#HTML" expanded="true" />
+                <element signature="e#7959#7980#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="77" column="133" selection-start-line="77" selection-start-column="133" selection-end-line="77" selection-end-column="133" />
+            <state relative-caret-position="421">
+              <caret line="91" column="32" selection-start-line="91" selection-start-column="32" selection-end-line="91" selection-end-column="32" />
+              <folding>
+                <element signature="e#7#44#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/utilidades/delete_modal.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -47,23 +60,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="165" column="337" selection-start-line="165" selection-start-column="337" selection-end-line="165" selection-end-column="337" />
+            <state relative-caret-position="-4611">
+              <caret line="246" column="84" selection-start-line="246" selection-start-column="84" selection-end-line="246" selection-end-column="84" />
               <folding>
-                <element signature="e#4285#4292#1#HTML" expanded="true" />
                 <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="50" selection-end-column="13" />
+            <state relative-caret-position="595">
+              <caret line="37" column="10" selection-start-line="27" selection-start-column="7" selection-end-line="37" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/PasswordRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/IngresoArticuloRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
               <folding>
-                <element signature="e#40#71#0#PHP" expanded="true" />
+                <element signature="e#37#80#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,17 +102,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticuloController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="42" column="11" selection-start-line="40" selection-start-column="8" selection-end-line="42" selection-end-column="11" />
+            <state relative-caret-position="493">
+              <caret line="92" column="59" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
+              <folding>
+                <element signature="e#40#71#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoriaController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2234">
-              <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+            <state relative-caret-position="418">
+              <caret line="115" column="179" selection-start-line="107" selection-start-column="8" selection-end-line="115" selection-end-column="179" />
             </state>
           </provider>
         </entry>
@@ -111,6 +153,12 @@
       <find>si</find>
       <find>nav</find>
       <find>check</find>
+      <find>&lt;div class=&quot;tab-pane&quot; id=&quot;detalle&quot;&gt;</find>
+      <find>delete-form</find>
+      <find>frm_submit</find>
+      <find>formConfirm</find>
+      <find>formFinalizar</find>
+      <find>data-form</find>
     </findStrings>
     <replaceStrings>
       <replace>ingresos</replace>
@@ -134,12 +182,15 @@
         <option value="$PROJECT_DIR$/database/factories/IngresoArticuloDetalleFactory.php" />
         <option value="$PROJECT_DIR$/resources/views/articulos/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/articulos/create.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/public/material/css/material-dashboard.css" />
-        <option value="$PROJECT_DIR$/resources/views/ingresosarticulo/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/IngrresoArticuloRequest.php" />
         <option value="$PROJECT_DIR$/resources/views/ingresosarticulo/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/IngresoArticuloRequest.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/ingresosarticulo/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/utilidades/delete_modal.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php" />
       </list>
     </option>
@@ -259,6 +310,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -310,14 +362,7 @@
               <item name="CarsKeep10" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="ingresosarticulo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CarsKeep10" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CarsKeep10" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="utilidades" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CarsKeep10" type="b2602c69:ProjectViewProjectNode" />
@@ -328,7 +373,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -378,18 +422,19 @@
       <workItem from="1588688854216" duration="2687000" />
       <workItem from="1588693386173" duration="18697000" />
       <workItem from="1589188151804" duration="10372000" />
-      <workItem from="1589206537606" duration="9552000" />
+      <workItem from="1589206537606" duration="9837000" />
+      <workItem from="1589279483372" duration="15093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41308000" />
+    <option name="totallyTimeSpent" value="56686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1609808" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16257995" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -403,8 +448,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5021322" side_tool="true" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4978678" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2531983" side_tool="true" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.74680173" visible="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -532,16 +577,6 @@
         <state relative-caret-position="-1636" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="91" column="48" lean-forward="true" selection-start-line="91" selection-start-column="48" selection-end-line="91" selection-end-column="49" />
-          <folding>
-            <element signature="e#7#44#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/factories/UsuarioFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -632,53 +667,112 @@
         <state relative-caret-position="-6551" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="99" column="63" selection-start-line="99" selection-start-column="63" selection-end-line="99" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2234">
+        <state relative-caret-position="119">
           <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/ProfileRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="99" column="63" selection-start-line="99" selection-start-column="63" selection-end-line="99" selection-end-column="63" />
+        <state relative-caret-position="102">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="37" column="10" selection-start-line="27" selection-start-column="7" selection-end-line="37" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/PasswordRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2040" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticuloController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="92" column="59" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4611">
+          <caret line="246" column="84" selection-start-line="246" selection-start-column="84" selection-end-line="246" selection-end-column="84" />
           <folding>
-            <element signature="e#4225#4232#1#HTML" expanded="true" />
             <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="91" column="32" selection-start-line="91" selection-start-column="32" selection-end-line="91" selection-end-column="32" />
+          <folding>
+            <element signature="e#7#44#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="77" column="133" selection-start-line="77" selection-start-column="133" selection-end-line="77" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="165" column="337" selection-start-line="165" selection-start-column="337" selection-end-line="165" selection-end-column="337" />
+        <state relative-caret-position="180">
+          <caret line="102" column="68" selection-start-line="102" selection-start-column="59" selection-end-line="102" selection-end-column="68" />
           <folding>
-            <element signature="e#4285#4292#1#HTML" expanded="true" />
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="e#7304#7325#0#HTML" expanded="true" />
+            <element signature="e#7959#7980#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticuloController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/utilidades/delete_modal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="42" column="11" selection-start-line="40" selection-start-column="8" selection-end-line="42" selection-end-column="11" />
+        <state>
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoriaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="115" column="179" selection-start-line="107" selection-start-column="8" selection-end-line="115" selection-end-column="179" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/IngresoArticuloRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+          <folding>
+            <element signature="e#37#80#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="50" selection-end-column="13" />
+        <state relative-caret-position="265">
+          <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
           <folding>
             <element signature="e#40#71#0#PHP" expanded="true" />
           </folding>

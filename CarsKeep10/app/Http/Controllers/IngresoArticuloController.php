@@ -7,6 +7,7 @@ use App\Models\Articulo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\IngresoArticuloRequest;
 
 class IngresoArticuloController extends Controller
 {
@@ -40,7 +41,7 @@ class IngresoArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IngresoArticuloRequest $request)
     {
 
 //        Validator::make($request, [
@@ -50,12 +51,14 @@ class IngresoArticuloController extends Controller
 //            ],
 //        ]);
 
-        $validatedData = $request->validate([
-            'NombreArticulo' => 'required',
-            'FechaHoraRegistro' => 'required',
-            'CodigoEstado' => 'required',
-        ]);
+//        $validatedData = $request->validate([
+//            'IdProveedor' => 'required',
+//            'FechaHoraRegistro' => 'required',
+//            'CodigoEstado' => 'required',
+//        ]);
 //|Rule::in(['I', 'A', 'F'])
+
+
         $compra = IngresoArticulo::create($request->all());
 
 //        $productos = $request->input('productos', []);
@@ -117,6 +120,18 @@ class IngresoArticuloController extends Controller
         }
 
         return view('ingresosarticulo.edit',[ 'ingreso' => $compra, 'total'=>$total ]);
+    }
+
+    public function finalizar($id)
+    {
+        dd($id);
+        $compra = IngresoArticulo::find( $id);
+        $compra->CodigoEstadoIngreso = 'F';
+        $compra->update();
+
+
+
+        return redirect()->route('ingresosarticulos.index')->with("status","La Transaccion se ha finalizado correctamente");;
     }
 
     /**

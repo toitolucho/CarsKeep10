@@ -72,7 +72,16 @@
                                     </thead>
                                     <tbody>
                                         @foreach($ingresos as $ingreso)
-                                            <tr role="row">
+                                            @if($ingreso->CodigoEstadoIngreso == 'I')
+                                                <tr role="row">
+                                            @endif
+                                            @if($ingreso->CodigoEstadoIngreso == 'F')
+                                                <tr role="row" class="table-warning">
+                                            @endif
+                                            @if($ingreso->CodigoEstadoIngreso == 'A')
+                                                <tr role="row" class="table-danger">
+                                            @endif
+
 
                                                 <td class="w-6"><a href="{{route("ingresosarticulos.show", $ingreso)}}"> {{$ingreso->IdIngresoArticulo}} </a>  </td>
                                                 <td class="w-20">{{$ingreso->proveedor ?  $ingreso->proveedor->NombreRazonSocial : ''}}  </td>
@@ -82,13 +91,22 @@
 
 
                                                 <td class="text-right w-15">
+                                                    @if($ingreso->CodigoEstadoIngreso == 'I')
                                                     <li data-form="#delete-form-{{$ingreso->IdIngresoArticulo}}"
                                                         data-title="Eliminar Ingreso"
                                                         data-message="Se encuentra seguro de eliminar el registro de este ingreso?"
                                                         data-target="#formConfirm" class="listado">
 
                                                         <a href="{{route("ingresosarticulos.edit", $ingreso->IdIngresoArticulo )}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
+
+                                                        <a data-toggle="modal" data-target="#formFinalizar" href="#"
+                                                           data-form="#finalizar-form-{{$ingreso->IdIngresoArticulo}}"
+                                                           data-title="Finalizar Ingreso"
+                                                           data-message="¿Se encuentra seguro de finalizar el ingreso por la compra actual? Recuerde que una vez finalizada la transaccion, los cambios son irreversibles"
+                                                           class="formFinalizar btn btn-link btn-success btn-just-icon "><i class="material-icons">check_circle</i></a>
+
                                                         <a data-toggle="modal" data-target="#formConfirm" href="#" class="formConfirm btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">delete</i></a>
+
 
                                                     </li>
 
@@ -99,8 +117,19 @@
                                                         {{csrf_field()}}
 
                                                     </form>
+                                                    <form id="finalizar-form-{{$ingreso->IdIngresoArticulo}}"
+                                                          action = "{{route("ingresosarticulos.finalizar", $ingreso )}}" method="post"
+                                                          style="display: none">
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        {{csrf_field()}}
 
+                                                    </form>
+
+                                                    @else
+                                                       <a class="btn btn-link btn-info btn-just-icon like"></a>
+                                                    @endif
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>
