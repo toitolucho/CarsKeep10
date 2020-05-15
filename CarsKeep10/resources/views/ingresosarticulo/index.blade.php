@@ -15,6 +15,7 @@
 
 
 
+
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -95,7 +96,7 @@
                                             @endif
 
 
-                                                <td class="w-6"><a href="{{route("ingresosarticulos.show", $ingreso)}}"> {{$ingreso->IdIngresoArticulo}} </a>  </td>
+                                                <td class="w-6"><a href="{{route("ingresosarticulos.reporte",  $ingreso->IdIngresoArticuloEncriptado )}}" data-toggle="tooltip" data-placement="top" title="Ver Detalle"> {{$ingreso->IdIngresoArticulo}} </a>  </td>
                                                 <td class="w-20">{{$ingreso->proveedor ?  $ingreso->proveedor->NombreRazonSocial : ''}}  </td>
                                                 <td class="w-12">{{   date('d-m-Y', strtotime($ingreso->FechaHoraRegistro))   }} </td>
                                                 <td class="w-12">{{$ingreso->Estado}}  </td>
@@ -111,13 +112,13 @@
 
 
 
-                                                        <a href="{{route("ingresosarticulos.edit", $ingreso->IdIngresoArticulo )}}"
+                                                        <a href="{{route("ingresosarticulos.edit",  $ingreso->IdIngresoArticuloEncriptado )}}"
                                                            data-toggle="tooltip" data-placement="top" title="Modificar Ingreso"
                                                            class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i><div class="ripple-container"></div></a>
 
                                                         <a data-target="#formFinalizar" href="#"
                                                            data-toggle="tooltip" data-placement="top" title="Finalizar Ingreso"
-                                                           data-form="#finalizar-form-{{$ingreso->IdIngresoArticulo}}"
+                                                           data-form="#finalizar-form-{{ $ingreso->IdIngresoArticulo}}"
                                                            data-title="Finalizar Ingreso"
                                                            data-message="¿Se encuentra seguro de finalizar el ingreso por la compra actual? Recuerde que una vez finalizada la transaccion, los cambios son irreversibles"
                                                            class="formFinalizar btn btn-link btn-success btn-just-icon "><i class="material-icons">check_circle</i></a>
@@ -126,22 +127,22 @@
                                                            data-toggle="tooltip" data-placement="top" title="Eliminar el Ingreso"
                                                            class="formConfirm btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">delete</i></a>
 
-                                                        <a href="{{route("ingresosarticulos.reporte", $ingreso->IdIngresoArticulo )}}"
+                                                        <a href="{{route("ingresosarticulos.reporte", $ingreso->IdIngresoArticuloEncriptado )}}"
                                                            data-toggle="tooltip" data-placement="top" title="Imprimir Reporte"
                                                            class="btn btn-link btn-warning btn-just-icon like"><i class="material-icons">print</i><div class="ripple-container"></div></a>
 
 
                                                     </li>
 
-                                                    <form id="delete-form-{{$ingreso->IdIngresoArticulo}}"
-                                                          action = "{{route("ingresosarticulos.destroy", $ingreso )}}" method="post"
+                                                    <form id="delete-form-{{ $ingreso->IdIngresoArticulo}}"
+                                                          action = "{{route("ingresosarticulos.destroy",  $ingreso->IdIngresoArticuloEncriptado )}}" method="post"
                                                           style="display: none">
                                                         <input type="hidden" name="_method" value="delete">
                                                         {{csrf_field()}}
 
                                                     </form>
-                                                    <form id="finalizar-form-{{$ingreso->IdIngresoArticulo}}"
-                                                          action = "{{route("ingresosarticulos.finalizar", $ingreso )}}" method="post"
+                                                    <form id="finalizar-form-{{ $ingreso->IdIngresoArticulo}}"
+                                                          action = "{{route("ingresosarticulos.finalizar",  $ingreso->IdIngresoArticuloEncriptado )}}" method="post"
                                                           style="display: none">
                                                         <input type="hidden" name="_method" value="delete">
                                                         @csrf
@@ -150,7 +151,7 @@
                                                     </form>
 
                                                     @else
-                                                        <a href="{{route("ingresosarticulos.reporte", $ingreso->IdIngresoArticulo )}}"
+                                                        <a href="{{route("ingresosarticulos.reporte", $ingreso->IdIngresoArticuloEncriptado)}}"
                                                            data-toggle="tooltip" data-placement="top" title="Imprimir Reporte"
                                                            class="btn btn-link btn-warning btn-just-icon like"><i class="material-icons">print</i><div class="ripple-container"></div></a>
                                                     @endif

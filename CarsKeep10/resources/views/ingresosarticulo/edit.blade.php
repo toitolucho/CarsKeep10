@@ -73,7 +73,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('ingresosarticulos.update', $ingreso->IdIngresoArticulo) }}" autocomplete="off" class="form-horizontal" id="compraarticulos">
+                    <form method="post" action="{{ route('ingresosarticulos.update', Crypt::encrypt($ingreso->IdIngresoArticulo )) }}" autocomplete="off" class="form-horizontal" id="compraarticulos">
                         @csrf
                         @method('put')
 
@@ -379,7 +379,7 @@
 
             });
 
-            $("#input-IdProveedor").typeahead('val', "{!! $ingreso->proveedor->NombreRazonSocial !!}");
+            $("#input-IdProveedor").typeahead('val', "{!! $ingreso->proveedor ?  $ingreso->proveedor-> NombreRazonSocial : ''!!}");
             $('#compraarticulos input[name=\"IdProveedor\"]').val({!! $ingreso->IdProveedor !!})
 
             var articulos = new Bloodhound({

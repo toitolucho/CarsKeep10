@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * Class IngresoArticulo
@@ -84,6 +85,16 @@ class IngresoArticulo extends Model
         }
 
         //return "{$this->Nombres} {$this->Apellidos}";
+        return "{$estado}";
+    }
+    //@php
+    //    $IdIngresoArticulo_encriptado = {{Crypt::encrypt($ingreso->IdIngresoArticulo}}  ;
+    //@endphp
+
+    public function getIdIngresoArticuloEncriptadoAttribute()
+    {
+        $estado = Crypt::encrypt($this->IdIngresoArticulo);
+
         return "{$estado}";
     }
 }

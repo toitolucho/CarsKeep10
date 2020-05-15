@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\IngresoArticuloRequest;
 use JasperPHP;
+use Illuminate\Support\Facades\Crypt;
 
 class IngresoArticuloController extends Controller
 {
@@ -19,6 +20,10 @@ class IngresoArticuloController extends Controller
         $ingresos_articulos = IngresoArticulo::with('articulos',  'usuario', 'proveedor') ->orderByDesc('IdIngresoArticulo')->paginate(15);
 
         //dd($ingresos_articulos);
+
+
+
+
         return view('ingresosarticulo.index', ['ingresos' => $ingresos_articulos]);
     }
 
@@ -112,6 +117,8 @@ class IngresoArticuloController extends Controller
      */
     public function edit($id)
     {
+
+        $id = Crypt::decrypt($id);
         $compra = IngresoArticulo::withCount('articulos')->with('articulos', 'proveedor')->findOrFail($id);
 
         $total = 0;
@@ -133,6 +140,7 @@ class IngresoArticuloController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = Crypt::decrypt($id);
         $compra = IngresoArticulo::with('articulos')->find($id);
 
 
@@ -176,7 +184,7 @@ class IngresoArticuloController extends Controller
 
     public function finalizar($id)
     {
-        //dd($id);
+        $id = Crypt::decrypt($id);
         $compra = IngresoArticulo::find( $id);
         $compra->CodigoEstadoIngreso = 'F';
         $compra->update();
@@ -211,6 +219,7 @@ class IngresoArticuloController extends Controller
     public function destroy($id)
     {
         //dd($id);
+        $id = Crypt::decrypt($id);
         $compra = IngresoArticulo::find( $id);
         if($compra->articulos())
         {
@@ -228,17 +237,20 @@ class IngresoArticuloController extends Controller
 
     public function reporte($id)
     {
+        $id = Crypt::decrypt($id);
+
+
         //JasperPHP::compile(base_path('/vendor/cossou/jasperphp/examples/hello_world.jrxml'))->execute();
 
         $jasper = new \JasperPHP\JasperPHP;
-        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jrxml');
-        $entrada2 = storage_path('Reportes/IngresoArticulo/IngresosArticulosDetalleReporte.jrxml');
-
-       // dd($entrada);
-
-        // Compile a JRXML to Jasper
-        $jasper->compile($entrada1)->execute();
-        $jasper->compile($entrada2)->execute();
+//        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jrxml');
+//        $entrada2 = storage_path('Reportes/IngresoArticulo/IngresosArticulosDetalleReporte.jrxml');
+//
+//       // dd($entrada);
+//
+//        // Compile a JRXML to Jasper
+//        $jasper->compile($entrada1)->execute();
+//        $jasper->compile($entrada2)->execute();
 
         $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jasper');
         //D:\Proyectos\CarsKeep\CarsKeep10\vendor\cossou\jasperphp\src\JasperStarter\jdbc
@@ -248,7 +260,7 @@ class IngresoArticuloController extends Controller
        $salida = $jasper->process(
             $entrada1,
             false,
-            array("pdf", "rtf"),
+            array("pdf"),
             array("IdIngresoArticulo" => $id),
             array(
                 'driver' => 'mysql',

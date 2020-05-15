@@ -2,6 +2,22 @@ CREATE DATABASE Lubricos
 
 use Lubricos
 
+DROP TABLE VentasServicioDetalleArticulos;
+DROP TABLE VentasServicioDetalleMantenimiento;
+DROP TABLE VentasServicio;
+DROP TABLE TiposMantenimientosDetalleArticulos;
+DROP TABLE TiposMantenimientosDetalle;
+DROP TABLE TiposMantenimientos;
+DROP TABLE ActividadesMantenimiento;
+DROP TABLE IngresosArticulosDetalle;
+DROP TABLE IngresosArticulos;
+DROP TABLE Proveedores;
+DROP TABLE Articulos;
+DROP TABLE Categorias;
+DROP TABLE Usuarios;
+DROP TABLE Clientes;
+
+
 CREATE TABLE Clientes
 (
 	IdCliente			INT	AUTO_INCREMENT,
@@ -89,17 +105,17 @@ CREATE TABLE ActividadesMantenimiento
 	IdActividad			INT AUTO_INCREMENT,
 	NombreActividad		VARCHAR(200) UNIQUE,
 	PRIMARY KEY (IdActividad)
-)
+);
 
 CREATE TABLE TiposMantenimientos
 (
-	IdTipoMantenimiento			INT,
+	IdTipoMantenimiento			INT AUTO_INCREMENT,
 	NombreMantenimiento			VARCHAR(100),
 	Descripcion					VARCHAR(200),
 	LimiteInferiorKilometraje	DECIMAL(10,2),
 	LimiteSuperiorKilometraje	DECIMAL(10,2),
 	PRIMARY KEY (IdTipoMantenimiento)	
-)
+);
 
 
 CREATE TABLE TiposMantenimientosDetalle
@@ -110,18 +126,18 @@ CREATE TABLE TiposMantenimientosDetalle
 	CostoServicio			DECIMAL(10,2) DEFAULT 0,
 	PRIMARY KEY (IdTipoMantenimiento, IdActividad),
 	FOREIGN KEY (IdTipoMantenimiento) REFERENCES TiposMantenimientos(IdTipoMantenimiento),
-	FOREIGN KEY (IdActividad) REFERENCES ActividadesMantenimiento(IdActividad),
-)
+	FOREIGN KEY (IdActividad) REFERENCES ActividadesMantenimiento(IdActividad)
+);
 
 CREATE TABLE TiposMantenimientosDetalleArticulos
 (
 	IdTipoMantenimiento		INT,
 	IdActividad				INT,
-	IdArticulo				INT	
+	IdArticulo				INT	,
 	PRIMARY KEY (IdTipoMantenimiento, IdActividad, IdArticulo),
 	FOREIGN KEY (IdTipoMantenimiento, IdActividad) REFERENCES TiposMantenimientosDetalle(IdTipoMantenimiento, IdActividad),
-	FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo),
-)
+	FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
+);
 
 
 CREATE TABLE VentasServicio
@@ -137,8 +153,8 @@ CREATE TABLE VentasServicio
 	Observaciones		VARCHAR(600),
 	PRIMARY KEY(IdVentaServicio),
 	FOREIGN KEY(IdUsuarioSecretaria)REFERENCES  Usuarios(IdUsuario),
-	FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente),
-)
+	FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente)
+);
 
 CREATE TABLE VentasServicioDetalleMantenimiento
 (
@@ -150,7 +166,7 @@ CREATE TABLE VentasServicioDetalleMantenimiento
 	PRIMARY KEY (IdVentaServicio, IdActividad),
 	FOREIGN KEY (IdVentaServicio) REFERENCES VentasServicio(IdVentaServicio),
 	FOREIGN KEY (IdActividad) REFERENCES ActividadesMantenimiento(IdActividad)
-)
+);
 
 CREATE TABLE VentasServicioDetalleArticulos
 (
@@ -162,8 +178,5 @@ CREATE TABLE VentasServicioDetalleArticulos
 	FOREIGN KEY (IdVentaServicio) REFERENCES VentasServicio(IdVentaServicio),
 	FOREIGN KEY (IdArticulo) REFERENCES Articulos(IdArticulo)
 
-)
+);
 
---NOTIFICACIONES
-
---RESERVAS

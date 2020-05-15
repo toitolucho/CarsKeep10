@@ -46,9 +46,10 @@
     });
     $(function () {
         $("#frm_submit").click(function (e) {
-            console.log("registro a eliminar")
+
             var id = $(this).attr('data-form');
-            console.log("entra confirm" + id);
+            console.log("registro a eliminar " +id)
+            //console.log("entra confirm" + id);
             $(id).submit();
         });
 
