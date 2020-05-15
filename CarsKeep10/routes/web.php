@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use JasperPHP\JasperPHP as JasperPHP;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,8 +91,45 @@ Route::resource('/articulos','ArticuloController');
 Route::resource('/ingresosarticulos','IngresoArticuloController');
 Route::resource('/actividadesmantenimientos','ActividadMantenimientoController');
 Route::resource('/tiposmantenimientos','TipoMantenimientoController');
-Route::resource('/tiposmantenimientosdetallearticulo','TipoMantenimientoDetalleArticuloController');
+//Route::resource('/tiposmantenimientosdetallearticulo','TipoMantenimientoDetalleArticuloController');
 Route::resource('/ventasservicios','VentaServicioController');
 
 
-Route::post('/ingresosarticulos/{ingresosarticulo}',"IngresoArticuloController@finalizar")->name('ingresosarticulos.finalizar');
+Route::put('/ingresosarticulos/f/{ingresosarticulo}',"IngresoArticuloController@finalizar")->name('ingresosarticulos.finalizar');
+Route::get('/ingresosarticulos/reporte/{ingresosarticulo}','IngresoArticuloController@reporte')->name("ingresosarticulos.reporte");
+
+
+Route::get('/reporte', function () {
+
+    $jasper = new JasperPHP;
+    //dd(__DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jrxml');
+
+    // Compile a JRXML to Jasper
+    $jasper->compile(__DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jrxml')->execute();
+
+    // Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
+    $jasper->process(
+        __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jasper',
+        false,
+        array("pdf", "rtf"),
+        array("php_version" => "xxx")
+    )->execute();
+
+    $file = __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.pdf';
+    if (file_exists($file)) {
+
+        $headers = [
+            'Content-Type' => 'application/pdf'
+        ];
+        return response()->download($file, 'Test File', $headers, 'inline');
+    } else {
+        abort(404, 'File not found!');
+    }
+
+//    // List the parameters from a Jasper file.
+//    $array = $jasper->list_parameters(
+//        __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jasper'
+//    )->execute();
+//
+//    return redirect()->route('articulos.index');
+});

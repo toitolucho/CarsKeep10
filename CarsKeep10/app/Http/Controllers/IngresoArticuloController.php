@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\IngresoArticuloRequest;
+use JasperPHP;
 
 class IngresoArticuloController extends Controller
 {
@@ -122,17 +123,6 @@ class IngresoArticuloController extends Controller
         return view('ingresosarticulo.edit',[ 'ingreso' => $compra, 'total'=>$total ]);
     }
 
-    public function finalizar($id)
-    {
-        dd($id);
-        $compra = IngresoArticulo::find( $id);
-        $compra->CodigoEstadoIngreso = 'F';
-        $compra->update();
-
-
-
-        return redirect()->route('ingresosarticulos.index')->with("status","La Transaccion se ha finalizado correctamente");;
-    }
 
     /**
      * Update the specified resource in storage.
@@ -184,6 +174,19 @@ class IngresoArticuloController extends Controller
 
     }
 
+    public function finalizar($id)
+    {
+        //dd($id);
+        $compra = IngresoArticulo::find( $id);
+        $compra->CodigoEstadoIngreso = 'F';
+        $compra->update();
+
+
+
+        return redirect()->route('ingresosarticulos.index')->with("status","La Transaccion se ha finalizado correctamente");;
+    }
+
+
     public function buscar(Request $request)
     {
         $compras = IngresoArticulo::with('articulos', 'proveedor', 'usuario')->where('IdIngresoArticulo','=', $request->get('IdIngresoArticulo'))->get();
@@ -207,15 +210,68 @@ class IngresoArticuloController extends Controller
      */
     public function destroy($id)
     {
-//        //dd($id);
-//        $categoria = Categoria::find( $id);
+        //dd($id);
+        $compra = IngresoArticulo::find( $id);
+        if($compra->articulos())
+        {
+            $compra->articulos()->detach();
+
+        }
+
+        if($compra->delete())
+        {
+            return redirect()->route('ingresosarticulos.index')->with("status","La Transaccion se ha eliminado satisfactoriamente");
+        }
+        return redirect()->route('ingresosarticulos.index')->withInput()->with("eliminar_error","La Categoría seleccioinada no pudo eliminarse, probablemente tiene registros que dependen de la misma");
+        //
+    }
+
+    public function reporte($id)
+    {
+        //JasperPHP::compile(base_path('/vendor/cossou/jasperphp/examples/hello_world.jrxml'))->execute();
+
+        $jasper = new \JasperPHP\JasperPHP;
+        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jrxml');
+        $entrada2 = storage_path('Reportes/IngresoArticulo/IngresosArticulosDetalleReporte.jrxml');
+
+       // dd($entrada);
+
+        // Compile a JRXML to Jasper
+        $jasper->compile($entrada1)->execute();
+        $jasper->compile($entrada2)->execute();
+
+        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jasper');
+        //D:\Proyectos\CarsKeep\CarsKeep10\vendor\cossou\jasperphp\src\JasperStarter\jdbc
+        $jdbc_dir = base_path() . '\vendor\cossou\jasperphp\src\JasperStarter\jdbc';
 //
-//
-//        if($categoria->delete())
-//        {
-//            return redirect('categorias')->with("eliminar","El elemento " . $categoria->NombreCategoria . ", ha sido eleminado correctamente");
-//        }
-//        return redirect('categorias')->withInput()->with("eliminar_error","La Categoría seleccioinada no pudo eliminarse, probablemente tiene registros que dependen de la misma");
-//        //
+        // Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
+       $salida = $jasper->process(
+            $entrada1,
+            false,
+            array("pdf", "rtf"),
+            array("IdIngresoArticulo" => $id),
+            array(
+                'driver' => 'mysql',
+                'username' => 'root',
+                'host' => 'localhost',
+                'database' => 'carskeep10',
+                'port' => '3306',
+                'jdbc_dir' => $jdbc_dir,
+            )
+
+        )->execute();
+
+//       echo $salida;
+
+        $file = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.pdf');
+        if (file_exists($file)) {
+
+            $headers = [
+                'Content-Type' => 'application/pdf'
+            ];
+            return response()->download($file, 'Test File', $headers, 'inline');
+        } else {
+            abort(404, 'File not found!');
+        }
     }
 }

@@ -146,6 +146,7 @@
         <script type="text/javascript">
             $(function () {
                 $('.alert-success').fadeIn().delay(1500).fadeOut(1000);
+                $('[data-toggle="tooltip"]').tooltip()
                 // $('.selectpicker').selectpicker('refresh');
 
 

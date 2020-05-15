@@ -110,6 +110,8 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
+
+
                                         </div>
                                     </div>
 
@@ -324,7 +326,9 @@
 
 
         $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip()
             $('.alert').alert();
+
             var NroArticulos=0;
 
 
@@ -436,7 +440,12 @@
                 dato = existeTupla('tabla_articulos', data.IdArticulo, 7);
                 if(dato == true)
                 {
-                    alert("El articulo <strong> \"" + name + "\" </strong>ya se encuentra en el detalle");
+                   // alert("El articulo <strong> \"" + name + "\" </strong>ya se encuentra en el detalle");
+                    $('#myAlert').text("No puede registrar articulos duplicados");
+                    $("#myAlert").fadeIn().delay(1500).fadeOut(1000);;
+
+
+
                     return;
                 }
                 var markup = "<tr id=articulo" +(NroArticulos+1)+">" +
@@ -473,7 +482,10 @@
 
                 if(rowCountArticulos < 2)
                 {
-                    $("#myAlert").fadeIn();
+                    //Registro sin Articulos!</strong> No puede continuar mientras no haya registrado al menos un articulo.
+                    $('#myAlert').text("Registro sin Articulos! No puede continuar mientras no haya registrado al menos un articulo.");
+
+                    $("#myAlert").fadeIn().delay(1500).fadeOut(1000);;
 
                 }
                 else {
