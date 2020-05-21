@@ -444,7 +444,7 @@
                     "<td class='w-10 text-right'><input type='number' name='cantidades[]' class='form-control qty' step='1' value ='1' ></td>" +
                     "<td class='w-15 text-right'><input type='number' name='precios[]' placeholder='Int. Precio Unitario' class='form-control price' step='0.00' min='0' value='"+precio +"'> </td>" +
                     "<td class='w-15 text-right'><input type='number' name='total[]' placeholder='0.00' class='form-control total'  value='"+precio +"' readonly/></td>"+
-                    "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden='true'>×</span></button></td>"+
+                    "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger btn-sm78'><span aria-hidden='true'>×</span></button></td>"+
                     "<td style='display:none'> <input name='codigos[]' value='"+data.IdArticulo +"'> </td>"+
 
                     "</tr>";

@@ -26,7 +26,7 @@ class TipoMantenimiento extends Model
 {
 	protected $table = 'tiposmantenimientos';
 	protected $primaryKey = 'IdTipoMantenimiento';
-	public $incrementing = false;
+
 	public $timestamps = false;
 
 	protected $casts = [
@@ -46,4 +46,9 @@ class TipoMantenimiento extends Model
 	{
 		return $this->hasMany(TipoMantenimientoDetalle::class, 'IdTipoMantenimiento');
 	}
+
+    public function actividadesmantenimiento()
+    {
+        return $this->belongsToMany(ActividadMantenimiento::class, 'TiposMantenimientosDetalle', 'IdTipoMantenimiento', 'IdActividad')->withPivot('Obligatorio','CostoServicio');
+    }
 }

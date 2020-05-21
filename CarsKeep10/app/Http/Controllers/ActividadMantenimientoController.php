@@ -42,6 +42,8 @@ class ActividadMantenimientoController extends Controller
 
         $actividad = new ActividadMantenimiento();
         $actividad->NombreActividad=$request->get('NombreActividad');
+        $actividad->CostoServicio=$request->get('CostoServicio');
+
 
 
         $actividad->save();
@@ -87,6 +89,8 @@ class ActividadMantenimientoController extends Controller
         $actividadMantenimiento = ActividadMantenimiento ::find( $id);
 
         $actividadMantenimiento->NombreActividad = $request->get('NombreActividad');
+        $actividadMantenimiento->CostoServicio = $request->get('CostoServicio');
+
 
 
         if($actividadMantenimiento->save())

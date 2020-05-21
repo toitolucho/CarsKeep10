@@ -27,7 +27,8 @@ class ActividadMantenimiento extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
-		'NombreActividad'
+		'NombreActividad',
+        'CostoServicio'
 	];
 
 	public function tiposmantenimientosdetalles()

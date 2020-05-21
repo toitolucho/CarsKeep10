@@ -49,6 +49,21 @@
                                     </div>
                                 </div>
 
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Costo de Servicio') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('CostoServicio') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('CostoServicio') ? ' is-invalid' : '' }}"
+                                                       name="CostoServicio" id="input-CostoServicio" type="number"
+                                                       value="{{ old('CostoServicio', $actividadMantenimiento->CostoServicio) }}"
+                                                       required="true" aria-required="true"/>
+                                                @if ($errors->has('CostoServicio'))
+                                                    <span id="CostoServicio-error" class="error text-danger" for="input-CostoServicio">{{ $errors->first('CostoServicio') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">

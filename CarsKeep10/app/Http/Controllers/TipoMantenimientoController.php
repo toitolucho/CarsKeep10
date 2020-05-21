@@ -36,11 +36,23 @@ class TipoMantenimientoController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $validatedData = $request->validate([
             'NombreMantenimiento' => 'required|unique:TiposMantenimientos|max:255'
         ]);
 
-        $actividad = new TipoMantenimiento();
+        $obligatorios = $request->input('obligatorio', []);
+        $precios = $request->input('precios', []);
+        $codigos = $request->input('codigos', []);
+
+       // dd($obligatorios);
+
+
+
+        $actividad = TipoMantenimiento::create($request->all());
+
+        //$actividad = new TipoMantenimiento();
         $actividad->NombreMantenimiento=$request->get('NombreMantenimiento');
         $actividad->Descripcion=$request->get('Descripcion');
         $actividad->LimiteInferiorKilometraje=$request->get('LimiteInferiorKilometraje');
@@ -51,7 +63,19 @@ class TipoMantenimientoController extends Controller
         $actividad->save();
 
 
-        return  redirect()->route('tiposmantenimientos.index'); //redirect('tiposmantenimiento');
+
+
+
+        for ($codigo=0; $codigo < count($codigos); $codigo++) {
+            if ($codigos[$codigo] != '') {
+                $actividad->actividadesmantenimiento()->attach($codigos[$codigo], ['Obligatorio' => ( $obligatorios[$codigo] ? '1' : '0'), 'CostoServicio' => $precios[$codigo]]);
+
+            }
+        }
+
+
+        //return redirect()->route('ingresosarticulos.index')->with("status","Ingreso registrado correctamente");
+        return  redirect()->route('tiposmantenimientos.index')->with("status","Mantenimiento registrado correctamente"); //redirect('tiposmantenimiento');
     }
 
     /**
@@ -73,7 +97,8 @@ class TipoMantenimientoController extends Controller
      */
     public function edit($id)
     {
-        $tipoMantenimiento = TipoMantenimiento::find( $id);
+//        $tipoMantenimiento = TipoMantenimiento::find( $id);
+        $tipoMantenimiento = TipoMantenimiento::withCount('actividadesmantenimiento')->with('actividadesmantenimiento')->findOrFail($id);
         return view('tiposmantenimiento.edit',[ 'tipoMantenimiento' => $tipoMantenimiento]);
     }
 
@@ -93,6 +118,40 @@ class TipoMantenimientoController extends Controller
         $tipoMantenimiento->Descripcion=$request->get('Descripcion');
         $tipoMantenimiento->LimiteInferiorKilometraje=$request->get('LimiteInferiorKilometraje');
         $tipoMantenimiento->LimiteSuperiorKilometraje=$request->get('LimiteSuperiorKilometraje');
+
+
+
+
+
+
+        if($tipoMantenimiento->actividadesmantenimiento())
+        {
+            $tipoMantenimiento->actividadesmantenimiento()->detach();
+
+        }
+
+//        $productos = $request->input('productos', []);
+        $obligatorios = $request->input('obligatorio', []);
+        $precios = $request->input('precios', []);
+        $codigos = $request->input('codigos', []);
+
+
+        $tipoMantenimiento->update();
+        $tipoMantenimiento= $tipoMantenimiento->fresh(['actividadesmantenimiento']);
+        $tipoMantenimiento->setRelations([]);
+
+
+
+
+
+        for ($codigo=0; $codigo < count($codigos); $codigo++) {
+            if ($codigos[$codigo] != '') {
+                $tipoMantenimiento->actividadesmantenimiento()->attach($codigos[$codigo], ['Obligatorio' => $obligatorios[$codigo], 'CostoServicio' => $precios[$codigo]]);
+
+            }
+        }
+
+
 
         if($tipoMantenimiento->save())
         {

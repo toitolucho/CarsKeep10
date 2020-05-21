@@ -84,6 +84,12 @@ Route::get('/buscarproductosAjax', function (Request $request) {
     return response()->json($datas);
 });
 
+Route::get('/buscarServiciosAjax', function (Request $request) {
+
+    $datas = App\Models\ActividadMantenimiento::select(array('IdActividad', 'NombreActividad', 'CostoServicio'))->where("NombreActividad","LIKE","%{$request->get('q')}%")->get();
+    return response()->json($datas);
+});
+
 // Rutas incorporadas manualmente
 Route::resource('/clientes','ClienteController');
 Route::resource('/categorias','CategoriaController');

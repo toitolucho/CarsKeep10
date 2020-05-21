@@ -104,6 +104,7 @@ CREATE TABLE ActividadesMantenimiento
 (
 	IdActividad			INT AUTO_INCREMENT,
 	NombreActividad		VARCHAR(200) UNIQUE,
+	CostoServicio		DECIMAL(10,2) DEFAULT 0,
 	PRIMARY KEY (IdActividad)
 );
 

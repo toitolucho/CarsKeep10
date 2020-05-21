@@ -67,6 +67,11 @@
                                         <th>
                                             Nombre del Servicio
                                         </th>
+                                        <th class="text-right">
+                                            Costo
+                                        </th>
+
+
 
                                         <th class="text-right">
                                             Acciones
@@ -78,7 +83,8 @@
                                             <tr role="row">
 
                                                 <td class="w-5"><a href="{{route("actividadesmantenimientos.show", $actividad)}}"> {{$actividad->IdActividad}} </a>  </td>
-                                                <td class="w-35">{{$actividad->NombreActividad}}  </td>
+                                                <td class="w-50">{{$actividad->NombreActividad}}  </td>
+                                                <td class="w-10 text-right">{{$actividad->CostoServicio}}  </td>
 
 
                                                 <td class="text-right">

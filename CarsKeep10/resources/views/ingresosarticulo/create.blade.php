@@ -307,7 +307,8 @@
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
+{{--                                <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>--}}
+                                <button type="submit" class="btn btn-primary btn-round"><i class="material-icons">save</i> {{ __('Guardar') }}<div class="ripple-container"></div></button>
                             </div>
                         </div>
                     </form>
@@ -455,7 +456,7 @@
                     "<td class='w-10 text-right'><input type='number' name='cantidades[]' class='form-control qty' step='any' value ='1' min='0'  oninput='check(this)' /></td>" +
                     "<td class='w-15 text-right'><input type='number' name='precios[]' placeholder='Int. Precio Unitario' class='form-control price' step='any' min='0' value='"+precio +"' oninput='check(this)' /> </td>" +
                     "<td class='w-15 text-right'><input type='number' name='total[]' placeholder='0.00' class='form-control total'  value='"+precio +"' readonly/></td>"+
-                    "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden='true'>×</span></button></td>"+
+                    "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger btn-sm'><span aria-hidden='true'>×</span></button></td>"+
                     "<td style='display:none'> <input name='codigos[]' value='"+data.IdArticulo +"'> </td>"+
 
                     "</tr>";
