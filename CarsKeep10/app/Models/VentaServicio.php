@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * Class VentaServicio
@@ -51,6 +52,7 @@ class VentaServicio extends Model
 		'IdUsuarioSecretaria',
 		'IdUsuarioTecnico',
 		'IdCliente',
+        'NroPlaca',
 		'FechaHoraVenta',
 		'CodigoEstadoVenta',
 		'Kilometraje',
@@ -78,4 +80,36 @@ class VentaServicio extends Model
 	{
 		return $this->hasMany(Ventasserviciodetallemantenimiento::class, 'IdVentaServicio');
 	}
+
+    public function actividadesMantenimiento()
+    {
+        return $this->belongsToMany(ActividadesMantenimiento::class, 'VentasServicioDetalleMantenimiento', 'IdVentaServicio', 'IdActividad')
+            ->withPivot('Costo', 'CodigoEstadoEjecucion', 'Observacion' );
+    }
+
+
+    public function getEstadoAttribute()
+    {
+        $estado = "HOla";
+        switch ($this->CodigoEstadoIngreso)
+        {
+            case "I":
+                $estado = "INICIADO";
+                break;
+            case "A":
+                $estado = "ANULADO";
+                break;
+            case "F":
+                $estado = "FINALIZADO";
+                break;
+        }
+        return "{$estado}";
+    }
+    public function getIdVentaServicioEncriptadoAttribute()
+    {
+        $estado = Crypt::encrypt($this->IdVentaServicio);
+
+        return "{$estado}";
+    }
+
 }

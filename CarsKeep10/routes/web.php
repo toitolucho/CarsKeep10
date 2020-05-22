@@ -103,39 +103,34 @@ Route::resource('/ventasservicios','VentaServicioController');
 
 Route::put('/ingresosarticulos/f/{ingresosarticulo}',"IngresoArticuloController@finalizar")->name('ingresosarticulos.finalizar');
 Route::get('/ingresosarticulos/reporte/{ingresosarticulo}','IngresoArticuloController@reporte')->name("ingresosarticulos.reporte");
+Route::get('/ventasservicios/reporte/{ventaservicio}','VentaServicioController@reporte')->name("ventaservicios.reporte");
+Route::put('/ventasservicios/f/{ventaservicio}',"VentaServicioController@finalizar")->name('ventaservicios.finalizar');
 
-
-Route::get('/reporte', function () {
-
-    $jasper = new JasperPHP;
-    //dd(__DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jrxml');
-
-    // Compile a JRXML to Jasper
-    $jasper->compile(__DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jrxml')->execute();
-
-    // Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
-    $jasper->process(
-        __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jasper',
-        false,
-        array("pdf", "rtf"),
-        array("php_version" => "xxx")
-    )->execute();
-
-    $file = __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.pdf';
-    if (file_exists($file)) {
-
-        $headers = [
-            'Content-Type' => 'application/pdf'
-        ];
-        return response()->download($file, 'Test File', $headers, 'inline');
-    } else {
-        abort(404, 'File not found!');
-    }
-
-//    // List the parameters from a Jasper file.
-//    $array = $jasper->list_parameters(
-//        __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jasper'
+//
+//Route::get('/reporte', function () {
+//
+//    $jasper = new JasperPHP;
+//    //dd(__DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jrxml');
+//
+//    // Compile a JRXML to Jasper
+//    $jasper->compile(__DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jrxml')->execute();
+//
+//    // Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
+//    $jasper->process(
+//        __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.jasper',
+//        false,
+//        array("pdf", "rtf"),
+//        array("php_version" => "xxx")
 //    )->execute();
 //
-//    return redirect()->route('articulos.index');
-});
+//    $file = __DIR__ . '/../vendor/cossou/jasperphp/examples/hello_world.pdf';
+//    if (file_exists($file)) {
+//
+//        $headers = [
+//            'Content-Type' => 'application/pdf'
+//        ];
+//        return response()->download($file, 'Test File', $headers, 'inline');
+//    } else {
+//        abort(404, 'File not found!');
+//    }
+//});

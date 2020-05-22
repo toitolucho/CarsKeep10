@@ -147,6 +147,7 @@ CREATE TABLE VentasServicio
 	IdUsuarioSecretaria	INT,
 	IdUsuarioTecnico	INT,
 	IdCliente			INT,
+	NroPlaca			CHAR(10),
 	FechaHoraVenta		DATETIME,
 	CodigoEstadoVenta	CHAR(1),-- 'I'->iniciado, 'A'->anulado, 'F'->Finalizado
 	Kilometraje			DECIMAL(10,2),

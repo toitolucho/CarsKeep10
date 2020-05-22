@@ -95,6 +95,15 @@
                 </a>
             </li>
 
+            <li class="nav-item{{ $activePage == 'Ventas Servicios' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('ventasservicios.index') }}">
+                    <i class="material-icons">local_car_wash</i>
+                    <p>{{ __('Atención de Servicios') }}</p>
+                </a>
+            </li>
+
+
+
 
             {{--      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">--}}
             {{--        <a class="nav-link" href="{{ route('typography') }}">--}}

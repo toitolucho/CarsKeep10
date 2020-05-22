@@ -249,7 +249,7 @@
                                                                         <td>{{$loop->index+1}}</td>
                                                                         <td>{{$detalle->NombreActividad}}</td>
                                                                         <td><input type='number' name='precios[]' placeholder='Int. Precio ' class='form-control price' step='0.00' min='0' value="{{$detalle->pivot->CostoServicio}}"> </td>
-                                                                        <td class='w-15 text-right'> <input type='hidden' name='obligatorio[{{$loop->index}}]' value='' />  <input type='checkbox' name='obligatorio[{{$loop->index+1}}]' class='form-control small-checkbox'  value="{{$detalle->pivot->Obligatorio=='1' ? true : false}}" {{$detalle->pivot->Obligatorio=='1' ?  'checked' : ''}}/></td>
+                                                                        <td class='w-10 text-right'> <input type='hidden' name='obligatorio[{{$loop->index}}]' value='' />  <input type='checkbox' name='obligatorio[{{$loop->index+1}}]' class='form-control small-checkbox'  value="{{$detalle->pivot->Obligatorio=='1' ? true : false}}" {{$detalle->pivot->Obligatorio=='1' ?  'checked' : ''}}/></td>
                                                                         <td class='w-5  text-center' data-name='del{{$loop->index+1}}'><button onclick='removeRowArticulo({{$loop->index+1}});' name='articulo{{$loop->index+1}}' class='btn btn-danger btn-sm'><span aria-hidden='true'>×</span></button></td>
                                                                         <td style='display:none'> <input name='codigos[]' value='{{$detalle->IdActividad}}'> </td>
 
