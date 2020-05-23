@@ -77,6 +77,14 @@ Route::get('/buscarProveedoresAjax', function (Request $request) {
     return response()->json($datas);
 });
 
+Route::get('/buscarClientesAjax', function (Request $request) {
+
+
+    $datas = App\Models\Cliente::select(array('IdCliente',DB::raw("CONCAT(Nombres,' ',Apellidos)  AS NombreCompleto")))->where("Nombres","LIKE","%{$request->get('q')}%")->orwhere("Apellidos","LIKE","%{$request->get('q')}%")->get();
+    //dd(response()->json($datas));
+    return response()->json($datas);
+});
+
 
 Route::get('/buscarproductosAjax', function (Request $request) {
 
@@ -87,6 +95,12 @@ Route::get('/buscarproductosAjax', function (Request $request) {
 Route::get('/buscarServiciosAjax', function (Request $request) {
 
     $datas = App\Models\ActividadMantenimiento::select(array('IdActividad', 'NombreActividad', 'CostoServicio'))->where("NombreActividad","LIKE","%{$request->get('q')}%")->get();
+    return response()->json($datas);
+});
+
+Route::get('/buscarMantenimientosAjax', function (Request $request) {
+
+    $datas = App\Models\TipoMantenimiento::select(array('IdTipoMantenimiento', 'NombreMantenimiento', 'Descripcion'))->where("NombreMantenimiento","LIKE","%{$request->get('q')}%")->orwhere("Descripcion","LIKE","%{$request->get('q')}%")->get();
     return response()->json($datas);
 });
 

@@ -66,6 +66,10 @@
         display: none;
     }
 
+    .input_numero {
+        text-align: right;
+    }
+
 </style>
 
 @section('content')
@@ -73,7 +77,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+
+
+
+
+
+
                     <form method="post" action="{{ route('ventasservicios.store') }}" autocomplete="off"  id="ventaservicios"  >
+
 {{--                    <form action="{{ route("ventasservicios.store") }}" method="POST" id="VentaServicios"  class="needs-validation" novalidate>--}}
                         @csrf
 {{--                        @method('put')--}}
@@ -149,20 +160,31 @@
                                                 <div class="tab-pane active show" id="configuracion">
 
                                                     <div class="row">
-                                                        <label class="col-sm-2 col-form-label">{{ __('Proveedor') }}</label>
+                                                        <label class="col-sm-2 col-form-label">{{ __('Cliente') }}</label>
                                                         <div class="col-sm-7">
-                                                            <div class="form-group{{ $errors->has('IdProveedor') ? ' has-danger' : '' }}">
-                                                                <input type="search" name="NombreRazonSocial" class="form-control typeahead" placeholder="Proveedor" autocomplete="off" id="input-IdProveedor"   required="true" aria-required="true" />
-                                                                <div class="invalid-feedback">
-                                                                    Porfavor seleccione un proveedor.
-                                                                </div>
+                                                            <div class="form-group{{ $errors->has('IdCliente') ? ' has-danger' : '' }}">
+                                                                <input type="search" name="NombreRazonSocial" class="form-control typeahead" placeholder="Proveedor" autocomplete="off" id="input-IdCliente"   required="true" aria-required="true" />
 
-
-                                                                <input type="hidden" name="IdProveedor"   value="{{old('IdProveedor')}}"  required="true" aria-required="true"  />
-                                                                @if ($errors->has('IdProveedor'))
-                                                                    <span id="IdProveedor-error" class="error text-danger" for="input-IdProveedor">{{ $errors->first('IdProveedor') }}</span>
+                                                                <input type="hidden" name="IdCliente"   value="{{old('IdCliente')}}"  required="true" aria-required="true"  />
+                                                                @if ($errors->has('IdCliente'))
+                                                                    <span id="IdCliente-error" class="error text-danger" for="input-IdCliente">{{ $errors->first('IdCliente') }}</span>
                                                                 @endif
 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="row" >
+                                                        <label class="col-sm-2 col-form-label">{{ __('Nro Placa') }}</label>
+                                                        <div class="col-sm-7">
+                                                            <div class="form-group{{ $errors->has('NroPlaca') ? ' has-danger' : '' }}">
+                                                                <input class="form-control{{ $errors->has('NroPlaca') ? ' is-invalid' : '' }}" name="NroPlaca" id="input-NroPlaca" type="text" value="{{ old('NroPlaca') }}" required />
+
+                                                                @if ($errors->has('NroPlaca'))
+                                                                    <span id="NroPlaca-error" class="error text-danger" for="input-NroPlaca">{{ $errors->first('NroPlaca') }}</span>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -199,6 +221,32 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="row" >
+                                                        <label class="col-sm-2 col-form-label">{{ __('Kilometraje') }}</label>
+                                                        <div class="col-sm-7">
+                                                            <div class="form-group{{ $errors->has('Kilometraje') ? ' has-danger' : '' }}">
+                                                                <input class="form-control{{ $errors->has('Kilometraje') ? ' is-invalid' : '' }}" name="Kilometraje" id="input-Kilometraje" type="number" value="{{ old('Kilometraje') }}" required />
+
+                                                                @if ($errors->has('Kilometraje'))
+                                                                    <span id="Kilometraje-error" class="error text-danger" for="input-Kilometraje">{{ $errors->first('Kilometraje') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row" >
+                                                        <label class="col-sm-2 col-form-label">{{ __('Marca Movilidad') }}</label>
+                                                        <div class="col-sm-7">
+                                                            <div class="form-group{{ $errors->has('MarcaMovilidad') ? ' has-danger' : '' }}">
+                                                                <input class="form-control{{ $errors->has('MarcaMovilidad') ? ' is-invalid' : '' }}" name="MarcaMovilidad" id="input-MarcaMovilidad" type="text" value="{{ old('MarcaMovilidad') }}" required />
+
+                                                                @if ($errors->has('MarcaMovilidad'))
+                                                                    <span id="MarcaMovilidad-error" class="error text-danger" for="input-MarcaMovilidad">{{ $errors->first('MarcaMovilidad') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="row">
                                                         <label class="col-sm-2 col-form-label">{{ __('Observaciones') }}</label>
                                                         <div class="col-sm-7">
@@ -207,7 +255,7 @@
 
 
                                                                 <textarea class="form-control {{ $errors->has('Observaciones') ? ' is-invalid' : '' }}" name="Observaciones" id="input-Observaciones" rows="3">{{old('Observaciones')}}</textarea>
-                                                                <span class="bmd-help">Introduzca la descripción u observacion que describa de forma general el ingreso</span>
+                                                                <span class="bmd-help">Introduzca la descripción u observacion que describa de forma general la venta de servicios</span>
                                                                 @if ($errors->has('Observaciones'))
                                                                     <span id="Observaciones-error" class="error text-danger" for="input-Observaciones">{{ $errors->first('Observaciones') }}</span>
                                                                 @endif
@@ -241,7 +289,7 @@
                                                     </div>
                                                     <div class="row  mt-3 ml-1">
                                                         <div class="col-md-12">
-                                                            <table class="table table-bordered table-hover" id="tabla_articulos">
+                                                            <table class="table table-bordered table-hover" id="tabla_servicios">
                                                                 <thead>
                                                                 <tr>
                                                                     <th class='w-5 text-center' > Nro</th>
@@ -308,39 +356,71 @@
 
                                             </div>
                                         </div>
-
-                                        <div class="row clearfix" style="margin-top:20px">
-                                            <div class="ml-auto col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-7 text-center">
+                                                <span class="float-md-left"></span>
+                                            </div>
+                                            <div class="col-md-4 text-right">
                                                 <table class="table table-bordered table-hover" id="tab_logic_total">
                                                     <tbody>
                                                     <tr>
-                                                        <th class="text-center">Sub Total</th>
-                                                        <td class="text-center"><input type="number" name='sub_total' placeholder='0.00'
-                                                                                       class="form-control" id="sub_total" readonly/></td>
+                                                        <th class="text-right">Sub Total</th>
+                                                        <td class="text-center">
+{{--                                                            <input type="number" name='sub_total' placeholder='0.00' class="form-control input_numero" id="sub_total" readonly/>--}}
+                                                            <div class="input-group">
+                                                                <input type="number"  name='sub_total' id="sub_total" placeholder='0.00' class="form-control input_numero" aria-label="Monto Sub Total (Con dos decimales validos)" readonly>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Bs</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
                                                     </tr>
                                                     <tr>
-                                                        <th class="text-center">% Impuesto</th>
+                                                        <th class="text-right">% Impuesto</th>
                                                         <td class="text-center">
                                                             <div class="input-group mb-2 mb-sm-0">
-                                                                <input type="number" class="form-control" id="tax" placeholder="0">
-                                                                <div class="input-group-addon">%</div>
+                                                                <input type="number"   id="tax" placeholder='0' class="form-control input_numero" aria-label="Porcentaje Descuento (Con dos decimales validos)" >
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">%</span>
+                                                                </div>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <th class="text-center">Monto Impuesto</th>
-                                                        <td class="text-center"><input type="number" name='tax_amount' id="tax_amount"
-                                                                                       placeholder='0.00' class="form-control" readonly/></td>
+                                                        <th class="text-right">Monto Impuesto</th>
+                                                        <td class="text-center">
+{{--                                                            <input type="number" name='tax_amount' id="tax_amount"--}}
+{{--                                                                                       placeholder='0.00' class="form-control input_numero" readonly/>--}}
+                                                            <div class="input-group">
+                                                                <input type="number"  name='tax_amount' id="tax_amount" placeholder='0.00' class="form-control input_numero" aria-label="Monto Impuesto (Con dos decimales validos)" readonly>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Bs</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <tr>
-                                                        <th class="text-center">Total:</th>
-                                                        <td class="text-center"><input type="number" name='total_amount' id="total_amount"
-                                                                                       placeholder='0.00' class="form-control" readonly/></td>
+                                                        <th class="text-right">Total:</th>
+                                                        <td class="text-center ">
+                                                            <div class="input-group">
+                                                                <input type="number"  name='total_amount' id="total_amount" placeholder='0.00' class="form-control input_numero" aria-label="Monto Total (Con dos decimales validos)" readonly>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Bs</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <div class="col-md-1 text-center">
+                                                <span class="float-md-right"> </span>
+                                            </div>
+
                                         </div>
+
+
 
 
                                     </div>
@@ -391,21 +471,21 @@
 
             var clientes = new Bloodhound({
                 remote: {
-                    url: '/buscarProveedoresAjax?q=QUERY',
+                    url: '/buscarClientesAjax?q=QUERY',
                     wildcard: 'QUERY'
                 },
-                datumTokenizer: Bloodhound.tokenizers.whitespace('NombreRazonSocial'),
+                datumTokenizer: Bloodhound.tokenizers.whitespace('NombreCompleto'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace
             });
             console.log(clientes);
-            $("#input-IdProveedor").typeahead({
+            $("#input-IdCliente").typeahead({
                 hint: true,
                 highlight: true,
                 limit: 10,
                 minLength: 2
             }, {
                 source: clientes.ttAdapter(),
-                display: 'NombreRazonSocial',
+                display: 'NombreCompleto',
 
                 // This will be appended to "tt-dataset-" to form the class name of the suggestion menu.
                 name: 'listaClientes',
@@ -413,22 +493,22 @@
                 // the key from the array we want to display (name,id,email,etc...)
                 templates: {
                     empty: [
-                        '<div class="list-group search-results-dropdown"><div class="list-group-item">Proveedor no encontrado</div></div>'
+                        '<div class="list-group search-results-dropdown"><div class="list-group-item">Cliente no encontrado</div></div>'
                     ],
                     header: [
                         '<div class="list-group search-results-dropdown">'
                     ],
                     suggestion: function (data) {
 
-                        return ('<div class="list-group-item" >' + data.NombreRazonSocial + '</div>');
+                        return ('<div class="list-group-item" >' + data.NombreCompleto + '</div>');
                     }
                 }
             }).on('typeahead:selected', function(event, data) {
-                var nombreCompleto = data.NombreRazonSocial;
-                var IdCliente = data.IdProveedor;
+                var nombreCompleto = data.NombreCompleto;
+                var IdCliente = data.IdCliente;
 
 
-                $('#ventaservicios input[name=\"IdProveedor\"]').val(IdCliente)
+                $('#ventaservicios input[name=\"IdCliente\"]').val(IdCliente)
 
 
             });
@@ -516,12 +596,99 @@
 
 
 
+            var mantenimientos = new Bloodhound({
+                remote: {
+                    url: '/buscarMantenimientosAjax?q=QUERY',
+                    wildcard: 'QUERY'
+                },
+                datumTokenizer: Bloodhound.tokenizers.whitespace('NombreMantenimiento'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace
+            });
+            //  console.log(engine);
+
+            $("#buscarMantenimiento").typeahead({
+                hint: true,
+                highlight: true,
+                limit: 10,
+                minLength: 2
+            }, {
+                source: mantenimientos.ttAdapter(),
+                display: 'NombreMantenimiento',
+
+                // This will be appended to "tt-dataset-" to form the class name of the suggestion menu.
+                name: 'listaMantenimientos',
+
+                // the key from the array we want to display (name,id,email,etc...)
+                templates: {
+                    empty: [
+                        '<div class="list-group search-results-dropdown"><div class="list-group-item">Registro no encontrado</div></div>'
+                    ],
+                    header: [
+                        '<div class="list-group search-results-dropdown">'
+                    ],
+                    suggestion: function (data) {
+                        //  console.log("datos del servidor : ");
+                        //console.log(data);
+                        //return '<a href="' + data.NombreArticulo + '" class="list-group-item">' + data.NombreArticulo + ' - @' + data.NombreArticulo + '</a>'
+                        return ('<div class="list-group-item" >' + data.NombreMantenimiento + '</div>');
+                        // return  data.NombreArticulo;
+                    }
+                }
+            }).on('typeahead:selected', function(event, data) {
+                // console.log("seleccionado");
+                // console.log(data.NombreArticulo);
+                //$('.search-inputs').val(data.NombreArticulo);
+
+                var name = data.NombreMantenimiento;
+                var codigo = data.IdTipoMantenimiento;
+                var descripcion = data.Descripcion;
+                var precio = data.PrecioVigente;
+
+
+                dato = existeTupla('tabla_servicios', data.IdArticulo, 7);
+                if(dato == true)
+                {
+                    // alert("El articulo <strong> \"" + name + "\" </strong>ya se encuentra en el detalle");
+                    $('#myAlert').text("No puede registrar articulos duplicados");
+                    $("#myAlert").fadeIn().delay(1500).fadeOut(1000);;
+
+
+
+                    return;
+                }
+                // var markup = "<tr id=articulo" +(NroArticulos+1)+">" +
+                //     "<td class='w-5  '>" +(NroArticulos+1)+" </td>"+
+                //     // "<td class='w-50 '><input type='text' name='productos[]' class='form-control' value ='"+ name+"'  readonly/></td>" +
+                //     "<td class='w-50 '> "+ name+"</td>" +
+                //     "<td class='w-10 text-right'><input type='number' name='cantidades[]' class='form-control qty' step='any' value ='1' min='0'  oninput='check(this)' /></td>" +
+                //     "<td class='w-15 text-right'><input type='number' name='precios[]' placeholder='Int. Precio Unitario' class='form-control price' step='any' min='0' value='"+precio +"' oninput='check(this)' /> </td>" +
+                //     "<td class='w-15 text-right'><input type='number' name='total[]' placeholder='0.00' class='form-control total'  value='"+precio +"' readonly/></td>"+
+                //     "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger btn-sm'><span aria-hidden='true'>×</span></button></td>"+
+                //     "<td style='display:none'> <input name='codigos[]' value='"+data.IdArticulo +"'> </td>"+
+                //
+                //     "</tr>";
+                // $('#tabla_articulos').append(markup);
+                // calc_total();
+
+
+                // NroArticulos++;
+
+
+
+
+            });
+
+
+
 
             $('#ventaservicios').submit(function(e) {
+
+
                 respuesta = false;
                 var currentForm = this;
                 e.preventDefault();
                 var rowCountArticulos = $('#tabla_articulos tr').length;
+                console.log("Numero filas " + rowCountArticulos);
 
 
                 if(rowCountArticulos < 2)
@@ -630,6 +797,8 @@
             }
             return false;
         }
+
+
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.3.0/typeahead.bundle.min.js"></script>
