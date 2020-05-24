@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\TipoMantenimiento;
+use App\Models\TipoMantenimientoDetalle;
+
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class TipoMantenimientoController extends Controller
@@ -178,5 +181,12 @@ class TipoMantenimientoController extends Controller
             return redirect()->route('tiposmantenimientos.index')->withStatus("El elemento " . $tipoMantenimiento->NombreMantenimiento. ", ha sido eleminado correctamente");
         }
         return redirect()->route('tiposmantenimientos.index')->withInput()->with("eliminar_error","la actividad de mantenimiento seleccioinado no pudo eliminarse, probablemente tiene registros que dependen de la misma");
+    }
+
+    public function detalle($id)
+    {
+        //$detalle = TipoMantenimientoDetalle::findOrFail($id);
+        $detalle = TipoMantenimientoDetalle::with('actividadmantenimiento')->where('IdTipoMantenimiento','=',$id)->get();
+        return response($detalle);
     }
 }

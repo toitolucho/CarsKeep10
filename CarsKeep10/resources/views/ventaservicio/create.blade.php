@@ -644,18 +644,41 @@
                 var descripcion = data.Descripcion;
                 var precio = data.PrecioVigente;
 
+                $.get("{{URL::to('/tiposmantenimientos/detalle/')}}/" + codigo, function(data){
+                    console.log(data);
 
-                dato = existeTupla('tabla_servicios', data.IdArticulo, 7);
-                if(dato == true)
-                {
-                    // alert("El articulo <strong> \"" + name + "\" </strong>ya se encuentra en el detalle");
-                    $('#myAlert').text("No puede registrar articulos duplicados");
-                    $("#myAlert").fadeIn().delay(1500).fadeOut(1000);;
+                    cont = 1;
+                    $.each(data, function(i,value){
+                        var tr = $("<tr/>");
+                        tr.append($("<td/>",{  text: cont})).
+                        append($("<td/>",{  text: value.actividadmantenimiento.NombreActividad})).
+                        append($("<td/>",{  text: value.actividadmantenimiento.CostoServicio})).
+                        append($("<td> <input hidden type='text' name='conlcuidos["+ (cont-1)+ "]' value='0'/>  <input type='checkbox' id='check"+ value.IdActividad +"' name='conlcuidos["+ (cont-1)+ "]' value='0' /> </td>")).
+                        append($("<td><input type='text' id='txtObervacion"+ value.IdActividad +"' name='observaciones[]' value='' /></td>"));
+
+                        $('#tabla_servicios').append(tr);
+                        cont++;
+                    })
 
 
+                   // console.log(data[0].actividadmantenimiento.NombreActividad);
 
-                    return;
-                }
+                    //borrar la tabla
+                    //insertar los datos en la tabla
+                })
+
+
+                // dato = existeTupla('tabla_servicios', data.IdArticulo, 7);
+                // if(dato == true)
+                // {
+                //     // alert("El articulo <strong> \"" + name + "\" </strong>ya se encuentra en el detalle");
+                //     $('#myAlert').text("No puede registrar articulos duplicados");
+                //     $("#myAlert").fadeIn().delay(1500).fadeOut(1000);;
+                //
+                //
+                //
+                //     return;
+                // }
                 // var markup = "<tr id=articulo" +(NroArticulos+1)+">" +
                 //     "<td class='w-5  '>" +(NroArticulos+1)+" </td>"+
                 //     // "<td class='w-50 '><input type='text' name='productos[]' class='form-control' value ='"+ name+"'  readonly/></td>" +

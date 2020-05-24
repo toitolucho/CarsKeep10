@@ -120,6 +120,8 @@ Route::get('/ingresosarticulos/reporte/{ingresosarticulo}','IngresoArticuloContr
 Route::get('/ventasservicios/reporte/{ventaservicio}','VentaServicioController@reporte')->name("ventaservicios.reporte");
 Route::put('/ventasservicios/f/{ventaservicio}',"VentaServicioController@finalizar")->name('ventaservicios.finalizar');
 
+Route::get('/tiposmantenimientos/detalle/{IdTipoMantenimiento}','TipoMantenimientoController@detalle')->name('tiposmantenimiento.detalle');
+
 //
 //Route::get('/reporte', function () {
 //

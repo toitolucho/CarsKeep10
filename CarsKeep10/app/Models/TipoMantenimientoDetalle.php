@@ -45,7 +45,7 @@ class TipoMantenimientoDetalle extends Model
 		return $this->belongsTo(TipoMantenimiento::class, 'IdTipoMantenimiento');
 	}
 
-	public function actividadesmantenimiento()
+	public function actividadmantenimiento()
 	{
 		return $this->belongsTo(ActividadMantenimiento::class, 'IdActividad');
 	}
