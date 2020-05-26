@@ -70,6 +70,8 @@
         text-align: right;
     }
 
+    .small-checkbox {width: 8px; height: 20px !important;}
+
 </style>
 
 @section('content')
@@ -284,19 +286,21 @@
                                                         <div class="col-lg-2"></div>
                                                         <div class="form-group col-lg-8 ">
                                                             <input type="search" id="buscarMantenimiento" name="articulo" class="form-control typeahead" placeholder="Int. servicios de Mantenimiento" autocomplete="off" >
+                                                            <input id="IdTipoMantenimiento"  name="IdTipoMantenimiento" hidden value="">
 
                                                         </div>
                                                     </div>
                                                     <div class="row  mt-3 ml-1">
                                                         <div class="col-md-12">
-                                                            <table class="table table-bordered table-hover" id="tabla_servicios">
+                                                            <table class="table table-bordered table-hover"
+                                                                   id="tabla_servicios">
                                                                 <thead>
                                                                 <tr>
                                                                     <th class='w-5 text-center' > Nro</th>
-                                                                    <th class='w-35 text-center'> Servicio</th>
+                                                                    <th class='w-30 text-center'> Servicio</th>
                                                                     <th class='w-10 text-center'> Costo</th>
                                                                     <th class='w-10 text-center' data-toggle="tooltip" data-placement="top" title="Servicio Obligatorio?"> Term.?</th>
-                                                                    <th class='w-10 text-center'> Observaciones</th>
+                                                                    <th class='w-30 text-center'> Observaciones</th>
                                                                     <th class='w-5 text-center' style="border-top: 1px solid #f8f9fc; border-right: 1px solid #f8f9fc; border-bottom: 1px solid #f8f9fc;"></th>
                                                                     <th class="text-center" style='display:none'></th>
                                                                 </tr>
@@ -431,7 +435,7 @@
 
                             <div class="card-footer ml-auto mr-auto">
 {{--                                <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>--}}
-                                <button type="submit" class="btn btn-primary btn-round"><i class="material-icons">save</i> {{ __('Guardar') }}<div class="ripple-container"></div></button>
+                                <button  type="submit" class="btn btn-primary btn-round"><i class="material-icons">save</i> {{ __('Guardar') }}<div class="ripple-container"></div></button>
                             </div>
                         </div>
                     </form>
@@ -642,19 +646,34 @@
                 var name = data.NombreMantenimiento;
                 var codigo = data.IdTipoMantenimiento;
                 var descripcion = data.Descripcion;
-                var precio = data.PrecioVigente;
+                var limInf = data.LimiteInferiorKilometraje;
+                var limSup = data.LimiteSuperiorKilometraje;
+
+                $('#ventaservicios input[name=\"IdTipoMantenimiento\"]').val(codigo)
 
                 $.get("{{URL::to('/tiposmantenimientos/detalle/')}}/" + codigo, function(data){
-                    console.log(data);
+                   // console.log(data);
 
+
+                    {{--///<textarea class="form-control {{ $errors->has('Descripcion') ? ' is-invalid' : '' }}" name="Descripcion" id="input-Descripcion" rows="3">{{old('Descripcion')}}</textarea>--}}
+                    //     "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger btn-sm'><span aria-hidden='true'>×</span></button></td>"+
+                    // "<td style='display:none'> <input name='codigos[]' value='"+data.IdArticulo +"'> </td>"+
                     cont = 1;
                     $.each(data, function(i,value){
+                        console.log(value);
+
                         var tr = $("<tr/>");
+                        tr.attr('id', "servicio" + cont);
                         tr.append($("<td/>",{  text: cont})).
                         append($("<td/>",{  text: value.actividadmantenimiento.NombreActividad})).
-                        append($("<td/>",{  text: value.actividadmantenimiento.CostoServicio})).
-                        append($("<td> <input hidden type='text' name='conlcuidos["+ (cont-1)+ "]' value='0'/>  <input type='checkbox' id='check"+ value.IdActividad +"' name='conlcuidos["+ (cont-1)+ "]' value='0' /> </td>")).
-                        append($("<td><input type='text' id='txtObervacion"+ value.IdActividad +"' name='observaciones[]' value='' /></td>"));
+                        append($("<td/>",{  text: value.CostoServicio})).
+                        append($("<td> <input hidden type='text' name='concluidos["+ (cont-1)+ "]' value='0'/>  <input class='form-control small-checkbox'  type='checkbox' id='check"+ cont +"' name='concluidos["+ (cont-1)+ "]' value='0' data-toggle='tooltip' data-placement='top' title='¿Ha concluido el servicio "+  value.actividadmantenimiento.NombreActividad  +"?' /> </td>")).
+                        append($("<td><textarea class='form-control' id='txtObervacion"+ cont +"' name='observaciones[]' value='' rows='2'/></td>")).
+                        append($("<td><button onclick='removeRowServicio("+cont+")' name='servicio"+cont+"' class='btn btn-danger btn-just-icon btn-sm'> <i class='material-icons'>highlight_off</i></button>  </td>")).
+                        append( $("<td style='display:none'>  <input name='servicios[]' value='"+value.IdActividad +"'>  </td>")
+                        );
+
+
 
                         $('#tabla_servicios').append(tr);
                         cont++;
@@ -740,6 +759,11 @@
 
         function removeRowArticulo(removeNum) {
             jQuery('#articulo'+removeNum).remove();
+            calc_total();
+        }
+
+        function removeRowServicio(removeNum) {
+            jQuery('#servicio'+removeNum).remove();
             calc_total();
         }
 

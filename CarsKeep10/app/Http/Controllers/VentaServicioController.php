@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActividadMantenimiento;
+use App\Models\TipoMantenimiento;
+use App\Models\TipoMantenimientoDetalle;
 use App\Models\VentaServicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\VentaServicioRequest;
+use JasperPHP;
 
 class VentaServicioController extends Controller
 {
@@ -38,9 +43,55 @@ class VentaServicioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VentaServicioRequest $request)
     {
-        //
+        $venta = VentaServicio::create($request->all());
+
+//        $productos = $request->input('productos', []);
+        $cantidades = $request->input('cantidades', []);
+        $precios = $request->input('precios', []);
+        $codigos = $request->input('codigos', []);
+
+
+        $concluidos = $request->input('concluidos', []);
+        $observaciones = $request->input('observaciones', []);
+        $servicios = $request->input('servicios', []);
+
+        //se debe corroborar si es necesario que hay cambios en los costos al momento de venderlos
+        //$costos = $request->input('costos', []);
+
+        $costos = TipoMantenimientoDetalle::where('IdTipoMantenimiento', '=', $request->input('IdTipoMantenimiento') )->get()->toArray();
+
+       // dd($costos[0]['CostoServicio']);
+
+        $venta->IdUsuarioSecretaria = 1;
+        $venta->FechaHoraVenta = \Carbon\Carbon::now();
+        $venta->CodigoEstadoVenta = "I";
+        $venta->Observaciones = $request->input('Observaciones');
+        $venta->IdCliente = $request->input('IdCliente');
+        $venta->NroPlaca = $request->input('NroPlaca');
+        $venta->Kilometraje = $request->input('Kilometraje');
+        $venta->MarcaMovilidad = $request->input('MarcaMovilidad');
+
+
+        $venta->save();
+
+        for ($codigo=0; $codigo < count($codigos); $codigo++) {
+            if ($codigos[$codigo] != '') {
+                $venta->articulos()->attach($codigos[$codigo], ['Cantidad' => $cantidades[$codigo], 'Costo' => $precios[$codigo]]);
+
+            }
+        }
+
+        for ($servicio=0; $servicio < count($servicios); $servicio++) {
+            if ($servicios[$servicio] != '') {
+                $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio]['CostoServicio'], 'CodigoEstadoEjecucion' => ($concluidos[$servicio] ? 'F' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
+
+            }
+        }
+
+
+        return redirect()->route('ventasservicios.index')->with("status","Venta registrada correctamente");;
     }
 
     /**
@@ -101,7 +152,7 @@ class VentaServicioController extends Controller
 //        $jasper->compile($entrada1)->execute();
 //        $jasper->compile($entrada2)->execute();
 
-        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jasper');
+        $entrada1 = storage_path('Reportes/VentaServicio/VentaServicioReporte.jasper');
         //D:\Proyectos\CarsKeep\CarsKeep10\vendor\cossou\jasperphp\src\JasperStarter\jdbc
         $jdbc_dir = base_path() . '\vendor\cossou\jasperphp\src\JasperStarter\jdbc';
 //
@@ -110,7 +161,7 @@ class VentaServicioController extends Controller
             $entrada1,
             false,
             array("pdf"),
-            array("IdIngresoArticulo" => $id),
+            array("IdVentaServicio" => $id),
             array(
                 'driver' => 'mysql',
                 'username' => 'root',
@@ -120,11 +171,11 @@ class VentaServicioController extends Controller
                 'jdbc_dir' => $jdbc_dir,
             )
 
-        )->execute();
+        )->output();
 
-//       echo $salida;
+       echo $salida;
 
-        $file = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.pdf');
+        $file = storage_path('Reportes/VentaServicio/VentaServicioReporte.pdf');
         if (file_exists($file)) {
 
             $headers = [
@@ -136,3 +187,4 @@ class VentaServicioController extends Controller
         }
     }
 }
+

@@ -160,7 +160,7 @@ CREATE TABLE VentasServicio
 
 CREATE TABLE VentasServicioDetalleMantenimiento
 (
-	IdVentaServicio			INT AUTO_INCREMENT,
+	IdVentaServicio			INT,
 	IdActividad				INT,
 	Costo					DECIMAL(10,2),
 	CodigoEstadoEjecucion	CHAR(1) ,-- 'F'->FINALIZADO, 'A' ->ANULADO, 'P'->PENDIENTE,'I'->INICIADO
@@ -172,7 +172,7 @@ CREATE TABLE VentasServicioDetalleMantenimiento
 
 CREATE TABLE VentasServicioDetalleArticulos
 (
-	IdVentaServicio		INT AUTO_INCREMENT,
+	IdVentaServicio		INT ,
 	IdArticulo			INT,
 	Cantidad			INT,
 	Costo				DECIMAL(10,2),

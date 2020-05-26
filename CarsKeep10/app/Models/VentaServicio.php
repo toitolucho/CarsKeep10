@@ -6,10 +6,13 @@
 
 namespace App\Models;
 
+use App\Models\Articulo;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\ActividadMantenimiento;
+
 
 /**
  * Class VentaServicio
@@ -27,6 +30,7 @@ use Illuminate\Support\Facades\Crypt;
  * @property Usuario $usuario
  * @property Cliente $cliente
  * @property Collection|Articulo[] $articulos
+ * @property Collection|ActividadMantenimiento[] $actividadesMantenimiento
  * @property Collection|Ventasserviciodetallemantenimiento[] $ventasserviciodetallemantenimientos
  *
  * @package App\Models
@@ -83,7 +87,7 @@ class VentaServicio extends Model
 
     public function actividadesMantenimiento()
     {
-        return $this->belongsToMany(ActividadesMantenimiento::class, 'VentasServicioDetalleMantenimiento', 'IdVentaServicio', 'IdActividad')
+        return $this->belongsToMany(ActividadMantenimiento::class, 'VentasServicioDetalleMantenimiento', 'IdVentaServicio', 'IdActividad')
             ->withPivot('Costo', 'CodigoEstadoEjecucion', 'Observacion' );
     }
 
@@ -91,7 +95,7 @@ class VentaServicio extends Model
     public function getEstadoAttribute()
     {
         $estado = "HOla";
-        switch ($this->CodigoEstadoIngreso)
+        switch ($this->CodigoEstadoVenta)
         {
             case "I":
                 $estado = "INICIADO";

@@ -76,7 +76,7 @@
                     <form method="post" action="{{ route('tiposmantenimientos.store') }}" autocomplete="off" class="form-horizontal" id="tiposmaneniento">
                         @csrf
 {{--                        @method('put')--}}
-
+I
                         <div class="card ">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">{{ __('Actividades de Servicios') }}</h4>
