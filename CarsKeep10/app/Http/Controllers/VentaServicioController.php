@@ -143,14 +143,18 @@ class VentaServicioController extends Controller
     {
         $id = Crypt::decrypt($id);
         $jasper = new \JasperPHP\JasperPHP;
-//        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jrxml');
-//        $entrada2 = storage_path('Reportes/IngresoArticulo/IngresosArticulosDetalleReporte.jrxml');
+        $entrada1 = storage_path('Reportes/VentaServicio/VentaServicioReporte.jrxml');
+        $entrada2 = storage_path('Reportes/VentaServicio/VentaArticuloReporte_Detalle.jrxml');
+        $entrada3 = storage_path('Reportes/VentaServicio/VentaServicioReporte_Detalle.jrxml');
 //
 //       // dd($entrada);
 //
 //        // Compile a JRXML to Jasper
 //        $jasper->compile($entrada1)->execute();
 //        $jasper->compile($entrada2)->execute();
+//        $jasper->compile($entrada3)->execute();
+//        echo $a;
+        //dd('aaaaaaa');
 
         $entrada1 = storage_path('Reportes/VentaServicio/VentaServicioReporte.jasper');
         //D:\Proyectos\CarsKeep\CarsKeep10\vendor\cossou\jasperphp\src\JasperStarter\jdbc
@@ -171,9 +175,9 @@ class VentaServicioController extends Controller
                 'jdbc_dir' => $jdbc_dir,
             )
 
-        )->output();
+        )->execute();
 
-       echo $salida;
+//       echo $jdbc_dir;
 
         $file = storage_path('Reportes/VentaServicio/VentaServicioReporte.pdf');
         if (file_exists($file)) {
