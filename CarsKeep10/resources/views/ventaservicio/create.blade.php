@@ -667,7 +667,7 @@
                         tr.append($("<td/>",{  text: cont})).
                         append($("<td/>",{  text: value.actividadmantenimiento.NombreActividad})).
                         append($("<td/>",{  text: value.CostoServicio})).
-                        append($("<td> <input hidden type='text' name='concluidos["+ (cont-1)+ "]' value='0'/>  <input class='form-control small-checkbox'  type='checkbox' id='check"+ cont +"' name='concluidos["+ (cont-1)+ "]' value='0' data-toggle='tooltip' data-placement='top' title='¿Ha concluido el servicio "+  value.actividadmantenimiento.NombreActividad  +"?' /> </td>")).
+                        append($("<td> <input hidden type='text' name='concluidos["+ (cont-1)+ "]' />  <input class='form-control small-checkbox'  type='checkbox' id='check"+ cont +"' name='concluidos["+ (cont-1)+ "]'  data-toggle='tooltip' data-placement='top' title='¿Ha concluido el servicio "+  value.actividadmantenimiento.NombreActividad  +"?' /> </td>")).
                         append($("<td><textarea class='form-control' id='txtObervacion"+ cont +"' name='observaciones[]' value='' rows='2'/></td>")).
                         append($("<td><button onclick='removeRowServicio("+cont+")' name='servicio"+cont+"' class='btn btn-danger btn-just-icon btn-sm'> <i class='material-icons'>highlight_off</i></button>  </td>")).
                         append( $("<td style='display:none'>  <input name='servicios[]' value='"+value.IdActividad +"'>  </td>")
