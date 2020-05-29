@@ -45,6 +45,7 @@ class VentaServicio extends Model
 		'IdUsuarioSecretaria' => 'int',
 		'IdUsuarioTecnico' => 'int',
 		'IdCliente' => 'int',
+        'IdTipoMantenimiento' => 'int',
 		'Kilometraje' => 'float'
 	];
 
@@ -61,7 +62,8 @@ class VentaServicio extends Model
 		'CodigoEstadoVenta',
 		'Kilometraje',
 		'MarcaMovilidad',
-		'Observaciones'
+		'Observaciones',
+        'IdTipoMantenimiento'
 	];
 
 	public function usuario()

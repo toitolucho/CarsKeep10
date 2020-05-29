@@ -153,9 +153,11 @@ CREATE TABLE VentasServicio
 	Kilometraje			DECIMAL(10,2),
 	MarcaMovilidad		VARCHAR(10),
 	Observaciones		VARCHAR(600),
+	IdTipoMantenimiento	INT,
 	PRIMARY KEY(IdVentaServicio),
 	FOREIGN KEY(IdUsuarioSecretaria)REFERENCES  Usuarios(IdUsuario),
-	FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente)
+	FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente),
+	FOREIGN KEY (IdTipoMantenimiento) REFERENCES TiposMantenimientos(IdTipoMantenimiento)
 );
 
 CREATE TABLE VentasServicioDetalleMantenimiento
@@ -163,7 +165,7 @@ CREATE TABLE VentasServicioDetalleMantenimiento
 	IdVentaServicio			INT,
 	IdActividad				INT,
 	Costo					DECIMAL(10,2),
-	CodigoEstadoEjecucion	CHAR(1) ,-- 'F'->FINALIZADO, 'A' ->ANULADO, 'P'->PENDIENTE,'I'->INICIADO
+	CodigoEstadoEjecucion	CHAR(1) ,-- 'C'->CONCLUIDO, 'A' ->ANULADO, 'P'->PENDIENTE,'I'->INICIADO
 	Observacion				VARCHAR(200),
 	PRIMARY KEY (IdVentaServicio, IdActividad),
 	FOREIGN KEY (IdVentaServicio) REFERENCES VentasServicio(IdVentaServicio),

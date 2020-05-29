@@ -73,6 +73,8 @@ class VentaServicioController extends Controller
         $venta->NroPlaca = $request->input('NroPlaca');
         $venta->Kilometraje = $request->input('Kilometraje');
         $venta->MarcaMovilidad = $request->input('MarcaMovilidad');
+        $venta->IdTipoMantenimiento = $request->input('IdTipoMantenimiento');
+
 
 
         $venta->save();
@@ -112,9 +114,31 @@ class VentaServicioController extends Controller
      * @param  \App\Models\VentaServicio  $ventaServicio
      * @return \Illuminate\Http\Response
      */
-    public function edit(VentaServicio $ventaServicio)
+    public function edit($id)
     {
         //
+
+        try{
+            $id = Crypt::decrypt($id);
+            $venta = VentaServicio::withCount('articulos')->with('articulos', 'cliente', 'actividadesMantenimiento')->findOrFail($id);
+
+            $total = 0;
+            foreach ($venta->articulos as $detalle)
+            {
+                $total = $total+$detalle->pivot->Cantidad * $detalle->pivot->Precio;
+            }
+
+            foreach ($venta->actividadesMantenimiento as $detalle)
+            {
+                $total = $total+$detalle->pivot->Costo * $detalle->pivot->Costo;
+            }
+
+            return view('ventaservicio.edit',[ 'venta' => $venta, 'total'=>$total ]);
+        }
+        catch (DecryptException $e) {
+            // abort(404, 'Codigo de Generación invalido!');
+            abort(403, 'Accion no valida. Codigo de Generación invalido');
+        }
     }
 
     /**
@@ -124,9 +148,82 @@ class VentaServicioController extends Controller
      * @param  \App\Models\VentaServicio  $ventaServicio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VentaServicio $ventaServicio)
+    public function update(VentaServicioRequest $request, $id)
     {
-        //
+        try{
+            $id = Crypt::decrypt($id);
+            $venta = VentaServicio::with('articulos','actividadesMantenimiento')->find($id);
+
+
+            if($venta->articulos())
+            {
+                $venta->articulos()->detach();
+
+            }
+            if($venta->actividadesMantenimiento())
+            {
+                $venta->actividadesMantenimiento()->detach();
+
+            }
+
+
+//        $venta = VentaServicio::create($request->all());
+
+            $cantidades = $request->input('cantidades', []);
+            $precios = $request->input('precios', []);
+            $codigos = $request->input('codigos', []);
+
+
+            $concluidos = $request->input('concluidos', []);
+            $observaciones = $request->input('observaciones', []);
+            $servicios = $request->input('servicios', []);
+
+            //se debe corroborar si es necesario que hay cambios en los costos al momento de venderlos
+            //$costos = $request->input('costos', []);
+
+            $costos = TipoMantenimientoDetalle::wherein('IdActividad',  $servicios)->where('IdTipoMantenimiento', '=', $venta->IdTipoMantenimiento )  ->get()->toArray();
+
+           // dd($costos);
+
+        $venta->IdUsuarioSecretaria = 1;
+//        $venta->FechaHoraVenta = \Carbon\Carbon::now();
+        $venta->CodigoEstadoVenta = $request->input('CodigoEstadoVenta');
+        $venta->Observaciones = $request->input('Observaciones');
+        $venta->IdCliente = $request->input('IdCliente');
+        $venta->NroPlaca = $request->input('NroPlaca');
+        $venta->Kilometraje = $request->input('Kilometraje');
+        $venta->MarcaMovilidad = $request->input('MarcaMovilidad');
+
+        $venta->update();
+        $venta= $venta->fresh(['articulos']);
+        $venta= $venta->fresh(['actividadesMantenimiento']);
+        $venta->setRelations([]);
+
+
+        for ($codigo=0; $codigo < count($codigos); $codigo++) {
+            if ($codigos[$codigo] != '') {
+                $venta->articulos()->attach($codigos[$codigo], ['Cantidad' => $cantidades[$codigo], 'Costo' => $precios[$codigo]]);
+
+            }
+        }
+
+        for ($servicio=0; $servicio < count($servicios); $servicio++) {
+            if ($servicios[$servicio] != '') {
+                $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio]['CostoServicio'], 'CodigoEstadoEjecucion' => ($concluidos[$servicio]=="on" ? 'C' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
+
+            }
+        }
+
+
+            return redirect()->route('ventasservicios.index')->with("status","Venta registrada correctamente");
+        }
+        catch (DecryptException $e) {
+            // abort(404, 'Codigo de Generación invalido!');
+            abort(403, 'Accion no valida. Codigo de Generación invalido');
+        }
+
+
+
     }
 
     /**

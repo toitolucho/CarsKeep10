@@ -205,9 +205,9 @@
                                                     <div class="row">
                                                         <label class="col-sm-2 col-form-label" for="exampleFormControlSelect1">Estado</label>
                                                         <div class="col-sm-7">
-                                                            <div class="form-group{{ $errors->has('CodigoEstadoIngreso') ? ' has-danger' : '' }}">
+                                                            <div class="form-group{{ $errors->has('CodigoEstadoVenta') ? ' has-danger' : '' }}">
 
-                                                                <select disabled class="form-control{{ $errors->has('CodigoEstadoIngreso') ? ' is-invalid' : '' }} "  title="Seleccione el estado de la transaccion" name="CodigoEstadoIngreso" id="input-CodigoEstadoIngreso" data-toggle="Estado de la Transacción" data-placement="top" title="Estado de la Transacción"   >
+                                                                <select disabled class="form-control{{ $errors->has('CodigoEstadoVenta') ? ' is-invalid' : '' }} "  title="Seleccione el estado de la transaccion" name="CodigoEstadoVenta" id="input-CodigoEstadoVenta" data-toggle="Estado de la Transacción" data-placement="top" title="Estado de la Transacción"   >
 
                                                                     <option value="I" selected>INICIADO</option>
                                                                     <option value="F">FINALIZADO</option>
@@ -215,8 +215,8 @@
 
                                                                 </select>
 
-                                                                @if ($errors->has('CodigoEstadoIngreso'))
-                                                                    <span id="CodigoEstadoIngreso-error" class="error text-danger" for="input-CodigoEstadoIngreso">{{ $errors->first('CodigoEstadoIngreso') }}</span>
+                                                                @if ($errors->has('CodigoEstadoVenta'))
+                                                                    <span id="CodigoEstadoVenta-error" class="error text-danger" for="input-CodigoEstadoVenta">{{ $errors->first('CodigoEstadoVenta') }}</span>
                                                                 @endif
                                                             </div>
                                                             <span class="bmd-help">Seleccione Finalizar en caso de confirmar el movimiento (Recuerde que ya no podra hacer cambios)</span>
