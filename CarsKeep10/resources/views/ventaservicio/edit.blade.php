@@ -299,7 +299,7 @@
                                                             <tr>
                                                                 <th class='w-5 text-center' > Nro</th>
                                                                 <th class='w-30 text-center'> Servicio</th>
-                                                                <th class='w-10 text-center'> Costo</th>
+                                                                <th class='w-auto text-center'> Costo</th>
                                                                 <th class='w-10 text-center' data-toggle="tooltip" data-placement="top" title="Servicio Obligatorio?"> Term.?</th>
                                                                 <th class='w-30 text-center'> Observaciones</th>
                                                                 <th class='w-5 text-center' style="border-top: 1px solid #f8f9fc; border-right: 1px solid #f8f9fc; border-bottom: 1px solid #f8f9fc;"></th>
@@ -325,8 +325,8 @@
                                                                         <td>{{$loop->index+1}}</td>
                                                                         {{--                                                                        <td><input type='text' name='productos[]' class='form-control' value ="{{$detalle->articulo->NombreArticulo}}"  readonly/></td>--}}
                                                                         <td>{{$detalle->NombreActividad}}</td>
-                                                                        <td class="text-right">{{$detalle->pivot->Costo}}</td>
-                                                                        <td> <input hidden type='text' name='concluidos[ {{$loop->index}} ]' />   <input class='form-control small-checkbox'   {{$detalle->pivot->CodigoEstadoEjecucion == 'C' ? "checked" :  "" }}  type='checkbox' id='check{{$loop->index+1}}' name='concluidos[ {{$loop->index}} ]'  data-toggle='tooltip' data-placement='top' title='¿Ha concluido el servicio {{$detalle->NombreActividad}}?' /></td>
+                                                                        <td class="text-right"><input style="text-align:right;" class="form-control price" name='costos[]' type="number"    value="{{$detalle->pivot->Costo}}" readonly /></td>
+                                                                        <td> <input hidden type='text' name='concluidos[{{$loop->index}}]' />   <input class='form-control small-checkbox'   {{$detalle->pivot->CodigoEstadoEjecucion == 'C' ? "checked" :  "" }}  type='checkbox' id='check{{$loop->index+1}}' name='concluidos[{{$loop->index}}]'  data-toggle='tooltip' data-placement='top' title='¿Ha concluido el servicio {{$detalle->NombreActividad}}?' /></td>
 {{--                                                                        <td><input type='number' name='precios[]' placeholder='Int. Precio Unitario' class='form-control price' step='0.00' min='0' value="{{$detalle->pivot->Precio}}"> </td>--}}
                                                                         <td><textarea class='form-control' id='txtObervacion{{$loop->index+1}}' name='observaciones[]' rows='2'>  {{$detalle->pivot->Observacion}} </textarea></td>
                                                                         <td data-name='del{{$loop->index+1}}'><button onclick='removeRowServicio({{$loop->index+1}});' name='del{{$loop->index+1}}' class='btn btn-danger btn-just-icon btn-sm'> <i class='material-icons'>highlight_off</i></button> </td>
@@ -713,7 +713,7 @@
                     {{--///<textarea class="form-control {{ $errors->has('Descripcion') ? ' is-invalid' : '' }}" name="Descripcion" id="input-Descripcion" rows="3">{{old('Descripcion')}}</textarea>--}}
                     //     "<td class='w-5  text-center' data-name='del" +(NroArticulos+1)+"'><button onclick='removeRowArticulo("+(NroArticulos+1)+");' name='articulo" +(NroArticulos+1)+"' class='btn btn-danger btn-sm'><span aria-hidden='true'>×</span></button></td>"+
                     // "<td style='display:none'> <input name='codigos[]' value='"+data.IdArticulo +"'> </td>"+
-                    cont = 1;
+                    cont = {!! $venta->actividadesMantenimiento_count !!}+1;
                     $.each(data, function(i,value){
                         console.log(value);
 
@@ -721,7 +721,7 @@
                         tr.attr('id', "servicio" + cont);
                         tr.append($("<td/>",{  text: cont})).
                         append($("<td/>",{  text: value.actividadmantenimiento.NombreActividad})).
-                        append($("<td/>",{  text: value.CostoServicio})).
+                        append($("<td> <input style='text-align:right;' class='form-control price' name='costos[]' type='number'    value='"+ value.CostoServicio+"' readonly /></td>")).
                         append($("<td> <input hidden type='text' name='concluidos["+ (cont-1)+ "]' />  <input class='form-control small-checkbox'  type='checkbox' id='check"+ cont +"' name='concluidos["+ (cont-1)+ "]'  data-toggle='tooltip' data-placement='top' title='¿Ha concluido el servicio "+  value.actividadmantenimiento.NombreActividad  +"?' /> </td>")).
                         append($("<td><textarea class='form-control' id='txtObervacion"+ cont +"' name='observaciones[]' value='' rows='2'/></td>")).
                         append($("<td><button onclick='removeRowServicio("+cont+")' name='servicio"+cont+"' class='btn btn-danger btn-just-icon btn-sm'> <i class='material-icons'>highlight_off</i></button>  </td>")).

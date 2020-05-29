@@ -2,13 +2,12 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" line="294" />
-    <bookmark url="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" line="660" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" line="662" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php" line="715" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8366a37-fc50-4e21-a1a1-45b09af8aa1b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/VentaServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/VentaServicio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php" afterDir="false" />
     </list>
@@ -53,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/app/Models/VentaServicio.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="337">
-              <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
               <folding>
                 <element signature="e#68#92#0#PHP" expanded="true" />
               </folding>
@@ -94,13 +93,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="288" column="90" selection-start-line="288" selection-start-column="71" selection-end-line="288" selection-end-column="90" />
+            <state relative-caret-position="347">
+              <caret line="672" column="110" selection-start-line="672" selection-start-column="110" selection-end-line="672" selection-end-column="110" />
               <folding>
                 <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -110,21 +110,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="87" column="116" selection-start-line="87" selection-start-column="116" selection-end-line="87" selection-end-column="116" />
+            <state relative-caret-position="351">
+              <caret line="328" column="337" selection-start-line="328" selection-start-column="337" selection-end-line="328" selection-end-column="337" />
               <folding>
+                <element signature="e#23189#23214#0#HTML" expanded="true" />
                 <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="194" column="50" lean-forward="true" selection-start-line="194" selection-start-column="50" selection-end-line="194" selection-end-column="50" />
+            <state relative-caret-position="439">
+              <caret line="179" column="35" lean-forward="true" selection-start-line="179" selection-start-column="35" selection-end-line="179" selection-end-column="35" />
               <folding>
                 <element signature="e#40#78#0#PHP" expanded="true" />
               </folding>
@@ -135,8 +137,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7480">
-              <caret line="440" column="51" selection-start-line="440" selection-start-column="51" selection-end-line="440" selection-end-column="51" />
+            <state relative-caret-position="365">
+              <caret line="240" column="174" selection-start-line="240" selection-start-column="169" selection-end-line="240" selection-end-column="174" />
+              <folding>
+                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,8 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$ingreso-&gt;IdIngresoArticulo</find>
-      <find>registro a eliminar</find>
       <find>Crypt::encrypt($ingreso-&gt;IdIngresoArticulo )</find>
       <find>NombreRazonSocial</find>
       <find>buscarArticulo</find>
@@ -174,6 +177,8 @@
       <find>ActividadesMantenimiento</find>
       <find>finalizar</find>
       <find>concluido</find>
+      <find>price</find>
+      <find>\&quot;</find>
       <find>CodigoEstadoIngreso</find>
     </findStrings>
     <replaceStrings>
@@ -188,6 +193,7 @@
       <replace>{{$venta-&gt;IdVentaServicio}}</replace>
       <replace>ventaservicios</replace>
       <replace>MarcaMovilidad</replace>
+      <replace>'</replace>
       <replace>CodigoEstadoVenta</replace>
     </replaceStrings>
   </component>
@@ -231,10 +237,10 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/TipoMantenimientoController.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/VentaServicioRequest.php" />
         <option value="$PROJECT_DIR$/resources/views/tiposmantenimiento/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/VentaServicio.php" />
+        <option value="$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php" />
+        <option value="$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" />
       </list>
     </option>
   </component>
@@ -506,12 +512,12 @@
       <workItem from="1590316936386" duration="6534000" />
       <workItem from="1590504923335" duration="20022000" />
       <workItem from="1590701450792" duration="3823000" />
-      <workItem from="1590768603949" duration="4047000" />
+      <workItem from="1590768603949" duration="10463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146715000" />
+    <option name="totallyTimeSpent" value="153131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -893,28 +899,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7480">
-          <caret line="440" column="51" selection-start-line="440" selection-start-column="51" selection-end-line="440" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="114" column="131" selection-start-line="114" selection-start-column="106" selection-end-line="114" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="87" column="116" selection-start-line="87" selection-start-column="116" selection-end-line="87" selection-end-column="116" />
-          <folding>
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -928,33 +916,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="288" column="90" selection-start-line="288" selection-start-column="71" selection-end-line="288" selection-end-column="90" />
-          <folding>
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/VentaServicio.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
-          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
           <folding>
             <element signature="e#68#92#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/ingresosarticulo/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="240" column="174" selection-start-line="240" selection-start-column="169" selection-end-line="240" selection-end-column="174" />
+          <folding>
+            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="194" column="50" lean-forward="true" selection-start-line="194" selection-start-column="50" selection-end-line="194" selection-end-column="50" />
+        <state relative-caret-position="439">
+          <caret line="179" column="35" lean-forward="true" selection-start-line="179" selection-start-column="35" selection-end-line="179" selection-end-column="35" />
           <folding>
             <element signature="e#40#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="328" column="337" selection-start-line="328" selection-start-column="337" selection-end-line="328" selection-end-column="337" />
+          <folding>
+            <element signature="e#23189#23214#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="672" column="110" selection-start-line="672" selection-start-column="110" selection-end-line="672" selection-end-column="110" />
+          <folding>
+            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

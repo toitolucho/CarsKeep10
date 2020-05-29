@@ -59,9 +59,9 @@ class VentaServicioController extends Controller
         $servicios = $request->input('servicios', []);
 
         //se debe corroborar si es necesario que hay cambios en los costos al momento de venderlos
-        //$costos = $request->input('costos', []);
+        $costos = $request->input('costos', []);
 
-        $costos = TipoMantenimientoDetalle::where('IdTipoMantenimiento', '=', $request->input('IdTipoMantenimiento') )->get()->toArray();
+//        $costos = TipoMantenimientoDetalle::where('IdTipoMantenimiento', '=', $request->input('IdTipoMantenimiento') )->get()->toArray();
 
         //dd($concluidos);
 
@@ -88,8 +88,8 @@ class VentaServicioController extends Controller
 
         for ($servicio=0; $servicio < count($servicios); $servicio++) {
             if ($servicios[$servicio] != '') {
-                $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio]['CostoServicio'], 'CodigoEstadoEjecucion' => ($concluidos[$servicio]=="on" ? 'C' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
-
+//                $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio]['CostoServicio'], 'CodigoEstadoEjecucion' => ($concluidos[$servicio]=="on" ? 'C' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
+                $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio], 'CodigoEstadoEjecucion' => ($concluidos[$servicio]=="on" ? 'C' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
             }
         }
 
@@ -155,16 +155,7 @@ class VentaServicioController extends Controller
             $venta = VentaServicio::with('articulos','actividadesMantenimiento')->find($id);
 
 
-            if($venta->articulos())
-            {
-                $venta->articulos()->detach();
 
-            }
-            if($venta->actividadesMantenimiento())
-            {
-                $venta->actividadesMantenimiento()->detach();
-
-            }
 
 
 //        $venta = VentaServicio::create($request->all());
@@ -179,43 +170,56 @@ class VentaServicioController extends Controller
             $servicios = $request->input('servicios', []);
 
             //se debe corroborar si es necesario que hay cambios en los costos al momento de venderlos
-            //$costos = $request->input('costos', []);
+            $costos = $request->input('costos', []);
 
-            $costos = TipoMantenimientoDetalle::wherein('IdActividad',  $servicios)->where('IdTipoMantenimiento', '=', $venta->IdTipoMantenimiento )  ->get()->toArray();
+            //$costos = TipoMantenimientoDetalle::wherein('IdActividad',  $servicios)->where('IdTipoMantenimiento', '=', $venta->IdTipoMantenimiento )  ->get()->toArray();
 
-           // dd($costos);
-
-        $venta->IdUsuarioSecretaria = 1;
-//        $venta->FechaHoraVenta = \Carbon\Carbon::now();
-        $venta->CodigoEstadoVenta = $request->input('CodigoEstadoVenta');
-        $venta->Observaciones = $request->input('Observaciones');
-        $venta->IdCliente = $request->input('IdCliente');
-        $venta->NroPlaca = $request->input('NroPlaca');
-        $venta->Kilometraje = $request->input('Kilometraje');
-        $venta->MarcaMovilidad = $request->input('MarcaMovilidad');
-
-        $venta->update();
-        $venta= $venta->fresh(['articulos']);
-        $venta= $venta->fresh(['actividadesMantenimiento']);
-        $venta->setRelations([]);
+             //dd($servicios, $observaciones, $costos, $concluidos);
 
 
-        for ($codigo=0; $codigo < count($codigos); $codigo++) {
-            if ($codigos[$codigo] != '') {
-                $venta->articulos()->attach($codigos[$codigo], ['Cantidad' => $cantidades[$codigo], 'Costo' => $precios[$codigo]]);
+            if($venta->articulos())
+            {
+                $venta->articulos()->detach();
 
             }
-        }
-
-        for ($servicio=0; $servicio < count($servicios); $servicio++) {
-            if ($servicios[$servicio] != '') {
-                $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio]['CostoServicio'], 'CodigoEstadoEjecucion' => ($concluidos[$servicio]=="on" ? 'C' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
+            if($venta->actividadesMantenimiento())
+            {
+                $venta->actividadesMantenimiento()->detach();
 
             }
-        }
+
+            $venta->IdUsuarioSecretaria = 1;
+    //        $venta->FechaHoraVenta = \Carbon\Carbon::now();
+            $venta->CodigoEstadoVenta = $request->input('CodigoEstadoVenta');
+            $venta->Observaciones = $request->input('Observaciones');
+            $venta->IdCliente = $request->input('IdCliente');
+            $venta->NroPlaca = $request->input('NroPlaca');
+            $venta->Kilometraje = $request->input('Kilometraje');
+            $venta->MarcaMovilidad = $request->input('MarcaMovilidad');
+
+            $venta->update();
+            $venta= $venta->fresh(['articulos']);
+            $venta= $venta->fresh(['actividadesMantenimiento']);
+            $venta->setRelations([]);
 
 
-            return redirect()->route('ventasservicios.index')->with("status","Venta registrada correctamente");
+            for ($codigo=0; $codigo < count($codigos); $codigo++) {
+                if ($codigos[$codigo] != '') {
+                    $venta->articulos()->attach($codigos[$codigo], ['Cantidad' => $cantidades[$codigo], 'Costo' => $precios[$codigo]]);
+
+                }
+            }
+
+            for ($servicio=0; $servicio < count($servicios); $servicio++) {
+                if ($servicios[$servicio] != '') {
+    //                $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio]['CostoServicio'], 'CodigoEstadoEjecucion' => ($concluidos[$servicio]=="on" ? 'C' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
+                    $venta->actividadesMantenimiento()->attach($servicios[$servicio], ['Costo' => $costos[$servicio], 'CodigoEstadoEjecucion' => ( $concluidos[$servicio]=="on" ? 'C' : 'P' ), 'Observacion' => $observaciones[$servicio]]);
+
+                }
+            }
+
+
+            return redirect()->route('ventasservicios.index')->with("status","Venta modificada correctamente");
         }
         catch (DecryptException $e) {
             // abort(404, 'Codigo de Generación invalido!');
