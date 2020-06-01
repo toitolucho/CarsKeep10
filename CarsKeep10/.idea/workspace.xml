@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8366a37-fc50-4e21-a1a1-45b09af8aa1b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ventaservicio/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +95,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
+            <state relative-caret-position="-1744">
               <caret line="672" column="110" selection-start-line="672" selection-start-column="110" selection-end-line="672" selection-end-column="110" />
               <folding>
                 <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
@@ -512,16 +511,15 @@
       <workItem from="1590316936386" duration="6534000" />
       <workItem from="1590504923335" duration="20022000" />
       <workItem from="1590701450792" duration="3823000" />
-      <workItem from="1590768603949" duration="10463000" />
+      <workItem from="1590768603949" duration="11504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153131000" />
+    <option name="totallyTimeSpent" value="154172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18017058" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -961,7 +959,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/ventaservicio/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
+        <state relative-caret-position="-1744">
           <caret line="672" column="110" selection-start-line="672" selection-start-column="110" selection-end-line="672" selection-end-column="110" />
           <folding>
             <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
