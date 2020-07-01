@@ -64,7 +64,7 @@
 
                                                 <td class="w-5"><a href="articulos/{{$articulo->IdArticulo}}"> {{$articulo->IdArticulo}} </a>  </td>
                                                 <td class="w-40">{{$articulo->NombreArticulo}}  </td>
-                                                <td class="w-20">{{$articulo->categoria->NombreCategoria}}  </td>
+                                                <td class="w-20">{{ $articulo->categoria ? $articulo->categoria->NombreCategoria : ""}}  </td>
                                                 <td class="w-15 text-right" >{{$articulo->CantidadExistencia}}  </td>
                                                 <td class="w-15 text-right">{{$articulo->PrecioVigente}}  </td>
 

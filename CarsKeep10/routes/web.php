@@ -77,6 +77,15 @@ Route::get('/buscarProveedoresAjax', function (Request $request) {
     return response()->json($datas);
 });
 
+Route::get('/buscarCategoriasAjax', function (Request $request) {
+
+
+    $datas = App\Models\Categoria::select(array('IdCategoria','NombreCategoria'))->where("NombreCategoria","LIKE","%{$request->get('q')}%")->get();
+    return response()->json($datas);
+});
+
+//
+
 Route::get('/buscarClientesAjax', function (Request $request) {
 
 

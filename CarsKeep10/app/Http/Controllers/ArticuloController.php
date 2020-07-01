@@ -76,6 +76,8 @@ class ArticuloController extends Controller
      */
     public function edit(Articulo $articulo)
     {
+        $articulo = Articulo::with('categoria')->findOrFail($articulo->IdArticulo);
+        //dd($articulo->categoria());
         return view('articulos.edit',[ 'articulo' => $articulo]);
     }
 

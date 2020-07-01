@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VentaServicioReporte_Detalle" language="groovy" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7240a3a2-2de1-4c05-998f-82cd29e31f52">
+	<property name="ireport.zoom" value="3.452271214393106"/>
+	<property name="ireport.x" value="1023"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="IdVentaServicio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select vsa.IdArticulo, a.NombreArticulo, vsa.Cantidad, vsa.Costo, vsa.Cantidad * vsa.Costo as CostoTotal
+from ventasserviciodetallearticulos vsa
+join articulos a
+on vsa.IdArticulo = a.IdArticulo
+where vsa.IdVentaServicio = $P{IdVentaServicio}]]>
+	</queryString>
+	<field name="IdArticulo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NombreArticulo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Cantidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Costo" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CostoTotal" class="java.math.BigDecimal"/>
+	<variable name="sum_Costo_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{CostoTotal}]]></variableExpression>
+	</variable>
+	<variable name="total_articulos" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$V{sum_Costo_Total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="10" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="15" width="563" height="1" uuid="b2114a94-e801-4d0a-86b6-9e68662818c9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="3" y="0" width="33" height="15" forecolor="#000000" uuid="987c13fc-8f70-44d1-b49f-ad943a23e956"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nro ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="40" y="0" width="274" height="15" forecolor="#000000" uuid="7fd7ac10-823e-4130-9281-11cbbeb80970"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Articulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="483" y="0" width="77" height="15" forecolor="#000000" uuid="6ef3b029-1307-47d6-8b19-fe90c44d3e69"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total (Bs)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="317" y="0" width="70" height="15" forecolor="#000000" uuid="9cda0b68-8044-4fae-9fe3-79b798fe1408"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="392" y="1" width="88" height="15" forecolor="#000000" uuid="1200d9a6-c2fa-4178-bf82-7ee932fab657"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Costo Un.]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="0" width="563" height="1" uuid="a77034bd-24be-44fe-9927-5f569e82fb42"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="1" width="1" height="14" uuid="07ee0408-f92c-47b3-99ba-d9c1520f513e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="565" y="1" width="1" height="14" uuid="97ddf003-d911-4ecb-a990-b5e7a9f82655"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="37" y="1" width="1" height="14" uuid="12dace76-ce6c-4a5d-9c8b-2355f1a72517"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="314" y="1" width="1" height="14" uuid="e6eb1d4e-5cca-4af7-9453-e8bfdd25a9b5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="390" y="1" width="1" height="14" uuid="f6ec2d3c-2d7b-48e5-8b07-f0a34c561ae7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="481" y="1" width="1" height="14" uuid="985ef2be-ee53-44d9-b4e2-59eaa8b223cc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="9" y="0" width="25" height="15" uuid="7bfdd9c7-3e4e-4c97-9bdc-33e75782002d"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="40" y="0" width="274" height="15" uuid="9f8b35f0-4d33-4579-b1b5-f83d2615c4c9"/>
+				<textFieldExpression><![CDATA[$F{NombreArticulo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="483" y="0" width="77" height="15" uuid="59be20a1-61b0-4cb8-ab4b-3f2a3d594d71"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CostoTotal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="317" y="0" width="70" height="15" uuid="07c899b0-afe8-4e76-900c-d7822d9b4ec4"/>
+				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="392" y="0" width="88" height="15" uuid="531ad881-c1cd-475e-b194-110761ad03dc"/>
+				<textFieldExpression><![CDATA[$F{Costo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="16" width="563" height="1" uuid="e3da83c0-e544-4946-882c-20f3c4e529fe"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="565" y="0" width="1" height="17" uuid="b55fb49f-0e88-47bf-8c7f-5c4f4c9a84e3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="0" width="1" height="17" uuid="efeef601-397d-4d16-bd69-9c2ec91b5e4f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="37" y="0" width="1" height="17" uuid="3ca1f7d4-56ee-4073-9101-e759b5144a15"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="314" y="0" width="1" height="17" uuid="626593ca-e6bc-4764-ab67-debe3f22a065"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="390" y="0" width="1" height="17" uuid="c27ac996-3ddd-438a-801f-0cdaf5188134"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="481" y="0" width="1" height="17" uuid="36a8fcfb-fb0c-4d16-9da3-aacb2b3ed8c3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="404" y="1" width="77" height="15" forecolor="#000000" uuid="aea136ff-55b8-43aa-9759-d889b39f9ab2"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Sub Total : ]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement x="480" y="1" width="78" height="15" uuid="a02a8e63-2f5e-4625-9f6e-5e0a7ce75aa0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_Costo_Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="563" y="1" width="31" height="15" forecolor="#000000" uuid="42193a79-37bc-4004-a010-1c740f6c80e1"/>
+				<text><![CDATA[Bs]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,11 +1,78 @@
 @extends('layouts.app', ['activePage' => 'Articulos', 'titlePage' => __('Creación de un articulo básico')])
 
+
+<style>
+    /***
+	TYPEAHEAD for MDB
+	by djibe
+***/
+
+    .typeahead {
+        z-index: 1051;
+    }
+
+
+    /*If using icon span before input, like <i class="fa fa-asterisk prefix"></i>*/
+
+    span.twitter-typeahead {
+        /*width: calc(100% - 3rem);*/
+        /*margin-left: 3rem;*/
+        width: calc(100%);
+    }
+
+
+    /* Aspect of the dropdown of results*/
+
+    .typeahead.dropdown-menu,
+    span.twitter-typeahead .tt-menu {
+        min-width: 100%;
+        background: white;
+        /*as large as input*/
+        border: none;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+        border-radius: 0;
+        font-size: 1.2rem;
+    }
+
+
+    /*Aspect of results, done*/
+
+    span.twitter-typeahead .tt-suggestion {
+        color: #D4AA00;
+        cursor: pointer;
+        padding: 1rem;
+        text-transform: capitalize;
+        font-weight: 400;
+    }
+
+
+    /*Hover a result, done*/
+
+    span.twitter-typeahead .active.tt-suggestion,
+    span.twitter-typeahead .tt-suggestion.tt-cursor,
+    span.twitter-typeahead .active.tt-suggestion:focus,
+    span.twitter-typeahead .tt-suggestion.tt-cursor:focus,
+    span.twitter-typeahead .active.tt-suggestion:hover,
+    span.twitter-typeahead .tt-suggestion.tt-cursor:hover {
+        background-color: #EEEEEE;
+        color: #D4AA00;
+    }
+
+    label.active {
+        color: #D4AA00 !important;
+    }
+
+    #myAlert {
+        display: none;
+    }
+
+</style>
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="{{ route('articulos.store') }}" autocomplete="off" class="form-horizontal">
+                    <form method="post" action="{{ route('articulos.store') }}" autocomplete="off" class="form-horizontal" id = "articulos">
                         @csrf
 {{--                        @method('put')--}}
 
@@ -38,17 +105,38 @@
                                             </div>
                                         </div>
                                     </div>
+{{--                                    <div class="row">--}}
+{{--                                        <label class="col-sm-2 col-form-label">{{ __('IdCategoria') }}</label>--}}
+{{--                                        <div class="col-sm-7">--}}
+{{--                                            <div class="form-group{{ $errors->has('IdCategoria') ? ' has-danger' : '' }}">--}}
+{{--                                                <input class="form-control{{ $errors->has('IdCategoria') ? ' is-invalid' : '' }}" name="IdCategoria" id="input-IdCategoria" type="text"  value="{{ old('IdCategoria') }}" required="true" aria-required="true"/>--}}
+{{--                                                @if ($errors->has('IdCategoria'))--}}
+{{--                                                    <span id="IdCategoria-error" class="error text-danger" for="input-IdCategoria">{{ $errors->first('IdCategoria') }}</span>--}}
+{{--                                                @endif--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('IdCategoria') }}</label>
+                                        <label class="col-sm-2 col-form-label">{{ __('Categoria') }}</label>
                                         <div class="col-sm-7">
                                             <div class="form-group{{ $errors->has('IdCategoria') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('IdCategoria') ? ' is-invalid' : '' }}" name="IdCategoria" id="input-IdCategoria" type="text"  value="{{ old('IdCategoria') }}" required="true" aria-required="true"/>
+                                                <input type="search" name="NombreCategoria" class="form-control typeahead" placeholder="Categoria" autocomplete="off" id="input-IdCategoria"   required="true" aria-required="true" />
+                                                <div class="invalid-feedback">
+                                                    Porfavor seleccione un Categoria.
+                                                </div>
+
+
+                                                <input  type="hidden" id="IdCategoria" name="IdCategoria"   value="{{old('IdCategoria')}}"  required="true" aria-required="true"  />
                                                 @if ($errors->has('IdCategoria'))
                                                     <span id="IdCategoria-error" class="error text-danger" for="input-IdCategoria">{{ $errors->first('IdCategoria') }}</span>
                                                 @endif
+
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label">{{ __('Cantidad de Existencia') }}</label>
                                         <div class="col-sm-7">
@@ -130,3 +218,57 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+            $('.alert').alert();
+
+            var clientes = new Bloodhound({
+                remote: {
+                    url: '/buscarCategoriasAjax?q=QUERY',
+                    wildcard: 'QUERY'
+                },
+                datumTokenizer: Bloodhound.tokenizers.whitespace('NombreCategoria'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace
+            });
+            console.log(clientes);
+
+            $("#input-IdCategoria").typeahead({
+            hint: true,
+            highlight: true,
+            limit: 10,
+            minLength: 2
+            }, {
+            source: clientes.ttAdapter(),
+            display: 'NombreCategoria',
+
+            // This will be appended to "tt-dataset-" to form the class name of the suggestion menu.
+            name: 'listaCategorias',
+
+            // the key from the array we want to display (name,id,email,etc...)
+            templates: {
+            empty: [
+            '<div class="list-group search-results-dropdown"><div class="list-group-item">Categoria no encontrada</div></div>'
+            ],
+            header: [
+            '<div class="list-group search-results-dropdown">'
+                ],
+                suggestion: function (data) {
+
+                return ('<div class="list-group-item" >' + data.NombreCategoria + '</div>');
+                }
+                }
+                }).on('typeahead:selected', function(event, data) {
+                var nombreCompleto = data.NombreCategoria;
+                var IdCategoria = data.IdCategoria;
+
+
+                $('#articulos input[name=\"IdCategoria\"]').val(IdCategoria)
+
+
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.3.0/typeahead.bundle.min.js"></script>
+@endpush
