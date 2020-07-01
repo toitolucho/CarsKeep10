@@ -443,6 +443,7 @@
       <change afterPath="$PROJECT_DIR$/utilidades/Enalces utilidades.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/utilidades/PaletaColoresTheme.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CarsKeep10_aux" beforeDir="false" afterPath="$PROJECT_DIR$/../CarsKeep10_aux" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -628,7 +629,7 @@
       <workItem from="1590504923335" duration="20022000" />
       <workItem from="1590701450792" duration="3823000" />
       <workItem from="1590768603949" duration="11504000" />
-      <workItem from="1593593948818" duration="5336000" />
+      <workItem from="1593593948818" duration="6244000" />
     </task>
     <servers />
   </component>
