@@ -1,0 +1,284 @@
+MANTENIMIENTO DE 5000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspección nivel de agua deposito limpiaparabrisas.
+•	Inspección nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+
+MANTENIMIENTO DE 10000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección funcionamiento de motor.
+•	inspección sistema de dirección.
+•	inspección y limpieza de frenos.
+•	Inspección de líquido de frenos y/o embrague.
+•	inspección nivel de agua deposito limpiaparabrisas.
+•	inspección nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Lubricado bisagras de puertas.
+•	Regulado de embriague.
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+•	Balanceo de llantas.
+MANTENIMIENTO DE 15000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspección nivel de agua deposito limpiaparabrisas.
+•	Inspección nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+
+
+
+
+MANTENIMIENTO DE 20000KM.
+•	Cambiar aceite de caja y/o diferenciales.
+•	Cambiar aceite de motor.
+•	Afinado de motor
+•	Bujías
+•	Engrase cardan modelos 4x4
+•	Cambiar filtro de aceite.
+•	Cambiar filtro de aire.
+•	inspección funcionamiento de motor.
+•	inspección sistema de dirección.
+•	inspección y limpieza de frenos.
+•	inspección filtro de combustible.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspección nivel de agua deposito limpiaparabrisas.
+•	Inspección nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Inspeccion sistema de suspensión.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Lubricado bisagras de puertas.
+•	Regulado de embrague.
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+•	Alineado y balanceo de ruedas.
+MANTENIMIENTO DE 25000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+MANTENIMIENTO DE 30000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Cambiar aceite de sistema de trasferencia.
+•	Cambiar aceite de sistema de transmisión manual.
+•	Inspeccion de sistema de dirección.
+•	Inspeccion y limpieza de frenos.
+•	Inspeccion funcionamiento de motor.
+•	Lubricado de bisagras de puertas.
+•	Regulado de embrague.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+
+MANTENIMIENTO DE 35000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+MANTENIMIENTO DE 40000KM.
+•	Cambiar aceite de motor.
+•	Afinado de motor.
+•	Agua refrigerante motor
+•	Bujías.
+•	Engrase rodamiento de maseros.
+•	Cambiar filtro de aceite.
+•	Cambiar filtro aire.
+•	Cambiar filtro de polen.
+•	Inspeccion sistema de dirección.
+•	Inspeccion y limpieza de frenos.
+•	Inspeccion funcionamiento de motor.
+•	Lubricado bisagras de puerta.
+•	Regulado de embrague.
+•	Revisión de niveles en general.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+•	Alineado y balanceado de ruedas.
+
+MANTENIMIENTO DE 45000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+
+
+MANTENIMIENTO DE 50000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspeccion sistema de dirección
+•	Inspeccion sistema de dirección.
+•	Inspeccion funcionamiento de motor.
+•	Inspeccion y limpieza de frenos
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Limpieza y calibrado de inyectores.
+•	Lubricado bisagras de puertas.
+•	Regulado de embrague.
+•	Revisión niveles en general.
+•	Revisión presión de llantas.
+MANTENIMIENTO DE 55000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+MANTENIMIENTO DE 60000KM.
+•	Cambiar aceite de motor.
+•	Cambiar aceite de sistema de transferencia.
+•	Cambiar aceite de sistema de transmisión manual.
+•	Afinado de motor.
+•	Bujías
+•	Engrase rodamientos de maseros
+•	Cambiar filtro de aceite.
+•	Cambiar filtro de aire
+•	Cambiar filtro de polen.
+•	Inspeccion sistema de dirección.
+•	Inspección y limpieza de frenos.
+•	Lubricado bisagras de puertas.
+•	Regulado de embrague.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+•	Alineado y balanceo de ruedas.
+
+MANTENIMIENTO DE 60000KM  2.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+MANTENIMIENTO DE 65000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general.
+•	Revisión presión de llantas.
+MANTENIMIENTO DE70000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspeccion funcionamiento de motor.
+•	Inspeccion y limpieza de frenos.
+•	Lubricadas bisagras de puertas.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Regulado de embrague.
+•	Revisión de luces en general
+•	Revisión niveles en general.
+•	Revisión presión de llantas.
+MANTENIMIENTO DE 75000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general
+•	Revisión presión de llantas
+MANTENIMIENTO DE 80000KM.
+•	Cambiar aceite de motor.
+•	Afinado de motor.
+•	Agua refrigerante de motor.
+•	Bujías.
+•	Engrase rodamientos de maseros.
+•	Cambiar filtro de aceite.}
+•	Cambiar filtro de aire.
+•	Cambiar filtro de polen.
+•	Inspección sistema de dirección.
+•	Inspección funcionamiento de motor.
+•	Inspección y limpieza de frenos.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Lubricadas bisagras de puertas.
+•	Regulado de embrague
+•	Revisión de luces en general
+•	Revisión niveles en general.
+•	Revisión presión de llantas.
+•	Alineado y balanceado de ruedas.
+•	Revisión presión de llantas.
+ MANTENIMIENTO DE 85000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspección nivel de agua deposito limpiaparabrisas.
+•	Inspección nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general
+•	Revisión presión de llantas
+MANTENIMIENTO DE 90000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Cambiar aceite de sistema de transferencia.
+•	Cambiar aceite de sistema de transmisión manual.
+•	Inspeccion sistema de dirección.
+•	Inspeccion y limpieza de frenos.
+•	Inspeccion funcionamiento de motor
+•	Lubricado bisagras de puertas.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general
+•	Revisión niveles en general.
+•	Revisión presión de llantas
+MANTENIMIENTO DE 95000KM.
+•	Cambiar aceite de motor.
+•	Cambiar filtro de aceite.
+•	Inspección de líquido de frenos y/o embrague.
+•	Inspeccion nivel de agua deposito limpiaparabrisas.
+•	Inspeccion nivel de líquido refrigerante.
+•	Inspección nivel de solución de batería.
+•	Limpieza e inspección chisguete y escobillas limpiaparabrisas
+•	Revisión de luces en general
+•	Revisión presión de llantas
+
+MANTENIMIENTO DE 100000KM.
+•	Cambiar aceite de motor.
+•	Afinado de motor
+•	Agua refrigerante de motor
+•	bujías
+•	Cambiar filtro de aceite.
+•	Cambiar filtro de aire.
+•	Cambiar filtro de polen.
+•	Inspeccion sistema de dirección.
+•	Inspeccion y limpieza de frenos.
+•	Limpieza y calibrado de inyectores.
+•	Regulado de embrague.
+•	Revisión de niveles en general.
+•	Revisión de luces en general.
+•	Alineado y balanceo de ruedas.
+•	Cambio correa de distribución.

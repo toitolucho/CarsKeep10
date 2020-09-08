@@ -1,0 +1,19 @@
+Crear controlador
+php artisan make:controller ClienteController --model=Cliente
+php artisan make:controller CategoriaController --model=Categoria
+php artisan make:controller ArticuloController --model=Models\Articulo
+php artisan make:controller IngresoArticuloController --model=Models\IngresoArticulo
+php artisan make:controller ActividadMantenimientoController --model=Models\ActividadMantenimiento
+php artisan make:controller TipoMantenimientoController --model=Models\TipoMantenimiento
+php artisan make:controller TipoMantenimientoDetalleArticuloController --model=Models\TipoMantenimientoDetalleArticulo
+php artisan make:controller VentaServicioController --model=Models\VentaServicio
+
+
+php artisan make:controller VentaServicioController --model=VentaServicio
+php artisan make:controller VentaServicioController --model=VentaServicio
+
+
+CREAR DATOS RANDOMICOS
+factory(\App\Models\Proveedor::class, 500)->create();
+factory(\App\Models\IngresoArticulo::class, 50)->create();
+factory(\App\Models\Ingresosarticulosdetalle::class, 150)->create();
