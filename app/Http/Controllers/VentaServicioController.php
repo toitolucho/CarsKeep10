@@ -270,7 +270,7 @@ class VentaServicioController extends Controller
 
 
 
-        return redirect()->route('ingresosarticulos.index')->with("status","La Transaccion se ha finalizado correctamente");;
+        return redirect()->route('ventasservicios.index')->with("status","La Transaccion se ha finalizado correctamente");;
     }
 
     public function reporte($id)

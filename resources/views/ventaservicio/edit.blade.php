@@ -166,7 +166,7 @@
                                                     <label class="col-sm-2 col-form-label">{{ __('Cliente') }}</label>
                                                     <div class="col-sm-7">
                                                         <div class="form-group{{ $errors->has('IdCliente') ? ' has-danger' : '' }}">
-                                                            <input type="search" name="NombreRazonSocial" class="form-control typeahead" placeholder="Proveedor" autocomplete="off" id="input-IdCliente"   required="true" aria-required="true" />
+                                                            <input type="search" name="NombreRazonSocial" class="form-control typeahead" placeholder="Cliente" autocomplete="off" id="input-IdCliente"   required="true" aria-required="true" />
 
                                                             <input type="hidden" name="IdCliente"   value="{{old('IdCliente', $venta->IdCliente)}}"  required="true" aria-required="true"  />
                                                             @if ($errors->has('IdCliente'))

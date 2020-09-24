@@ -115,6 +115,7 @@ Route::get('/buscarMantenimientosAjax', function (Request $request) {
 
 // Rutas incorporadas manualmente
 Route::resource('/clientes','ClienteController');
+Route::resource('/vehiculos','VehiculoController');
 Route::resource('/categorias','CategoriaController');
 Route::resource('/articulos','ArticuloController');
 Route::resource('/ingresosarticulos','IngresoArticuloController');
@@ -128,6 +129,8 @@ Route::put('/ingresosarticulos/f/{ingresosarticulo}',"IngresoArticuloController@
 Route::get('/ingresosarticulos/reporte/{ingresosarticulo}','IngresoArticuloController@reporte')->name("ingresosarticulos.reporte");
 Route::get('/ventasservicios/reporte/{ventaservicio}','VentaServicioController@reporte')->name("ventaservicios.reporte");
 Route::put('/ventasservicios/f/{ventaservicio}',"VentaServicioController@finalizar")->name('ventaservicios.finalizar');
+Route::post('/clientes/vehiculos/insertar','VehiculoController@insertar') ->name('clientes.insertarVehiculo');
+
 
 Route::get('/tiposmantenimientos/detalle/{IdTipoMantenimiento}','TipoMantenimientoController@detalle')->name('tiposmantenimiento.detalle');
 Route::get('/tiposmantenimientos/detallerango/{kilometraje}','TipoMantenimientoController@detallerango')->name('tiposmantenimiento.detallerango');
