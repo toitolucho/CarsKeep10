@@ -243,19 +243,27 @@ class IngresoArticuloController extends Controller
         //JasperPHP::compile(base_path('/vendor/cossou/jasperphp/examples/hello_world.jrxml'))->execute();
 
         $jasper = new \JasperPHP\JasperPHP;
-//        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jrxml');
+        $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jrxml');
 //        $entrada2 = storage_path('Reportes/IngresoArticulo/IngresosArticulosDetalleReporte.jrxml');
 //
 //       // dd($entrada);
 //
 //        // Compile a JRXML to Jasper
-//        $jasper->compile($entrada1)->execute();
+        //$salida = $jasper->compile($entrada1)->output();
+        //echo $salida;
 //        $jasper->compile($entrada2)->execute();
 
         $entrada1 = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.jasper');
         //D:\Proyectos\CarsKeep\CarsKeep10\vendor\cossou\jasperphp\src\JasperStarter\jdbc
         $jdbc_dir = base_path() . '\vendor\cossou\jasperphp\src\JasperStarter\jdbc';
 //
+
+        $hostname = env("DB_HOST", "localhost");
+        $username = env("DB_USERNAME", "root");
+        $database = env("DB_DATABASE", "carskeep10");
+        $password = env("DB_PASSWORD", "carskeep10000");
+
+
         // Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
        $salida = $jasper->process(
             $entrada1,
@@ -264,16 +272,17 @@ class IngresoArticuloController extends Controller
             array("IdIngresoArticulo" => $id),
             array(
                 'driver' => 'mysql',
-                'username' => 'root',
-                'host' => 'localhost',
-                'database' => 'carskeep10',
-                'port' => '3306',
-                'jdbc_dir' => $jdbc_dir,
+                'username' => $username,
+//                    'password' => $password,
+               'host' => $hostname,
+               'database' => $database,
+               'port' => '3306',
+               'jdbc_dir' => $jdbc_dir,
             )
 
         )->execute();
 
-//       echo $salida;
+       //echo $salida;
 
         $file = storage_path('Reportes/IngresoArticulo/IngresosArticulosReporte.pdf');
         if (file_exists($file)) {

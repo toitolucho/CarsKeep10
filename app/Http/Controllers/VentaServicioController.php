@@ -300,6 +300,12 @@ class VentaServicioController extends Controller
 //        echo $a;
             //dd('aaaaaaa');
 
+            $hostname = env("DB_HOST", "localhost");
+            $username = env("DB_USERNAME", "root");
+            $database = env("DB_DATABASE", "carskeep10");
+            $password = env("DB_PASSWORD", "carskeep10000");
+
+
             $entrada1 = storage_path('Reportes/VentaServicio/VentaServicioReporte.jasper');
             $jdbc_dir = base_path() . '\vendor\cossou\jasperphp\src\JasperStarter\jdbc';
 //
@@ -311,14 +317,16 @@ class VentaServicioController extends Controller
                 array("IdVentaServicio" => $id),
                 array(
                     'driver' => 'mysql',
-                    'username' => 'root',
-                    'host' => 'localhost',
-                    'database' => 'carskeep10',
+                    'username' => $username,
+//                    'password' => $password,
+                    'host' => $hostname,
+                    'database' => $database,
                     'port' => '3306',
                     'jdbc_dir' => $jdbc_dir,
                 )
 
             )->execute();
+
 
             $file = storage_path('Reportes/VentaServicio/VentaServicioReporte.pdf');
             if (file_exists($file)) {

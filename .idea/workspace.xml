@@ -38,6 +38,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8366a37-fc50-4e21-a1a1-45b09af8aa1b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IngresoArticuloController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VentaServicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/Reportes/IngresoArticulo/IngresosArticulosDetalleReporte.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/storage/Reportes/IngresoArticulo/IngresosArticulosDetalleReporte.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/Reportes/IngresoArticulo/IngresosArticulosReporte.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/storage/Reportes/IngresoArticulo/IngresosArticulosReporte.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/Reportes/IngresoArticulo/IngresosArticulosReporte.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/storage/Reportes/IngresoArticulo/IngresosArticulosReporte.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/Reportes/IngresoArticulo/IngresosArticulosReporte.rtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/Reportes/VentaServicio/VentaServicioReporte.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/storage/Reportes/VentaServicio/VentaServicioReporte.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CarsKeep10_aux" beforeDir="false" afterPath="$PROJECT_DIR$/../CarsKeep10_aux" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +224,10 @@
       <workItem from="1593593948818" duration="6596000" />
       <workItem from="1599441295026" duration="1839000" />
       <workItem from="1599470789319" duration="17391000" />
-      <workItem from="1599538545511" duration="4781000" />
+      <workItem from="1599538545511" duration="5494000" />
+      <workItem from="1599596510539" duration="1982000" />
+      <workItem from="1599642629642" duration="5424000" />
+      <workItem from="1600946285086" duration="263000" />
     </task>
     <servers />
   </component>
@@ -233,6 +244,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1075" y="303" key="#Notifications" timestamp="1599542330076">
