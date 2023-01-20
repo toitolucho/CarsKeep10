@@ -1,16 +1,16 @@
-#CARSKEEP10
+## CARSKEEP10
 
-_Sistema de Mantenimiento de Movilidades_
+Web System to register workflow about maintenance of cars and other kinds of products needed to have a service sold for a company dedicated to giving this kind of service.
 
-Desarrollado por Luis Antonio Molina Yampa
+![Logo Aplicacion](/docimages/01.png)
 
+**Functionalities**
 
-<strong> Funcionalidades: </strong>
-
-- Registro de Articulos
-- Categorización de Articulos 
+- Product Registration
+- Product Categories Registration
+- Management of Activities and Maintenance Services
 - Gestion de Actividades y Servicios de Mantenimiento
-- Gestión de Tipos de Mantenimiento
-- Configuración de Notificaciones
-- Gestión de abastecimiento de articulos de mantenimiento
-- Venta y administración de servicios y articulos
+- Management Types of Maintenance  
+- Notification Settings  
+- Supply management of maintenance items  
+- Sale and administration of services and products items
