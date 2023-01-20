@@ -3,3 +3,6 @@ https://github.com/reliese/laravel
 
 conveciones laravel para buenas practicas y nombres de archivos
 https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-conventions
+
+actualizar a la version 8 de laravel
+https://stackoverflow.com/questions/50840960/script-php-artisan-packagediscover-handling-the-post-autoload-dump-event-retur

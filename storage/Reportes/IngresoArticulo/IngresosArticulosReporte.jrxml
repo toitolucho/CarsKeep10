@@ -11,7 +11,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\Proyectos\\CarsKeep\\CarsKeep10\\storage\\Reportes\\IngresoArticulo\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["D:\\Projects\\CarsKeep10\\storage\\Reportes\\IngresoArticulo\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select ia.IdIngresoArticulo, u.NombreCompleto, p.NombreRazonSocial, ia.FechaHoraRegistro, ia.Observaciones, CASE ia.CodigoEstadoIngreso WHEN 'I' THEN 'INICIADO' WHEN 'F' THEN 'FINALIZADO' WHEN 'A' THEN 'ANULADO' END AS EstadoIngreso

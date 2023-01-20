@@ -262,6 +262,7 @@ class IngresoArticuloController extends Controller
         $username = env("DB_USERNAME", "root");
         $database = env("DB_DATABASE", "carskeep10");
         $password = env("DB_PASSWORD", "carskeep10000");
+		$SUBREPORT_DIR = str_replace("IngresosArticulosReporte.jasper", "",  $entrada1);
 
 
         // Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
@@ -269,7 +270,7 @@ class IngresoArticuloController extends Controller
             $entrada1,
             false,
             array("pdf"),
-            array("IdIngresoArticulo" => $id),
+            array("IdIngresoArticulo" => $id, "SUBREPORT_DIR" => $SUBREPORT_DIR),
             array(
                 'driver' => 'mysql',
                 'username' => $username,

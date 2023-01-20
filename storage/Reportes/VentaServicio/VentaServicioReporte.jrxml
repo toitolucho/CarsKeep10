@@ -8,7 +8,7 @@
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\Proyectos\\CarsKeep\\CarsKeep10\\storage\\Reportes\\VentaServicio\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["D:\\Projects\\CarsKeep10\\storage\\Reportes\\VentaServicio\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="IdVentaServicio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>

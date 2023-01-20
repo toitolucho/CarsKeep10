@@ -303,18 +303,21 @@ class VentaServicioController extends Controller
             $hostname = env("DB_HOST", "localhost");
             $username = env("DB_USERNAME", "root");
             $database = env("DB_DATABASE", "carskeep10");
-            $password = env("DB_PASSWORD", "carskeep10000");
+            //$password = env("DB_PASSWORD", "carskeep10000");
 
 
             $entrada1 = storage_path('Reportes/VentaServicio/VentaServicioReporte.jasper');
             $jdbc_dir = base_path() . '\vendor\cossou\jasperphp\src\JasperStarter\jdbc';
 //
             // Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
+			
+			$SUBREPORT_DIR = str_replace("VentaServicioReporte.jasper", "",  $entrada1);
+			//dd($SUBREPORT_DIR);
             $salida = $jasper->process(
                 $entrada1,
                 false,
                 array("pdf"),
-                array("IdVentaServicio" => $id),
+                array("IdVentaServicio" => $id,"SUBREPORT_DIR" => $SUBREPORT_DIR),
                 array(
                     'driver' => 'mysql',
                     'username' => $username,
@@ -326,7 +329,10 @@ class VentaServicioController extends Controller
                 )
 
             )->execute();
-
+			
+			//)->output();
+			
+			//error_log($salida);
 
             $file = storage_path('Reportes/VentaServicio/VentaServicioReporte.pdf');
             if (file_exists($file)) {
