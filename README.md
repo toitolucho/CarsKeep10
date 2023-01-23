@@ -6,11 +6,21 @@ Web System to register workflow about maintenance of cars and other kinds of pro
 
 **Functionalities**
 
-- Product Registration
-- Product Categories Registration
-- Management of Activities and Maintenance Services
-- Gestion de Actividades y Servicios de Mantenimiento
-- Management Types of Maintenance  
-- Notification Settings  
-- Supply management of maintenance items  
-- Sale and administration of services and products items
+- ***Product Categories Registration***
+![Logo Aplicacion](/docimages/02 Categories.png)
+You can create any kind of categories for products, to have in order all your catalogs.
+***- Product Registration***
+![Logo Aplicacion](/docimages/03 Products.png)
+In this form, you will be able to load any kind of product, considering that data related to products are the price, the quantity, description, and the categories.
+
+***- Purchases Products to fill Inventories***
+![Logo Aplicacion](/docimages/04 Purchases.png)
+
+***- Management of Activities and Maintenance Services***
+
+
+***- Management Types of Maintenance***  
+***- Notification Settings***  
+***- Supply management of maintenance items***  
+***- Sale and administration of services and products items***
+
